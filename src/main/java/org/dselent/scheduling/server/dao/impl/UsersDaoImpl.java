@@ -10,7 +10,7 @@ import org.dselent.scheduling.server.dao.UsersDao;
 import org.dselent.scheduling.server.extractor.UsersExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.User;
+import org.dselent.scheduling.server.model.User_Info;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -28,16 +28,16 @@ import org.springframework.stereotype.Repository;
  * https://howtodoinjava.com/spring/spring-core/how-to-use-spring-component-repository-service-and-controller-annotations/
  */
 @Repository
-public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
+public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
 {
 	@Override
-	public int insert(User userModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+	public int insert(User_Info userInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
 	{
 		
 		validateColumnNames(insertColumnNameList);
 		validateColumnNames(keyHolderColumnNameList);
 
-		String queryTemplate = QueryStringBuilder.generateInsertString(User.TABLE_NAME, insertColumnNameList);
+		String queryTemplate = QueryStringBuilder.generateInsertString(User_Info.TABLE_NAME, insertColumnNameList);
 	    MapSqlParameterSource parameters = new MapSqlParameterSource();
 	    
 	    List<Map<String, Object>> keyList = new ArrayList<>();
@@ -45,10 +45,10 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 	    
 	    for(String insertColumnName : insertColumnNameList)
 	    {
-	    	addParameterMapValue(parameters, insertColumnName, userModel);
+	    	addParameterMapValue(parameters, insertColumnName, userInfoModel);
 	    }
 	    // new way, but unfortunately unnecessary class creation is slow and wasteful (i.e. wrong)
-	    // insertColumnNames.forEach(insertColumnName -> addParameterMap(parameters, insertColumnName, userModel));
+	    // insertColumnNames.forEach(insertColumnName -> addParameterMap(parameters, insertColumnName, userInfoModel));
 	    
 	    int rowsAffected = namedParameterJdbcTemplate.update(queryTemplate, parameters, keyHolder);
 	    
@@ -56,7 +56,7 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 	    
 	    for(String keyHolderColumnName : keyHolderColumnNameList)
 	    {
-	    	addObjectValue(keyMap, keyHolderColumnName, userModel);
+	    	addObjectValue(keyMap, keyHolderColumnName, userInfoModel);
 	    }
 	    	    
 	    return rowsAffected;
@@ -65,10 +65,10 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 	
 	
 	@Override
-	public List<User> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+	public List<User_Info> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
 	{
 		UsersExtractor extractor = new UsersExtractor();
-		String queryTemplate = QueryStringBuilder.generateSelectString(User.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+		String queryTemplate = QueryStringBuilder.generateSelectString(User_Info.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
 		List<Object> objectList = new ArrayList<Object>();
 		
@@ -79,16 +79,16 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 		
 	    Object[] parameters = objectList.toArray();
 		 
-	    List<User> usersList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+	    List<User_Info> usersList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 	    
 	    return usersList;
 	}
 
 	@Override
-	public User findById(int id) throws SQLException
+	public User_Info findById(int id) throws SQLException
 	{
-		String columnName = QueryStringBuilder.convertColumnName(User.getColumnName(User.Columns.ID), false);
-		List<String> selectColumnNames = User.getColumnNameList();
+		String columnName = QueryStringBuilder.convertColumnName(User_Info.getColumnName(User_Info.Columns.ID), false);
+		List<String> selectColumnNames = User_Info.getColumnNameList();
 		
 		List<QueryTerm> queryTermList = new ArrayList<>();
 		QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -98,22 +98,22 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 		Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
 		orderByList.add(order);
 		
-		List<User> usersList = select(selectColumnNames, queryTermList, orderByList);
+		List<User_Info> usersList = select(selectColumnNames, queryTermList, orderByList);
 	
-	    User user = null;
+	    User_Info userInfo = null;
 	    
 	    if(!usersList.isEmpty())
 	    {
-	    	user = usersList.get(0);
+	    	userInfo = usersList.get(0);
 	    }
 	    
-	    return user;
+	    return userInfo;
 	}
 	
 	@Override
 	public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
 	{
-		String queryTemplate = QueryStringBuilder.generateUpdateString(User.TABLE_NAME, columnName, queryTermList);
+		String queryTemplate = QueryStringBuilder.generateUpdateString(User_Info.TABLE_NAME, columnName, queryTermList);
 
 		List<Object> objectList = new ArrayList<Object>();
 		objectList.add(newValue);
@@ -133,7 +133,7 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 	@Override
 	public int delete(List<QueryTerm> queryTermList)
 	{
-		String queryTemplate = QueryStringBuilder.generateDeleteString(User.TABLE_NAME, queryTermList);
+		String queryTemplate = QueryStringBuilder.generateDeleteString(User_Info.TABLE_NAME, queryTermList);
 
 		List<Object> objectList = new ArrayList<Object>();
 		
@@ -149,7 +149,7 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 		return rowsAffected;
 	}
 
-	private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, User userModel)
+	private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, User_Info userInfoModel)
 	{
 		String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
     	
@@ -157,45 +157,45 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
     	// The getter must be distinguished unless the models are designed as simply a map of columns-values
     	// Would prefer not being that generic since it may end up leading to all code being collections of strings
 		
-    	if(insertColumnName.equals(User.getColumnName(User.Columns.ID)))
+    	if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.ID)))
     	{
-    		parameters.addValue(parameterName, userModel.getId());
+    		parameters.addValue(parameterName, userInfoModel.getId());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.USER_NAME)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_NAME)))
     	{
-    		parameters.addValue(parameterName, userModel.getUserName());
+    		parameters.addValue(parameterName, userInfoModel.getUserName());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.FIRST_NAME)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.FIRST_NAME)))
     	{
-    		parameters.addValue(parameterName, userModel.getFirstName());
+    		parameters.addValue(parameterName, userInfoModel.getFirstName());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.LAST_NAME)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.LAST_NAME)))
     	{
-    		parameters.addValue(parameterName, userModel.getLastName());
+    		parameters.addValue(parameterName, userInfoModel.getLastName());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.EMAIL)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.EMAIL)))
     	{
-    		parameters.addValue(parameterName, userModel.getEmail());
+    		parameters.addValue(parameterName, userInfoModel.getEmail());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.ENCRYPTED_PASSWORD)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD)))
     	{
-    		parameters.addValue(parameterName, userModel.getEncryptedPassword());
+    		parameters.addValue(parameterName, userInfoModel.getEncryptedPassword());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.SALT)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.SALT)))
     	{
-    		parameters.addValue(parameterName, userModel.getSalt());
+    		parameters.addValue(parameterName, userInfoModel.getSalt());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.USER_STATE_ID)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID)))
     	{
-    		parameters.addValue(parameterName, userModel.getUserStateId());
+    		parameters.addValue(parameterName, userInfoModel.getUserStateId());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.CREATED_AT)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.CREATED_AT)))
     	{
-    		parameters.addValue(parameterName, userModel.getCreatedAt());
+    		parameters.addValue(parameterName, userInfoModel.getCreatedAt());
     	}
-    	else if(insertColumnName.equals(User.getColumnName(User.Columns.UPDATED_AT)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.UPDATED_AT)))
     	{
-    		parameters.addValue(parameterName, userModel.getUpdatedAt());
+    		parameters.addValue(parameterName, userInfoModel.getUpdatedAt());
     	}
     	else
     	{
@@ -205,47 +205,47 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
     	}
 	}	
 
-	private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, User userModel)
+	private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, User_Info userInfoModel)
 	{
-    	if(keyHolderColumnName.equals(User.getColumnName(User.Columns.ID)))
+    	if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.ID)))
     	{
-    		userModel.setId((Integer) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.USER_NAME)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_NAME)))
     	{
-    		userModel.setUserName((String) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setUserName((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.FIRST_NAME)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.FIRST_NAME)))
     	{
-    		userModel.setFirstName((String) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setFirstName((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.LAST_NAME)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.LAST_NAME)))
     	{
-    		userModel.setLastName((String) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setLastName((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.EMAIL)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.EMAIL)))
     	{
-    		userModel.setEmail((String) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setEmail((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.ENCRYPTED_PASSWORD)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD)))
     	{
-    		userModel.setEncryptedPassword((String) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setEncryptedPassword((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.SALT)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.SALT)))
     	{
-    		userModel.setSalt((String) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setSalt((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.USER_STATE_ID)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID)))
     	{
-    		userModel.setUserStateId((Integer) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setUserStateId((Integer) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.CREATED_AT)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.CREATED_AT)))
     	{
-    		userModel.setCreatedAt((Timestamp) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setCreatedAt((Timestamp) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User.getColumnName(User.Columns.UPDATED_AT)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.UPDATED_AT)))
     	{
-    		userModel.setUpdatedAt((Timestamp) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setUpdatedAt((Timestamp) keyMap.get(keyHolderColumnName));
     	}
     	else
     	{
@@ -258,7 +258,7 @@ public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao
 	@Override
 	public void validateColumnNames(List<String> columnNameList)
 	{
-		List<String> actualColumnNames = User.getColumnNameList();
+		List<String> actualColumnNames = User_Info.getColumnNameList();
 		boolean valid = actualColumnNames.containsAll(columnNameList);
 		
 		if(!valid)
