@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class User extends Model
+public class Instructor_Info extends Model
 {
 	// table name
 	public static final String TABLE_NAME = "users";
