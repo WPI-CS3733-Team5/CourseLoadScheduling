@@ -8,24 +8,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UsersHistory extends Model
+public class User_Info_History extends Model
 {
 	// table name
-	public static final String TABLE_NAME = "users_history";
+	public static final String TABLE_NAME = "user_info_history";
 		
 	// column names
 	public static enum Columns
 	{
 		ID,
-		USER_ID,
-		USER_NAME,
+		USER_INFO_ID,
+		USER_ROLE,
+		USERNAME,
 		FIRST_NAME,
 		LAST_NAME,
 		EMAIL,
 		ENCRYPTED_PASSWORD,
 		SALT,
-		USER_STATE_ID,
+		ACCOUNT_STATE,
 		CREATED_AT,
+		UPDATED_AT,
+		LOGIN_TIME
 	}
 
 	// enum list
@@ -42,28 +45,35 @@ public class UsersHistory extends Model
 		}
 		
 		COLUMN_TYPE_MAP.put(Columns.ID, JDBCType.INTEGER);
-		COLUMN_TYPE_MAP.put(Columns.USER_ID, JDBCType.INTEGER);
-		COLUMN_TYPE_MAP.put(Columns.USER_NAME, JDBCType.VARCHAR);
+		COLUMN_TYPE_MAP.put(Columns.USER_INFO_ID, JDBCType.INTEGER);
+		COLUMN_TYPE_MAP.put(Columns.USER_ROLE, JDBCType.INTEGER);
+		COLUMN_TYPE_MAP.put(Columns.USERNAME, JDBCType.VARCHAR);
 		COLUMN_TYPE_MAP.put(Columns.FIRST_NAME, JDBCType.VARCHAR);
 		COLUMN_TYPE_MAP.put(Columns.LAST_NAME, JDBCType.VARCHAR);
+		COLUMN_TYPE_MAP.put(Columns.EMAIL, JDBCType.VARCHAR);
 		COLUMN_TYPE_MAP.put(Columns.ENCRYPTED_PASSWORD, JDBCType.VARCHAR);
 		COLUMN_TYPE_MAP.put(Columns.SALT, JDBCType.VARCHAR);
-		COLUMN_TYPE_MAP.put(Columns.USER_STATE_ID, JDBCType.INTEGER);
+		COLUMN_TYPE_MAP.put(Columns.ACCOUNT_STATE, JDBCType.INTEGER);
 		COLUMN_TYPE_MAP.put(Columns.CREATED_AT, JDBCType.TIMESTAMP_WITH_TIMEZONE);
+		COLUMN_TYPE_MAP.put(Columns.UPDATED_AT, JDBCType.TIMESTAMP_WITH_TIMEZONE);
+		COLUMN_TYPE_MAP.put(Columns.LOGIN_TIME, JDBCType.TIMESTAMP_WITH_TIMEZONE);
 	};
 	
 	// attributes
 	
 	private Integer id;
-	private Integer userId;
+	private Integer userInfoId;
+	private Integer userRole;
 	private String userName;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String encryptedPassword;
 	private String salt;
-	private Integer userStateId;
+	private Integer accountState;
 	private Instant createdAt;
+	private Instant updatedAt;
+	private Instant loginTime;
 
 	// methods
 	
@@ -101,14 +111,14 @@ public class UsersHistory extends Model
 		this.id = id;
 	}
 	
-	public Integer getUserId()
+	public Integer getUserInfoId()
 	{
-		return userId;
+		return userInfoId;
 	}
 
-	public void setUserId(Integer userId)
+	public void setUserInfoId(Integer userInfoId)
 	{
-		this.userId = userId;
+		this.userInfoId = userInfoId;
 	}
 
 	public String getUserName()
@@ -172,14 +182,14 @@ public class UsersHistory extends Model
 		this.salt = salt;
 	}
 
-	public Integer getUserStateId()
+	public Integer getAccountState()
 	{
-		return userStateId;
+		return accountState;
 	}
 
-	public void setUserStateId(Integer userStateId)
+	public void setAccountState(Integer accountState)
 	{
-		this.userStateId = userStateId;
+		this.accountState = accountState;
 	}
 
 	public Instant getCreatedAt()
@@ -200,12 +210,38 @@ public class UsersHistory extends Model
 		}
 	}
 
+	public Integer getUserRole() {
+		return userRole;
+	}
+
+	public Instant getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public Instant getLoginTime() {
+		return loginTime;
+	}
+
+	public void setUserRole(Integer userRole) {
+		this.userRole = userRole;
+	}
+
+	public void setUpdatedAt(Instant updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public void setLoginTime(Instant loginTime) {
+		this.loginTime = loginTime;
+	}
+
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
+		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
+		result = prime * result + ((loginTime == null) ? 0 : loginTime.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((encryptedPassword == null) ? 0 : encryptedPassword.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
@@ -213,10 +249,14 @@ public class UsersHistory extends Model
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
-		result = prime * result + ((userStateId == null) ? 0 : userStateId.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((accountState == null) ? 0 : accountState.hashCode());
+		result = prime * result + ((userInfoId == null) ? 0 : userInfoId.hashCode());
+		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
+
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj)
@@ -229,11 +269,11 @@ public class UsersHistory extends Model
 		{
 			return false;
 		}
-		if (!(obj instanceof UsersHistory))
+		if (!(obj instanceof User_Info_History))
 		{
 			return false;
 		}
-		UsersHistory other = (UsersHistory) obj;
+		User_Info_History other = (User_Info_History) obj;
 		if (createdAt == null)
 		{
 			if (other.createdAt != null)
@@ -245,6 +285,28 @@ public class UsersHistory extends Model
 		{
 			return false;
 		}
+		if (updatedAt == null)
+		{
+			if (other.updatedAt != null)
+			{
+				return false;
+			}
+		}
+		else if (!updatedAt.equals(other.updatedAt))
+		{
+			return false;
+		}
+		if (loginTime == null)
+		{
+			if (other.loginTime != null)
+			{
+				return false;
+			}
+		}
+		else if (!loginTime.equals(other.loginTime))
+		{
+			return false;
+		}
 		if (email == null)
 		{
 			if (other.email != null)
@@ -253,6 +315,17 @@ public class UsersHistory extends Model
 			}
 		}
 		else if (!email.equals(other.email))
+		{
+			return false;
+		}
+		if (userRole == null)
+		{
+			if (other.userRole != null)
+			{
+				return false;
+			}
+		}
+		else if (!userRole.equals(other.userRole))
 		{
 			return false;
 		}
@@ -322,25 +395,25 @@ public class UsersHistory extends Model
 		{
 			return false;
 		}
-		if (userStateId == null)
+		if (accountState == null)
 		{
-			if (other.userStateId != null)
+			if (other.accountState != null)
 			{
 				return false;
 			}
 		}
-		else if (!userStateId.equals(other.userStateId))
+		else if (!accountState.equals(other.accountState))
 		{
 			return false;
 		}
-		if (userId == null)
+		if (userInfoId == null)
 		{
-			if (other.userId != null)
+			if (other.userInfoId != null)
 			{
 				return false;
 			}
 		}
-		else if (!userId.equals(other.userId))
+		else if (!userInfoId.equals(other.userInfoId))
 		{
 			return false;
 		}
@@ -348,30 +421,21 @@ public class UsersHistory extends Model
 	}
 
 	@Override
-	public String toString()
-	{
-		StringBuilder builder = new StringBuilder();
-		builder.append("UsersHistory [id=");
-		builder.append(id);
-		builder.append(", user_id=");
-		builder.append(userId);
-		builder.append(", userName=");
-		builder.append(userName);
-		builder.append(", firstName=");
-		builder.append(firstName);
-		builder.append(", lastName=");
-		builder.append(lastName);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", encryptedPassword=");
-		builder.append(encryptedPassword);
-		builder.append(", salt=");
-		builder.append(salt);
-		builder.append(", userStateId=");
-		builder.append(userStateId);
-		builder.append(", createdAt=");
-		builder.append(createdAt);
-		builder.append("]");
-		return builder.toString();
+	public String toString() {
+		return "User_Info_History{" +
+				"id=" + id +
+				", userInfoId=" + userInfoId +
+				", userRole=" + userRole +
+				", userName='" + userName + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", email='" + email + '\'' +
+				", encryptedPassword='" + encryptedPassword + '\'' +
+				", salt='" + salt + '\'' +
+				", accountState=" + accountState +
+				", createdAt=" + createdAt +
+				", updatedAt=" + updatedAt +
+				", loginTime=" + loginTime +
+				'}';
 	}
 }

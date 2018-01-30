@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.scheduling.server.dao.UsersDao;
+import org.dselent.scheduling.server.dao.User_infoDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
 import org.dselent.scheduling.server.dto.RegisterUserDto;
 import org.dselent.scheduling.server.model.User_Info;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService
 {
 	@Autowired
-	private UsersDao usersDao;
+	private User_infoDao userinfoDao;
 	
 	@Autowired
 	private UsersRolesLinksDao usersRolesLinksDao;
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService
     	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.CREATED_AT));
     	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.UPDATED_AT));
 		
-    	rowsAffectedList.add(usersDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
+    	rowsAffectedList.add(userinfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
 
 		//
      	

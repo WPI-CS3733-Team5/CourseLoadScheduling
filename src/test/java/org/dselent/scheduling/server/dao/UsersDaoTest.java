@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UsersDaoTest
 {
 	@Autowired
-	private UsersDao usersDao;
+	private User_infoDao userinfoDao;
 	
 	/*
 	 * Not really an using this as a JUnit test
@@ -58,7 +58,7 @@ public class UsersDaoTest
     	keyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.CREATED_AT));
     	keyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.UPDATED_AT));
    	
-    	usersDao.insert(userInfo1, insertColumnNameList, keyHolderColumnNameList);
+    	userinfoDao.insert(userInfo1, insertColumnNameList, keyHolderColumnNameList);
     	
     	
     	// UPDATE
@@ -74,7 +74,7 @@ public class UsersDaoTest
     	updateUseNameTerm.setValue(oldUserName);
     	updateQueryTermList.add(updateUseNameTerm);
     	
-    	usersDao.update(updateColumnName, newUserName, updateQueryTermList);
+    	userinfoDao.update(updateColumnName, newUserName, updateQueryTermList);
     	
     	
     	// SELECT
@@ -98,7 +98,7 @@ public class UsersDaoTest
     	orderByList.add(orderPair1);
     	
 		@SuppressWarnings("unused")
-		List<User_Info> selectedUserInfoList = usersDao.select(selectColumnNameList, selectQueryTermList, orderByList);
+		List<User_Info> selectedUserInfoList = userinfoDao.select(selectColumnNameList, selectQueryTermList, orderByList);
     	
     	System.out.println();
     }

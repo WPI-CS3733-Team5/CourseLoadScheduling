@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.scheduling.server.dao.UsersDao;
+import org.dselent.scheduling.server.dao.User_infoDao;
 import org.dselent.scheduling.server.extractor.UsersExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Repository;
  * https://howtodoinjava.com/spring/spring-core/how-to-use-spring-component-repository-service-and-controller-annotations/
  */
 @Repository
-public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
+public class User_infoDaoImpl extends BaseDaoImpl<User_Info> implements User_infoDao
 {
 	@Override
 	public int insert(User_Info userInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
@@ -161,7 +161,11 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		parameters.addValue(parameterName, userInfoModel.getId());
     	}
-    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_NAME)))
+		else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_ROLE)))
+		{
+			parameters.addValue(parameterName, userInfoModel.getUserRole());
+		}
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.USERNAME)))
     	{
     		parameters.addValue(parameterName, userInfoModel.getUserName());
     	}
@@ -177,6 +181,10 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		parameters.addValue(parameterName, userInfoModel.getEmail());
     	}
+		else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.DELETED)))
+		{
+			parameters.addValue(parameterName, userInfoModel.getDeleted());
+		}
     	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD)))
     	{
     		parameters.addValue(parameterName, userInfoModel.getEncryptedPassword());
@@ -185,9 +193,9 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		parameters.addValue(parameterName, userInfoModel.getSalt());
     	}
-    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID)))
+    	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.ACCOUNT_STATE)))
     	{
-    		parameters.addValue(parameterName, userInfoModel.getUserStateId());
+    		parameters.addValue(parameterName, userInfoModel.getAccountState());
     	}
     	else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.CREATED_AT)))
     	{
@@ -197,6 +205,10 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		parameters.addValue(parameterName, userInfoModel.getUpdatedAt());
     	}
+		else if(insertColumnName.equals(User_Info.getColumnName(User_Info.Columns.LOGIN_TIME)))
+		{
+			parameters.addValue(parameterName, userInfoModel.getLoginTime());
+		}
     	else
     	{
     		// should never end up here
@@ -211,7 +223,11 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		userInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_NAME)))
+		else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_ROLE)))
+		{
+			userInfoModel.setUserRole((Integer) keyMap.get(keyHolderColumnName));
+		}
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.USERNAME)))
     	{
     		userInfoModel.setUserName((String) keyMap.get(keyHolderColumnName));
     	}
@@ -227,6 +243,10 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		userInfoModel.setEmail((String) keyMap.get(keyHolderColumnName));
     	}
+		else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.DELETED)))
+		{
+			userInfoModel.setDeleted((Boolean) keyMap.get(keyHolderColumnName));
+		}
     	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD)))
     	{
     		userInfoModel.setEncryptedPassword((String) keyMap.get(keyHolderColumnName));
@@ -235,9 +255,9 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		userInfoModel.setSalt((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID)))
+    	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.ACCOUNT_STATE)))
     	{
-    		userInfoModel.setUserStateId((Integer) keyMap.get(keyHolderColumnName));
+    		userInfoModel.setAccountState((Integer) keyMap.get(keyHolderColumnName));
     	}
     	else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.CREATED_AT)))
     	{
@@ -247,6 +267,10 @@ public class UsersDaoImpl extends BaseDaoImpl<User_Info> implements UsersDao
     	{
     		userInfoModel.setUpdatedAt((Timestamp) keyMap.get(keyHolderColumnName));
     	}
+		else if(keyHolderColumnName.equals(User_Info.getColumnName(User_Info.Columns.LOGIN_TIME)))
+		{
+			userInfoModel.setLoginTime((Timestamp) keyMap.get(keyHolderColumnName));
+		}
     	else
     	{
     		// should never end up here
