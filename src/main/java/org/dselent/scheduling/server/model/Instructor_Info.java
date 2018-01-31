@@ -4,7 +4,7 @@ import java.sql.JDBCType;
 import java.time.Instant;
 import java.util.*;
 
-public class Instructor_Info {
+public class Instructor_Info extends Model{
 
     // table name
     public static final String TABLE_NAME = "instructor_info";

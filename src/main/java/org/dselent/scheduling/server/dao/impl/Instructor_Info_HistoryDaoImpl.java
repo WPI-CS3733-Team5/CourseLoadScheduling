@@ -79,9 +79,9 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 		
 	    Object[] parameters = objectList.toArray();
 		 
-	    List<Instructor_Info_History> instructorInfoHisotoryList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+	    List<Instructor_Info_History> instructorInfoHistoryList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 	    
-	    return instructorInfoHisotoryList;
+	    return instructorInfoHistoryList;
 	}
 
 	@Override
