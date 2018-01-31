@@ -20,7 +20,7 @@ public class schedule_links
     private static final List<schedule_links.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<schedule_links.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>()
+    private static final Map<schedule_links.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
 
     static

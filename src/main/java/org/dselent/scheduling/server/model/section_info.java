@@ -158,6 +158,10 @@ public class section_info extends Model
     }
 
     public void setCalendar_Info_Id(Integer calendar_Info_Id)
+    {
+    	
+    }
+    
 
     @Override
     public boolean equals(Object o) {

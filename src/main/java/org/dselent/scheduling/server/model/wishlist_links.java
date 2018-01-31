@@ -20,7 +20,7 @@ public class wishlist_links
     private static final List<wishlist_links.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<wishlist_links.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>()
+    private static final Map<wishlist_links.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
 
     static
