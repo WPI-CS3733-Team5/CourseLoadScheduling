@@ -58,9 +58,6 @@ public class LabInfoExtractor extends Extractor<List<Lab_Info>>
                 result.setCalendarInfoId(null);
             }
 
-            // Foreign keys like this?
-            //EX:? result.setCalendarInfoId(rs.getInt(Calendar_Info.getColumnName(Calendar_Info.Columns.ID)));
-
             resultList.add(result);
 
         }
