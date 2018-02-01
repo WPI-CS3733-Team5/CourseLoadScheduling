@@ -1,7 +1,6 @@
 package org.dselent.scheduling.server.model;
 
 import java.sql.JDBCType;
-import java.time.Instant;
 import java.util.*;
 
 public class Instructor_Info extends Model{
@@ -48,7 +47,7 @@ public class Instructor_Info extends Model{
     private String rank;
     private Integer courseLoad;
     private String email;
-    private String phoneNuber;
+    private String phoneNumber;
     private String office;
     private Integer userInfoId;
     private String department;
@@ -120,12 +119,12 @@ public class Instructor_Info extends Model{
         this.email = email;
     }
 
-    public String getPhoneNuber() {
-        return phoneNuber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhoneNuber(String phoneNuber) {
-        this.phoneNuber = phoneNuber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getOffice() {
@@ -159,7 +158,7 @@ public class Instructor_Info extends Model{
         sb.append(", rank='").append(rank).append('\'');
         sb.append(", courseLoad=").append(courseLoad);
         sb.append(", email='").append(email).append('\'');
-        sb.append(", phoneNuber='").append(phoneNuber).append('\'');
+        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
         sb.append(", office='").append(office).append('\'');
         sb.append(", userInfoId=").append(userInfoId);
         sb.append(", department='").append(department).append('\'');
@@ -176,7 +175,7 @@ public class Instructor_Info extends Model{
                 Objects.equals(rank, that.rank) &&
                 Objects.equals(courseLoad, that.courseLoad) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(phoneNuber, that.phoneNuber) &&
+                Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(office, that.office) &&
                 Objects.equals(userInfoId, that.userInfoId) &&
                 Objects.equals(department, that.department);
@@ -185,6 +184,6 @@ public class Instructor_Info extends Model{
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, rank, courseLoad, email, phoneNuber, office, userInfoId, department);
+        return Objects.hash(id, rank, courseLoad, email, phoneNumber, office, userInfoId, department);
     }
 }
