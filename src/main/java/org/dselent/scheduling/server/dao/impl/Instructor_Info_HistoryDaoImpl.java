@@ -1,7 +1,7 @@
 package org.dselent.scheduling.server.dao.impl;
 
 import org.dselent.scheduling.server.dao.Instructor_Info_HistoryDao;
-import org.dselent.scheduling.server.extractor.InstructorInfoHistoryExtractor;
+import org.dselent.scheduling.server.extractor.Instructor_Info_HistoryExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
 import org.dselent.scheduling.server.model.Instructor_Info_History;
