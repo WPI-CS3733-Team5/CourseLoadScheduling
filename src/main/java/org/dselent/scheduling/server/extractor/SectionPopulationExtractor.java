@@ -8,40 +8,40 @@ import java.util.List;
 import org.dselent.scheduling.server.model.*;
 
 
-public class SectionPopulationExtractor extends Extractor<List<Section_Population>>
+public class SectionPopulationExtractor extends Extractor<List<SectionPopulation>>
 {
 
     @Override
-    public List<Section_Population> extractData(ResultSet rs) throws SQLException
+    public List<SectionPopulation> extractData(ResultSet rs) throws SQLException
     {
-        List<Section_Population> resultList = new ArrayList<>();
+        List<SectionPopulation> resultList = new ArrayList<>();
 
         while (rs.next())
         {
-            Section_Population result = new Section_Population();
+            SectionPopulation result = new SectionPopulation();
 
-            result.setId(rs.getInt(Section_Population.getColumnName(Section_Population.Columns.ID)));
+            result.setId(rs.getInt(SectionPopulation.getColumnName(SectionPopulation.Columns.ID)));
 
             if(rs.wasNull())
             {
                 result.setId(null);
             }
 
-            result.setExpectedPopulation(rs.getInt(Section_Population.getColumnName(Section_Population.Columns.EXPECTED_POPULATION)));
+            result.setExpectedPopulation(rs.getInt(SectionPopulation.getColumnName(SectionPopulation.Columns.EXPECTED_POPULATION)));
 
             if(rs.wasNull())
             {
                 result.setExpectedPopulation(null);
             }
 
-            result.setPopulationCap(rs.getInt(Section_Population.getColumnName(Section_Population.Columns.POPULATION_CAP)));
+            result.setPopulationCap(rs.getInt(SectionPopulation.getColumnName(SectionPopulation.Columns.POPULATION_CAP)));
 
             if(rs.wasNull())
             {
                 result.setPopulationCap(null);
             }
 
-            result.setSectionInfoId(rs.getInt(Section_Population.getColumnName(Section_Population.Columns.SECTION_INFO_ID)));
+            result.setSectionInfoId(rs.getInt(SectionPopulation.getColumnName(SectionPopulation.Columns.SECTION_INFO_ID)));
 
             if(rs.wasNull())
             {

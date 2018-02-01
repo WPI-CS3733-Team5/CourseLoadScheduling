@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.dao;
 
-import org.dselent.scheduling.server.model.Lab_Info;
+import org.dselent.scheduling.server.model.LabInfo;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Lab_InfoDao extends Dao<Lab_Info>
+public interface LabInfoDao extends Dao<LabInfo>
 {
     // add functions here as needed
 }

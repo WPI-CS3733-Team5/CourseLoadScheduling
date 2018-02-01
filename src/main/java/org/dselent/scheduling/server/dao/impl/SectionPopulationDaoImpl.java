@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.scheduling.server.dao.Lab_InfoDao;
-import org.dselent.scheduling.server.dao.Section_PopulationDao;
+import org.dselent.scheduling.server.dao.LabInfoDao;
+import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
 import org.dselent.scheduling.server.extractor.LabInfoExtractor;
 import org.dselent.scheduling.server.extractor.SectionPopulationExtractor;
 import org.dselent.scheduling.server.extractor.UsersRolesLinksExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.Lab_Info;
-import org.dselent.scheduling.server.model.Section_Population;
+import org.dselent.scheduling.server.model.LabInfo;
+import org.dselent.scheduling.server.model.SectionPopulation;
 import org.dselent.scheduling.server.model.User_Info;
 import org.dselent.scheduling.server.model.UsersRolesLink;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
@@ -28,15 +28,15 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> implements Section_PopulationDao
+public class SectionPopulationDaoImpl extends BaseDaoImpl<SectionPopulation> implements SectionPopulationDao
 {
     @Override
-    public int insert(Section_Population sectionPopulationModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+    public int insert(SectionPopulation sectionPopulationModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
     {
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(Section_Population.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(SectionPopulation.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -61,10 +61,10 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
     }
 
     @Override
-    public List<Section_Population> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+    public List<SectionPopulation> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
         SectionPopulationExtractor extractor = new SectionPopulationExtractor();
-        String queryTemplate = QueryStringBuilder.generateSelectString(Section_Population.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+        String queryTemplate = QueryStringBuilder.generateSelectString(SectionPopulation.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -75,7 +75,7 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
 
         Object[] parameters = objectList.toArray();
 
-        List<Section_Population> sectionPopulationList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<SectionPopulation> sectionPopulationList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
         return sectionPopulationList;
 
@@ -83,11 +83,11 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
 
 
     @Override
-    public Section_Population findById(int id) throws SQLException
+    public SectionPopulation findById(int id) throws SQLException
     {
 
-        String columnName = QueryStringBuilder.convertColumnName(Section_Population.getColumnName(Section_Population.Columns.ID), false);
-        List<String> selectColumnNames = Section_Population.getColumnNameList();
+        String columnName = QueryStringBuilder.convertColumnName(SectionPopulation.getColumnName(SectionPopulation.Columns.ID), false);
+        List<String> selectColumnNames = SectionPopulation.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -97,9 +97,9 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<Section_Population> sectionPopulationList = select(selectColumnNames, queryTermList, orderByList);
+        List<SectionPopulation> sectionPopulationList = select(selectColumnNames, queryTermList, orderByList);
 
-        Section_Population sectionPopulation = null;
+        SectionPopulation sectionPopulation = null;
 
         if(!sectionPopulationList.isEmpty())
         {
@@ -115,7 +115,7 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
     public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
     {
 
-        String queryTemplate = QueryStringBuilder.generateUpdateString(Section_Population.TABLE_NAME, columnName, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateUpdateString(SectionPopulation.TABLE_NAME, columnName, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
         objectList.add(newValue);
@@ -136,7 +136,7 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
     @Override
     public int delete(List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateDeleteString(Section_Population.TABLE_NAME, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateDeleteString(SectionPopulation.TABLE_NAME, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -153,27 +153,27 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
 
     }
 
-    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, Section_Population sectionPopulationModel)
+    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, SectionPopulation sectionPopulationModel)
     {
 
         String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
 
-        if(insertColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.ID)))
+        if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.ID)))
         {
             parameters.addValue(parameterName, sectionPopulationModel.getId());
         }
 
-        else if(insertColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.EXPECTED_POPULATION)))
+        else if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.EXPECTED_POPULATION)))
         {
             parameters.addValue(parameterName, sectionPopulationModel.getExpectedPopulation());
         }
 
-        else if(insertColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.POPULATION_CAP)))
+        else if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.POPULATION_CAP)))
         {
             parameters.addValue(parameterName, sectionPopulationModel.getPopulationCap());
         }
 
-        else if(insertColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.SECTION_INFO_ID)))
+        else if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.SECTION_INFO_ID)))
         {
             parameters.addValue(parameterName, sectionPopulationModel.getSectionInfoId());
         }
@@ -185,25 +185,25 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
 
     }
 
-    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, Section_Population sectionPopulationModel)
+    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, SectionPopulation sectionPopulationModel)
     {
 
-        if(keyHolderColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.ID)))
+        if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.ID)))
         {
             sectionPopulationModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.EXPECTED_POPULATION)))
+        else if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.EXPECTED_POPULATION)))
         {
             sectionPopulationModel.setExpectedPopulation((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.POPULATION_CAP)))
+        else if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.POPULATION_CAP)))
         {
             sectionPopulationModel.setPopulationCap((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(Section_Population.getColumnName(Section_Population.Columns.SECTION_INFO_ID)))
+        else if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.SECTION_INFO_ID)))
         {
             sectionPopulationModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
@@ -218,7 +218,7 @@ public class Section_PopulationDaoImpl extends BaseDaoImpl<Section_Population> i
     @Override
     public void validateColumnNames(List<String> columnNameList)
     {
-        List<String> actualColumnNames = Section_Population.getColumnNameList();
+        List<String> actualColumnNames = SectionPopulation.getColumnNameList();
         boolean valid = actualColumnNames.containsAll(columnNameList);
 
         if(!valid)

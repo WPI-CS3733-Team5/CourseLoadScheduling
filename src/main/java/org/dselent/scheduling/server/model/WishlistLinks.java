@@ -3,7 +3,7 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
-public class Wishlist_Links extends Model
+public class WishlistLinks extends Model
 {
 
     public static final String TABLE_NAME = "wishlist_links";
@@ -17,24 +17,24 @@ public class Wishlist_Links extends Model
 
     }
 
-    private static final List<Wishlist_Links.Columns> COLUMN_LIST = new ArrayList<>();
+    private static final List<WishlistLinks.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<Wishlist_Links.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
+    private static final Map<WishlistLinks.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
 
     static
     {
-        for(Wishlist_Links.Columns key: Wishlist_Links.Columns.values())
+        for(WishlistLinks.Columns key: WishlistLinks.Columns.values())
         {
 
             COLUMN_LIST.add(key);
 
         }
 
-        COLUMN_TYPE_MAP.put(Wishlist_Links.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Wishlist_Links.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Wishlist_Links.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
 
     }
 
@@ -42,12 +42,12 @@ public class Wishlist_Links extends Model
     private Integer instructorInfoId;
     private Integer sectionInfoId;
 
-    public static JDBCType getColumnType(Wishlist_Links.Columns column)
+    public static JDBCType getColumnType(WishlistLinks.Columns column)
     {
         return COLUMN_TYPE_MAP.get(column);
     }
 
-    public static String getColumnName(Wishlist_Links.Columns column)
+    public static String getColumnName(WishlistLinks.Columns column)
     {
         return column.toString().toLowerCase();
     }
@@ -57,7 +57,7 @@ public class Wishlist_Links extends Model
     {
         List<String> columnNameList = new ArrayList<>();
 
-        for(Wishlist_Links.Columns column : COLUMN_LIST)
+        for(WishlistLinks.Columns column : COLUMN_LIST)
         {
             columnNameList.add(getColumnName(column));
         }
@@ -79,7 +79,7 @@ public class Wishlist_Links extends Model
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Wishlist_Links that = (Wishlist_Links) o;
+        WishlistLinks that = (WishlistLinks) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(instructorInfoId, that.instructorInfoId) &&
                 Objects.equals(sectionInfoId, that.sectionInfoId);

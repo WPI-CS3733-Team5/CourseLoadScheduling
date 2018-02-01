@@ -3,7 +3,7 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
-public class Section_Population extends  Model
+public class SectionPopulation extends  Model
 {
 
     //table name
@@ -27,17 +27,17 @@ public class Section_Population extends  Model
 
     static
     {
-        for(Section_Population.Columns key: Section_Population.Columns.values())
+        for(SectionPopulation.Columns key: SectionPopulation.Columns.values())
         {
 
             COLUMN_LIST.add(key);
 
         }
 
-        COLUMN_TYPE_MAP.put(Section_Population.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Section_Population.Columns.EXPECTED_POPULATION, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Section_Population.Columns.POPULATION_CAP, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Section_Population.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.EXPECTED_POPULATION, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.POPULATION_CAP, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
 
     }
 
@@ -48,12 +48,12 @@ public class Section_Population extends  Model
 
     //methods
 
-    public static JDBCType getColumnType(Section_Population.Columns column)
+    public static JDBCType getColumnType(SectionPopulation.Columns column)
     {
         return COLUMN_TYPE_MAP.get(column);
     }
 
-    public static String getColumnName(Section_Population.Columns column)
+    public static String getColumnName(SectionPopulation.Columns column)
     {
         return column.toString().toLowerCase();
     }
@@ -63,7 +63,7 @@ public class Section_Population extends  Model
     {
         List<String> columnNameList = new ArrayList<>();
 
-        for(Section_Population.Columns column : COLUMN_LIST)
+        for(SectionPopulation.Columns column : COLUMN_LIST)
         {
             columnNameList.add(getColumnName(column));
         }
@@ -87,7 +87,7 @@ public class Section_Population extends  Model
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Section_Population that = (Section_Population) o;
+        SectionPopulation that = (SectionPopulation) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(expectedPopulation, that.expectedPopulation) &&
                 Objects.equals(populationCap, that.populationCap) &&

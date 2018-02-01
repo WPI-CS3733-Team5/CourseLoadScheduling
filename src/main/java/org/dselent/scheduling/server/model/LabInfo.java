@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
 
-public class Lab_Info extends Model {
+public class LabInfo extends Model {
 
     // table name
     public static final String TABLE_NAME = "lab_info";
@@ -20,21 +20,21 @@ public class Lab_Info extends Model {
     }
     // enum list
 
-    private static final List<Lab_Info.Columns> COLUMN_LIST = new ArrayList<>();
+    private static final List<LabInfo.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<Lab_Info.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
+    private static final Map<LabInfo.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
     static {
-        for (Lab_Info.Columns key : Lab_Info.Columns.values()) {
+        for (LabInfo.Columns key : LabInfo.Columns.values()) {
             COLUMN_LIST.add(key);
         }
 
-        COLUMN_TYPE_MAP.put(Lab_Info.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Lab_Info.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Lab_Info.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Lab_Info.Columns.LOCATION, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(Lab_Info.Columns.CALENDAR_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.LOCATION, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.CALENDAR_INFO_ID, JDBCType.INTEGER);
 
     }
     ;
@@ -49,12 +49,12 @@ public class Lab_Info extends Model {
 
     // methods
 
-    public static JDBCType getColumnType(Lab_Info.Columns column)
+    public static JDBCType getColumnType(LabInfo.Columns column)
     {
         return COLUMN_TYPE_MAP.get(column);
     }
 
-    public static String getColumnName(Lab_Info.Columns column)
+    public static String getColumnName(LabInfo.Columns column)
     {
         return column.toString().toLowerCase();
     }
@@ -63,7 +63,7 @@ public class Lab_Info extends Model {
     {
         List<String> columnNameList = new ArrayList<>();
 
-        for(Lab_Info.Columns column : COLUMN_LIST)
+        for(LabInfo.Columns column : COLUMN_LIST)
         {
             columnNameList.add(getColumnName(column));
         }
@@ -118,7 +118,7 @@ public class Lab_Info extends Model {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Lab_Info lab_info = (Lab_Info) o;
+        LabInfo lab_info = (LabInfo) o;
         return Objects.equals(id, lab_info.id) &&
                 Objects.equals(sectionInfoId, lab_info.sectionInfoId) &&
                 Objects.equals(instructorInfoId, lab_info.instructorInfoId) &&

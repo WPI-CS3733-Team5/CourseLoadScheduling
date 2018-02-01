@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.scheduling.server.dao.Lab_InfoDao;
-import org.dselent.scheduling.server.dao.Section_PopulationDao;
+import org.dselent.scheduling.server.dao.LabInfoDao;
+import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
-import org.dselent.scheduling.server.dao.Wishlist_LinksDao;
+import org.dselent.scheduling.server.dao.WishlistLinksDao;
 import org.dselent.scheduling.server.extractor.LabInfoExtractor;
 import org.dselent.scheduling.server.extractor.SectionPopulationExtractor;
 import org.dselent.scheduling.server.extractor.UsersRolesLinksExtractor;
@@ -27,16 +27,16 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implements Wishlist_LinksDao
+public class WishlistLinksDaoImpl extends BaseDaoImpl<WishlistLinks> implements WishlistLinksDao
 {
 
     @Override
-    public int insert(Wishlist_Links wishlistLinksModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+    public int insert(WishlistLinks wishlistLinksModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
     {
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(Wishlist_Links.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(WishlistLinks.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -61,10 +61,10 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
     }
 
     @Override
-    public List<Wishlist_Links> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+    public List<WishlistLinks> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
         WishlistLinksExtractor extractor = new WishlistLinksExtractor();
-        String queryTemplate = QueryStringBuilder.generateSelectString(Wishlist_Links.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+        String queryTemplate = QueryStringBuilder.generateSelectString(WishlistLinks.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -75,17 +75,17 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
 
         Object[] parameters = objectList.toArray();
 
-        List<Wishlist_Links> wishlistLinksList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<WishlistLinks> wishlistLinksList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
         return wishlistLinksList;
 
     }
 
     @Override
-    public Wishlist_Links findById(int id) throws SQLException
+    public WishlistLinks findById(int id) throws SQLException
     {
-        String columnName = QueryStringBuilder.convertColumnName(Wishlist_Links.getColumnName(Wishlist_Links.Columns.ID), false);
-        List<String> selectColumnNames = Wishlist_Links.getColumnNameList();
+        String columnName = QueryStringBuilder.convertColumnName(WishlistLinks.getColumnName(WishlistLinks.Columns.ID), false);
+        List<String> selectColumnNames = WishlistLinks.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -95,9 +95,9 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<Wishlist_Links> wishlistLinksList = select(selectColumnNames, queryTermList, orderByList);
+        List<WishlistLinks> wishlistLinksList = select(selectColumnNames, queryTermList, orderByList);
 
-        Wishlist_Links wishlistLinks = null;
+        WishlistLinks wishlistLinks = null;
 
         if(!wishlistLinksList.isEmpty())
         {
@@ -112,7 +112,7 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
     public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
     {
 
-        String queryTemplate = QueryStringBuilder.generateUpdateString(Wishlist_Links.TABLE_NAME, columnName, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateUpdateString(WishlistLinks.TABLE_NAME, columnName, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
         objectList.add(newValue);
@@ -134,7 +134,7 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
     public int delete(List<QueryTerm> queryTermList)
     {
 
-        String queryTemplate = QueryStringBuilder.generateDeleteString(Wishlist_Links.TABLE_NAME, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateDeleteString(WishlistLinks.TABLE_NAME, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -151,22 +151,22 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
 
     }
 
-    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, Wishlist_Links wishlistLinksModel)
+    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, WishlistLinks wishlistLinksModel)
     {
 
         String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
 
-        if(insertColumnName.equals(Wishlist_Links.getColumnName(Wishlist_Links.Columns.ID)))
+        if(insertColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.ID)))
         {
             parameters.addValue(parameterName, wishlistLinksModel.getId());
         }
 
-        else if(insertColumnName.equals(Wishlist_Links.getColumnName(Wishlist_Links.Columns.INSTRUCTOR_INFO_ID)))
+        else if(insertColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.INSTRUCTOR_INFO_ID)))
         {
             parameters.addValue(parameterName, wishlistLinksModel.getInstructorInfoId());
         }
 
-        else if(insertColumnName.equals(Wishlist_Links.getColumnName(Wishlist_Links.Columns.SECTION_INFO_ID)))
+        else if(insertColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.SECTION_INFO_ID)))
         {
             parameters.addValue(parameterName, wishlistLinksModel.getSectionInfoId());
         }
@@ -178,19 +178,19 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
 
     }
 
-    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, Wishlist_Links wishlistLinksModel)
+    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, WishlistLinks wishlistLinksModel)
     {
-        if(keyHolderColumnName.equals(Wishlist_Links.getColumnName(Wishlist_Links.Columns.ID)))
+        if(keyHolderColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.ID)))
         {
             wishlistLinksModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(Wishlist_Links.getColumnName(Wishlist_Links.Columns.INSTRUCTOR_INFO_ID)))
+        else if(keyHolderColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.INSTRUCTOR_INFO_ID)))
         {
             wishlistLinksModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(Wishlist_Links.getColumnName(Wishlist_Links.Columns.SECTION_INFO_ID)))
+        else if(keyHolderColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.SECTION_INFO_ID)))
         {
             wishlistLinksModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
@@ -205,7 +205,7 @@ public class Wishlist_LinksDaoImpl extends BaseDaoImpl<Wishlist_Links> implement
     @Override
     public void validateColumnNames(List<String> columnNameList)
     {
-        List<String> actualColumnNames = Wishlist_Links.getColumnNameList();
+        List<String> actualColumnNames = WishlistLinks.getColumnNameList();
         boolean valid = actualColumnNames.containsAll(columnNameList);
 
         if(!valid)

@@ -8,33 +8,33 @@ import java.util.List;
 import org.dselent.scheduling.server.model.*;
 
 
-public class WishlistLinksExtractor extends Extractor<List<Wishlist_Links>>
+public class WishlistLinksExtractor extends Extractor<List<WishlistLinks>>
 {
 
     @Override
-    public List<Wishlist_Links> extractData(ResultSet rs) throws SQLException
+    public List<WishlistLinks> extractData(ResultSet rs) throws SQLException
     {
-        List<Wishlist_Links> resultList = new ArrayList<>();
+        List<WishlistLinks> resultList = new ArrayList<>();
 
         while (rs.next())
         {
-            Wishlist_Links result = new Wishlist_Links();
+            WishlistLinks result = new WishlistLinks();
 
-            result.setId(rs.getInt(Wishlist_Links.getColumnName(Wishlist_Links.Columns.ID)));
+            result.setId(rs.getInt(WishlistLinks.getColumnName(WishlistLinks.Columns.ID)));
 
             if(rs.wasNull())
             {
                 result.setId(null);
             }
 
-            result.setInstructorInfoId(rs.getInt(Section_Population.getColumnName(Section_Population.Columns.EXPECTED_POPULATION)));
+            result.setInstructorInfoId(rs.getInt(WishlistLinks.getColumnName(WishlistLinks.Columns.INSTRUCTOR_INFO_ID)));
 
             if(rs.wasNull())
             {
                 result.setInstructorInfoId(null);
             }
 
-            result.setSectionInfoId(rs.getInt(Section_Population.getColumnName(Section_Population.Columns.EXPECTED_POPULATION)));
+            result.setSectionInfoId(rs.getInt(WishlistLinks.getColumnName(WishlistLinks.Columns.SECTION_INFO_ID)));
 
             if(rs.wasNull())
             {
