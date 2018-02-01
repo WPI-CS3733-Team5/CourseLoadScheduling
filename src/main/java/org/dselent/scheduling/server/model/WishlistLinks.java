@@ -12,8 +12,8 @@ public class WishlistLinks extends Model
     {
 
         ID,
-        INSTRUCTOR_INFO_ID,
-        SECTION_INFO_ID;
+        INSTRUCTORINFOID,
+        SECTIONINFOID;
 
     }
 
@@ -33,8 +33,8 @@ public class WishlistLinks extends Model
         }
 
         COLUMN_TYPE_MAP.put(WishlistLinks.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.INSTRUCTORINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.SECTIONINFOID, JDBCType.INTEGER);
 
     }
 

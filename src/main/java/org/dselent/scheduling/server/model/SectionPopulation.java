@@ -13,9 +13,9 @@ public class SectionPopulation extends  Model
     {
 
         ID,
-        EXPECTED_POPULATION,
-        POPULATION_CAP,
-        SECTION_INFO_ID
+        EXPECTEDPOPULATION,
+        POPULATIONCAP,
+        SECTIONINFOID
 
     }
 
@@ -35,9 +35,9 @@ public class SectionPopulation extends  Model
         }
 
         COLUMN_TYPE_MAP.put(SectionPopulation.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.EXPECTED_POPULATION, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.POPULATION_CAP, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.EXPECTEDPOPULATION, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.POPULATIONCAP, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionPopulation.Columns.SECTIONINFOID, JDBCType.INTEGER);
 
     }
 
