@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class User_Info_History extends Model
+public class UserInfoHistory extends Model
 {
 	// table name
 	public static final String TABLE_NAME = "user_info_history";
@@ -276,11 +276,11 @@ public class User_Info_History extends Model
 		{
 			return false;
 		}
-		if (!(obj instanceof User_Info_History))
+		if (!(obj instanceof UserInfoHistory))
 		{
 			return false;
 		}
-		User_Info_History other = (User_Info_History) obj;
+		UserInfoHistory other = (UserInfoHistory) obj;
 		if (createdAt == null)
 		{
 			if (other.createdAt != null)
@@ -429,7 +429,7 @@ public class User_Info_History extends Model
 
 	@Override
 	public String toString() {
-		return "User_Info_History{" +
+		return "UserInfoHistory{" +
 				"id=" + id +
 				", userInfoId=" + userInfoId +
 				", userRole=" + userRole +
