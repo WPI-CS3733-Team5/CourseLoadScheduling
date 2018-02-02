@@ -1,37 +1,37 @@
 package org.dselent.scheduling.server.extractor;
 
-import org.dselent.scheduling.server.model.Instructor_Info_History;
+import org.dselent.scheduling.server.model.InstructorInfoHistory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Instructor_Info_HistoryExtractor extends Extractor<List<Instructor_Info_History>>
+public class InstructorInfoHistoryExtractor extends Extractor<List<InstructorInfoHistory>>
 {
     @Override
-    public List<Instructor_Info_History> extractData(ResultSet rs) throws SQLException
+    public List<InstructorInfoHistory> extractData(ResultSet rs) throws SQLException
     {
-        List<Instructor_Info_History> resultList = new ArrayList<>();
+        List<InstructorInfoHistory> resultList = new ArrayList<>();
 
         while(rs.next())
         {
-            Instructor_Info_History result = new Instructor_Info_History();
+            InstructorInfoHistory result = new InstructorInfoHistory();
 
-            result.setId(rs.getInt(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.ID)));
+            result.setId(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.ID)));
 
             if(rs.wasNull())
             {
                 result.setId(null);
             }
 
-            result.setInstructorInfoId(rs.getInt(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.INSTRUCTOR_INFO_ID)));
-            result.setRank(rs.getString(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.RANK)));
-            result.setCourseLoad(rs.getInt(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.COURSE_LOAD)));
-            result.setPhoneNuber(rs.getString(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.PHONE_NUMBER)));
-            result.setOffice(rs.getString(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.OFFICE)));
-            result.setUserInfoId(rs.getInt(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.USER_INFO_ID)));
-            result.setDepartment(rs.getString(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.DEPARTMENT)));
+            result.setInstructorInfoId(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.INSTRUCTOR_INFO_ID)));
+            result.setRank(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.RANK)));
+            result.setCourseLoad(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.COURSE_LOAD)));
+            result.setPhoneNumber(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)));
+            result.setOffice(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.OFFICE)));
+            result.setUserInfoId(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.USER_INFO_ID)));
+            result.setDepartment(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.DEPARTMENT)));
         }
 
         return resultList;
