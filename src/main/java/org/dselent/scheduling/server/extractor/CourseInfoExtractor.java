@@ -5,51 +5,51 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.scheduling.server.model.Course_Info;
+import org.dselent.scheduling.server.model.CourseInfo;
 
-public class CourseInfoExtractor extends Extractor<List<Course_Info>>{
+public class CourseInfoExtractor extends Extractor<List<CourseInfo>>{
 
     @Override
-    public List<Course_Info> extractData(ResultSet rs) throws SQLException{
-        List<Course_Info> resultList = new ArrayList<>();
+    public List<CourseInfo> extractData(ResultSet rs) throws SQLException{
+        List<CourseInfo> resultList = new ArrayList<>();
 
         while(rs.next()){
-            Course_Info result = new Course_Info();
+            CourseInfo result = new CourseInfo();
 
             //Set Id
-            result.setId(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.ID)));
+            result.setId(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.ID)));
             if (rs.wasNull()) result.setId(null);
 
             //Set courseName
-            result.setCourseName(rs.getString(Course_Info.getColumnName(Course_Info.Columns.COURSE_NAME)));
+            result.setCourseName(rs.getString(CourseInfo.getColumnName(CourseInfo.Columns.COURSE_NAME)));
             if (rs.wasNull()) result.setCourseName(null);
 
             //Set requiredFrequencyPerTerm
-            result.setRequireFrequencyPerTerm(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.REQUIRED_FREQUENCY_PER_TERM)));
+            result.setRequireFrequencyPerTerm(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_TERM)));
             if (rs.wasNull()) result.setRequireFrequencyPerTerm(null);
 
             //Set requiredFrequencyPerSemester
-            result.setRequiredFrequencyPerSemester(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.REQUIRED_FREQUENCY_PER_SEMESTER)));
+            result.setRequiredFrequencyPerSemester(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_SEMESTER)));
             if (rs.wasNull()) result.setRequiredFrequencyPerSemester(null);
 
             //Set requiredFrequencyPerYear
-            result.setRequiredFrequencyPerYear(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.REQUIRED_FREQUENCY_PER_YEAR)));
+            result.setRequiredFrequencyPerYear(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_YEAR)));
             if (rs.wasNull()) result.setRequiredFrequencyPerYear(null);
 
             //Set creditAmount
-            result.setCreditAmount(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.CREDIT_AMOUNT)));
+            result.setCreditAmount(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.CREDIT_AMOUNT)));
             if (rs.wasNull()) result.setCreditAmount(null);
 
             //Set deleted
-            result.setDeleted(rs.getBoolean(Course_Info.getColumnName(Course_Info.Columns.DELETED)));
+            result.setDeleted(rs.getBoolean(CourseInfo.getColumnName(CourseInfo.Columns.DELETED)));
             if (rs.wasNull()) result.setDeleted(null);
 
             //Set department
-            result.setDepartment(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.DEPARTMENT)));
+            result.setDepartment(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.DEPARTMENT)));
             if (rs.wasNull()) result.setDepartment(null);
 
             //Set courseNumber
-            result.setCourseNumber(rs.getInt(Course_Info.getColumnName(Course_Info.Columns.COURSE_NUMBER)));
+            result.setCourseNumber(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.COURSE_NUMBER)));
             if (rs.wasNull()) result.setCourseNumber(null);
 
             //Add result to list
