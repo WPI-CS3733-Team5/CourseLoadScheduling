@@ -1,20 +1,23 @@
 package org.dselent.scheduling.server.dao.impl;
 
-import org.dselent.scheduling.server.extractor.UsersExtractor;
+import org.dselent.scheduling.server.dao.Instructor_InfoDao;
+import org.dselent.scheduling.server.extractor.Instructor_InfoExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
 import org.dselent.scheduling.server.model.Instructor_Info;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> implements Instroctor_InfoDao {
+public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> implements Instructor_InfoDao {
     
     @Override
     public int insert(Instructor_Info InstructorInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
@@ -52,7 +55,7 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
     @Override
     public List<Instructor_Info> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
-        UsersExtractor extractor = new UsersExtractor();
+        Instructor_InfoExtractor extractor = new Instructor_InfoExtractor();
         String queryTemplate = QueryStringBuilder.generateSelectString(Instructor_Info.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
@@ -64,9 +67,9 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
 
         Object[] parameters = objectList.toArray();
 
-        List<Instructor_Info> usersList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<Instructor_Info> instructorInfoList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
-        return usersList;
+        return instructorInfoList;
     }
 
     @Override
@@ -146,53 +149,29 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         {
             parameters.addValue(parameterName, InstructorInfoModel.getId());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USER_ROLE)))
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.RANK)))
         {
-            parameters.addValue(parameterName, InstructorInfoModel.getUserRole());
+            parameters.addValue(parameterName, InstructorInfoModel.getRank());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USERNAME)))
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.COURSE_LOAD)))
         {
-            parameters.addValue(parameterName, InstructorInfoModel.getUserName());
+            parameters.addValue(parameterName, InstructorInfoModel.getCourseLoad());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.FIRST_NAME)))
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.PHONE_NUMBER)))
         {
-            parameters.addValue(parameterName, InstructorInfoModel.getFirstName());
+            parameters.addValue(parameterName, InstructorInfoModel.getPhoneNumber());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.LAST_NAME)))
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.OFFICE)))
         {
-            parameters.addValue(parameterName, InstructorInfoModel.getLastName());
+            parameters.addValue(parameterName, InstructorInfoModel.getOffice());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.EMAIL)))
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USER_INFO_ID)))
         {
-            parameters.addValue(parameterName, InstructorInfoModel.getEmail());
+            parameters.addValue(parameterName, InstructorInfoModel.getUserInfoId());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DELETED)))
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DEPARTMENT)))
         {
-            parameters.addValue(parameterName, InstructorInfoModel.getDeleted());
-        }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.ENCRYPTED_PASSWORD)))
-        {
-            parameters.addValue(parameterName, InstructorInfoModel.getEncryptedPassword());
-        }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.SALT)))
-        {
-            parameters.addValue(parameterName, InstructorInfoModel.getSalt());
-        }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.ACCOUNT_STATE)))
-        {
-            parameters.addValue(parameterName, InstructorInfoModel.getAccountState());
-        }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.CREATED_AT)))
-        {
-            parameters.addValue(parameterName, InstructorInfoModel.getCreatedAt());
-        }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.UPDATED_AT)))
-        {
-            parameters.addValue(parameterName, InstructorInfoModel.getUpdatedAt());
-        }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.LOGIN_TIME)))
-        {
-            parameters.addValue(parameterName, InstructorInfoModel.getLoginTime());
+            parameters.addValue(parameterName, InstructorInfoModel.getDepartment());
         }
         else
         {
@@ -208,53 +187,29 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         {
             InstructorInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USER_ROLE)))
+        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.RANK)))
         {
-            InstructorInfoModel.setUserRole((Integer) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setRank((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USERNAME)))
+        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.COURSE_LOAD)))
         {
-            InstructorInfoModel.setUserName((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.FIRST_NAME)))
+        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.PHONE_NUMBER)))
         {
-            InstructorInfoModel.setFirstName((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.LAST_NAME)))
+        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.OFFICE)))
         {
-            InstructorInfoModel.setLastName((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setOffice((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.EMAIL)))
+        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USER_INFO_ID)))
         {
-            InstructorInfoModel.setEmail((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setUserInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DELETED)))
+        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DEPARTMENT)))
         {
-            InstructorInfoModel.setDeleted((Boolean) keyMap.get(keyHolderColumnName));
-        }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.ENCRYPTED_PASSWORD)))
-        {
-            InstructorInfoModel.setEncryptedPassword((String) keyMap.get(keyHolderColumnName));
-        }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.SALT)))
-        {
-            InstructorInfoModel.setSalt((String) keyMap.get(keyHolderColumnName));
-        }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.ACCOUNT_STATE)))
-        {
-            InstructorInfoModel.setAccountState((Integer) keyMap.get(keyHolderColumnName));
-        }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.CREATED_AT)))
-        {
-            InstructorInfoModel.setCreatedAt((Timestamp) keyMap.get(keyHolderColumnName));
-        }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.UPDATED_AT)))
-        {
-            InstructorInfoModel.setUpdatedAt((Timestamp) keyMap.get(keyHolderColumnName));
-        }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.LOGIN_TIME)))
-        {
-            InstructorInfoModel.setLoginTime((Timestamp) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setDepartment((String) keyMap.get(keyHolderColumnName));
         }
         else
         {
