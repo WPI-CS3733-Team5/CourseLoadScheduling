@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.dao.impl;
 
-import org.dselent.scheduling.server.dao.Instructor_Info_HistoryDao;
-import org.dselent.scheduling.server.extractor.Instructor_Info_HistoryExtractor;
+import org.dselent.scheduling.server.dao.InstructorInfoHistoryDao;
+import org.dselent.scheduling.server.extractor.InstructorInfoHistoryExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.Instructor_Info_History;
+import org.dselent.scheduling.server.model.InstructorInfoHistory;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -28,16 +28,16 @@ import java.util.Map;
  * https://howtodoinjava.com/spring/spring-core/how-to-use-spring-component-repository-service-and-controller-annotations/
  */
 @Repository
-public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_History> implements Instructor_Info_HistoryDao
+public class InstructorInfoHistoryDaoImpl extends BaseDaoImpl<InstructorInfoHistory> implements InstructorInfoHistoryDao
 {
 	@Override
-	public int insert(Instructor_Info_History instructorInfoHistoryModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+	public int insert(InstructorInfoHistory instructorInfoHistoryModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
 	{
 		
 		validateColumnNames(insertColumnNameList);
 		validateColumnNames(keyHolderColumnNameList);
 
-		String queryTemplate = QueryStringBuilder.generateInsertString(Instructor_Info_History.TABLE_NAME, insertColumnNameList);
+		String queryTemplate = QueryStringBuilder.generateInsertString(InstructorInfoHistory.TABLE_NAME, insertColumnNameList);
 	    MapSqlParameterSource parameters = new MapSqlParameterSource();
 	    
 	    List<Map<String, Object>> keyList = new ArrayList<>();
@@ -65,10 +65,10 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 	
 	
 	@Override
-	public List<Instructor_Info_History> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+	public List<InstructorInfoHistory> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
 	{
-		Instructor_Info_HistoryExtractor extractor = new Instructor_Info_HistoryExtractor();
-		String queryTemplate = QueryStringBuilder.generateSelectString(Instructor_Info_History.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+		InstructorInfoHistoryExtractor extractor = new InstructorInfoHistoryExtractor();
+		String queryTemplate = QueryStringBuilder.generateSelectString(InstructorInfoHistory.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
 		List<Object> objectList = new ArrayList<Object>();
 		
@@ -79,16 +79,16 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 		
 	    Object[] parameters = objectList.toArray();
 		 
-	    List<Instructor_Info_History> instructorInfoHistoryList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+	    List<InstructorInfoHistory> instructorInfoHistoryList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 	    
 	    return instructorInfoHistoryList;
 	}
 
 	@Override
-	public Instructor_Info_History findById(int id) throws SQLException
+	public InstructorInfoHistory findById(int id) throws SQLException
 	{
-		String columnName = QueryStringBuilder.convertColumnName(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.ID), false);
-		List<String> selectColumnNames = Instructor_Info_History.getColumnNameList();
+		String columnName = QueryStringBuilder.convertColumnName(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.ID), false);
+		List<String> selectColumnNames = InstructorInfoHistory.getColumnNameList();
 		
 		List<QueryTerm> queryTermList = new ArrayList<>();
 		QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -98,9 +98,9 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 		Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
 		orderByList.add(order);
 		
-		List<Instructor_Info_History> instructorInfoHistoryList = select(selectColumnNames, queryTermList, orderByList);
-	
-	    Instructor_Info_History instructorInfoHistory = null;
+		List<InstructorInfoHistory> instructorInfoHistoryList = select(selectColumnNames, queryTermList, orderByList);
+
+		InstructorInfoHistory instructorInfoHistory = null;
 	    
 	    if(!instructorInfoHistoryList.isEmpty())
 	    {
@@ -113,7 +113,7 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 	@Override
 	public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
 	{
-		String queryTemplate = QueryStringBuilder.generateUpdateString(Instructor_Info_History.TABLE_NAME, columnName, queryTermList);
+		String queryTemplate = QueryStringBuilder.generateUpdateString(InstructorInfoHistory.TABLE_NAME, columnName, queryTermList);
 
 		List<Object> objectList = new ArrayList<Object>();
 		objectList.add(newValue);
@@ -133,7 +133,7 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 	@Override
 	public int delete(List<QueryTerm> queryTermList)
 	{
-		String queryTemplate = QueryStringBuilder.generateDeleteString(Instructor_Info_History.TABLE_NAME, queryTermList);
+		String queryTemplate = QueryStringBuilder.generateDeleteString(InstructorInfoHistory.TABLE_NAME, queryTermList);
 
 		List<Object> objectList = new ArrayList<Object>();
 		
@@ -149,7 +149,7 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 		return rowsAffected;
 	}
 
-	private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, Instructor_Info_History instructorInfoHistoryModel)
+	private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, InstructorInfoHistory instructorInfoHistoryModel)
 	{
 		String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
     	
@@ -157,35 +157,35 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
     	// The getter must be distinguished unless the models are designed as simply a map of columns-values
     	// Would prefer not being that generic since it may end up leading to all code being collections of strings
 		
-    	if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.ID)))
+    	if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.ID)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getId());
     	}
-		else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.INSTRUCTOR_INFO_ID)))
+		else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.INSTRUCTOR_INFO_ID)))
 		{
 			parameters.addValue(parameterName, instructorInfoHistoryModel.getInstructorInfoId());
 		}
-    	else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.RANK)))
+    	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.RANK)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getRank());
     	}
-    	else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.COURSE_LOAD)))
+    	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.COURSE_LOAD)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getCourseLoad());
     	}
-    	else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.PHONE_NUMBER)))
+    	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)))
     	{
-    		parameters.addValue(parameterName, instructorInfoHistoryModel.getPhoneNuber());
+    		parameters.addValue(parameterName, instructorInfoHistoryModel.getPhoneNumber());
     	}
-    	else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.OFFICE)))
+    	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.OFFICE)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getOffice());
     	}
-		else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.USER_INFO_ID)))
+		else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.USER_INFO_ID)))
 		{
 			parameters.addValue(parameterName, instructorInfoHistoryModel.getUserInfoId());
 		}
-    	else if(insertColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.DEPARTMENT)))
+    	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.DEPARTMENT)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getDepartment());
     	}
@@ -197,37 +197,37 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
     	}
 	}	
 
-	private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, Instructor_Info_History instructorInfoHistoryModel)
+	private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, InstructorInfoHistory instructorInfoHistoryModel)
 	{
-    	if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.ID)))
+    	if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.ID)))
     	{
     		instructorInfoHistoryModel.setId((Integer) keyMap.get(keyHolderColumnName));
     	}
-		else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.INSTRUCTOR_INFO_ID)))
+		else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.INSTRUCTOR_INFO_ID)))
 		{
 			instructorInfoHistoryModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
 		}
-    	else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.RANK)))
+    	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.RANK)))
     	{
     		instructorInfoHistoryModel.setRank((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.COURSE_LOAD)))
+    	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.COURSE_LOAD)))
     	{
     		instructorInfoHistoryModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.PHONE_NUMBER)))
+    	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)))
     	{
-    		instructorInfoHistoryModel.setPhoneNuber((String) keyMap.get(keyHolderColumnName));
+    		instructorInfoHistoryModel.setPhoneNumber((String) keyMap.get(keyHolderColumnName));
     	}
-    	else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.OFFICE)))
+    	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.OFFICE)))
     	{
     		instructorInfoHistoryModel.setOffice((String) keyMap.get(keyHolderColumnName));
     	}
-		else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.USER_INFO_ID)))
+		else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.USER_INFO_ID)))
 		{
 			instructorInfoHistoryModel.setUserInfoId((Integer) keyMap.get(keyHolderColumnName));
 		}
-    	else if(keyHolderColumnName.equals(Instructor_Info_History.getColumnName(Instructor_Info_History.Columns.DEPARTMENT)))
+    	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.DEPARTMENT)))
     	{
     		instructorInfoHistoryModel.setDepartment((String) keyMap.get(keyHolderColumnName));
     	}
@@ -242,7 +242,7 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 	@Override
 	public void validateColumnNames(List<String> columnNameList)
 	{
-		List<String> actualColumnNames = Instructor_Info_History.getColumnNameList();
+		List<String> actualColumnNames = InstructorInfoHistory.getColumnNameList();
 		boolean valid = actualColumnNames.containsAll(columnNameList);
 		
 		if(!valid)
