@@ -61,18 +61,18 @@ public class UserServiceImpl implements UserService
 		userInfo.setEmail(dto.getEmail());
 		userInfo.setEncryptedPassword(encryptedPassword);
 		userInfo.setSalt(salt);
-    	userInfo.setUserStateId(1);
+    	//userInfo.setUserStateId(1);
     	
     	List<String> userInsertColumnNameList = new ArrayList<>();
     	List<String> userKeyHolderColumnNameList = new ArrayList<>();
     	
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_NAME));
+    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USERNAME));
     	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.FIRST_NAME));
     	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.LAST_NAME));
     	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.EMAIL));
     	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD));
     	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.SALT));
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID));
+    	//userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID));
     	
     	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.ID));
     	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.CREATED_AT));

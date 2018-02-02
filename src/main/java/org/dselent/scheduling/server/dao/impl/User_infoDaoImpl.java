@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.dselent.scheduling.server.dao.User_infoDao;
-import org.dselent.scheduling.server.extractor.UsersExtractor;
+import org.dselent.scheduling.server.extractor.User_InfoExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
 import org.dselent.scheduling.server.model.User_Info;
@@ -67,7 +67,7 @@ public class User_infoDaoImpl extends BaseDaoImpl<User_Info> implements User_inf
 	@Override
 	public List<User_Info> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
 	{
-		UsersExtractor extractor = new UsersExtractor();
+		User_InfoExtractor extractor = new User_InfoExtractor();
 		String queryTemplate = QueryStringBuilder.generateSelectString(User_Info.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
 		List<Object> objectList = new ArrayList<Object>();

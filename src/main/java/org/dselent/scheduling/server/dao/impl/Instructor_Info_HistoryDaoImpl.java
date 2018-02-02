@@ -1,7 +1,7 @@
 package org.dselent.scheduling.server.dao.impl;
 
 import org.dselent.scheduling.server.dao.Instructor_Info_HistoryDao;
-import org.dselent.scheduling.server.extractor.InstructorInfoHistoryExtractor;
+import org.dselent.scheduling.server.extractor.Instructor_Info_HistoryExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
 import org.dselent.scheduling.server.model.Instructor_Info_History;
@@ -79,9 +79,9 @@ public class Instructor_Info_HistoryDaoImpl extends BaseDaoImpl<Instructor_Info_
 		
 	    Object[] parameters = objectList.toArray();
 		 
-	    List<Instructor_Info_History> instructorInfoHisotoryList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+	    List<Instructor_Info_History> instructorInfoHistoryList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 	    
-	    return instructorInfoHisotoryList;
+	    return instructorInfoHistoryList;
 	}
 
 	@Override
