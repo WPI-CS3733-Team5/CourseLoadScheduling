@@ -40,6 +40,7 @@ public class User_Info_HistoryExtractor extends Extractor<List<User_Info_History
             }
 
             result.setCreatedAt(rs.getTimestamp(User_Info_History.getColumnName(User_Info_History.Columns.CREATED_AT)));
+            result.setCreatedAt(rs.getTimestamp(User_Info_History.getColumnName(User_Info_History.Columns.UPDATED_AT)));
             result.setUpdatedAt(rs.getTimestamp(User_Info_History.getColumnName(User_Info_History.Columns.UPDATED_AT)));
             result.setLoginTime(rs.getTimestamp(User_Info_History.getColumnName(User_Info_History.Columns.LOGIN_TIME)));
 

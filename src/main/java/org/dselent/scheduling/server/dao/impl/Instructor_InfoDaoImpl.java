@@ -13,7 +13,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,9 +67,9 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
 
         Object[] parameters = objectList.toArray();
 
-        List<Instructor_Info> instructorList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<Instructor_Info> instructorInfoList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
-        return instructorList;
+        return instructorInfoList;
     }
 
     @Override
@@ -87,16 +86,16 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<Instructor_Info> instructorList = select(selectColumnNames, queryTermList, orderByList);
+        List<Instructor_Info> usersList = select(selectColumnNames, queryTermList, orderByList);
 
-        Instructor_Info instructorInfo = null;
+        Instructor_Info userInfo = null;
 
-        if(!instructorList.isEmpty())
+        if(!usersList.isEmpty())
         {
-            instructorInfo = instructorList.get(0);
+            userInfo = usersList.get(0);
         }
 
-        return instructorInfo;
+        return userInfo;
     }
 
     @Override
@@ -170,7 +169,8 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         {
             parameters.addValue(parameterName, InstructorInfoModel.getUserInfoId());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DEPARTMENT))) {
+        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DEPARTMENT)))
+        {
             parameters.addValue(parameterName, InstructorInfoModel.getDepartment());
         }
         else
@@ -197,7 +197,7 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         }
         else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.PHONE_NUMBER)))
         {
-            InstructorInfoModel.setPhoneNumber((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
         }
         else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.OFFICE)))
         {

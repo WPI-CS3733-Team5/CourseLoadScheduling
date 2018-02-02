@@ -13,10 +13,10 @@ public class LabInfo extends Model {
     // column names
     public static enum Columns {
         ID,
-        SECTIONINFOID,
-        INSTRUCTORINFOID,
+        SECTION_INFO_ID,
+        INSTRUCTOR_INFO_ID,
         LOCATION,
-        CALENDARINFOID
+        CALENDAR_INFO_ID
     }
     // enum list
 
@@ -31,10 +31,10 @@ public class LabInfo extends Model {
         }
 
         COLUMN_TYPE_MAP.put(LabInfo.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(LabInfo.Columns.SECTIONINFOID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(LabInfo.Columns.INSTRUCTORINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(LabInfo.Columns.LOCATION, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(LabInfo.Columns.CALENDARINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(LabInfo.Columns.CALENDAR_INFO_ID, JDBCType.INTEGER);
 
     }
     ;

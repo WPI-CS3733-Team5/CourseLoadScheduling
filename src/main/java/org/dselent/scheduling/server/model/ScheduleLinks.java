@@ -3,38 +3,40 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
-public class WishlistLinks extends Model
+//import org.dselent.scheduling.server.model.User_Info.Columns;
+
+public class ScheduleLinks extends Model
 {
 
-    public static final String TABLE_NAME = "wishlist_links";
+    public static final String TABLE_NAME = "schedule_links";
 
     public static enum Columns
     {
 
         ID,
-        INSTRUCTOR_INFO_ID,
-        SECTION_INFO_ID;
+        INSTRUCTORINFOID,
+        SECTIONINFOID;
 
     }
 
-    private static final List<WishlistLinks.Columns> COLUMN_LIST = new ArrayList<>();
+    private static final List<ScheduleLinks.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<WishlistLinks.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
+    private static final Map<ScheduleLinks.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
 
     static
     {
-        for(WishlistLinks.Columns key: WishlistLinks.Columns.values())
+        for(ScheduleLinks.Columns key: ScheduleLinks.Columns.values())
         {
 
             COLUMN_LIST.add(key);
 
         }
 
-        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(WishlistLinks.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.INSTRUCTORINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.SECTIONINFOID, JDBCType.INTEGER);
 
     }
 
@@ -42,22 +44,31 @@ public class WishlistLinks extends Model
     private Integer instructorInfoId;
     private Integer sectionInfoId;
 
-    public static JDBCType getColumnType(WishlistLinks.Columns column)
+    public static JDBCType getColumnType(ScheduleLinks.Columns column)
     {
         return COLUMN_TYPE_MAP.get(column);
     }
 
-    public static String getColumnName(WishlistLinks.Columns column)
+    public static String getColumnName(ScheduleLinks.Columns column)
     {
         return column.toString().toLowerCase();
     }
 
-    public static List<String> getColumnNameList()
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("schedule_links{");
+        sb.append("id=").append(id);
+        sb.append(", instructorInfoId=").append(instructorInfoId);
+        sb.append(", sectionInfoId=").append(sectionInfoId);
+        sb.append('}');
+        return sb.toString();
+    }
 
+    public static List<String> getColumnNameList()
     {
         List<String> columnNameList = new ArrayList<>();
 
-        for(WishlistLinks.Columns column : COLUMN_LIST)
+        for(Columns column : COLUMN_LIST)
         {
             columnNameList.add(getColumnName(column));
         }
@@ -66,20 +77,10 @@ public class WishlistLinks extends Model
     }
 
     @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("wishlist_links{");
-        sb.append("id=").append(id);
-        sb.append(", instructor_Info_Id=").append(instructorInfoId);
-        sb.append(", section_Info_Id=").append(sectionInfoId);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WishlistLinks that = (WishlistLinks) o;
+        ScheduleLinks that = (ScheduleLinks) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(instructorInfoId, that.instructorInfoId) &&
                 Objects.equals(sectionInfoId, that.sectionInfoId);
@@ -116,8 +117,8 @@ public class WishlistLinks extends Model
         return instructorInfoId;
     }
 
-    public void setInstructorInfoId(Integer instructor_Info_Id) {
-        this.instructorInfoId = instructor_Info_Id;
+    public void setInstructorInfoId(Integer instructorInfoId) {
+        this.instructorInfoId = instructorInfoId;
     }
 
     public Integer getSectionInfoId() {
