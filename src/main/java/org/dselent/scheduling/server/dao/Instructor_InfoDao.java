@@ -1,6 +1,6 @@
 package org.dselent.scheduling.server.dao;
 
-import org.dselent.scheduling.server.model.Insructor_Info;
+import org.dselent.scheduling.server.model.Instructor_Info;
 import org.springframework.stereotype.Repository;
 
 @Repository
