@@ -3,7 +3,7 @@ package org.dselent.scheduling.server.dao.impl;
 import java.util.List;
 
 import org.dselent.scheduling.server.dao.CustomDao;
-import org.dselent.scheduling.server.extractor.UsersExtractor;
+import org.dselent.scheduling.server.extractor.User_InfoExtractor;
 import org.dselent.scheduling.server.miscellaneous.QueryPathConstants;
 import org.dselent.scheduling.server.model.User_Info;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class CustomDaoImpl implements CustomDao
 	@Override
 	public List<User_Info> getAllUsersWithRole(int roleId)
 	{
-		UsersExtractor extractor = new UsersExtractor();
+		User_InfoExtractor extractor = new User_InfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.USERS_WITH_ROLE_QUERY);
 	    MapSqlParameterSource parameters = new MapSqlParameterSource();
 	    parameters.addValue("roleId", roleId);

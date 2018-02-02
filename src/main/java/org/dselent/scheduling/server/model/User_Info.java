@@ -193,16 +193,26 @@ public class User_Info extends Model
 		this.accountState = accountState;
 	}
 
-	public void setCreatedAt(Instant createdAt) {
-		this.createdAt = createdAt;
+	public void setCreatedAt(Timestamp createdAt)
+	{
+		if(createdAt != null)
+		{
+			this.createdAt = createdAt.toInstant();
+		}
 	}
-
-	public void setUpdatedAt(Instant updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setUpdatedAt(Timestamp updatedAt)
+	{
+		if(updatedAt != null)
+		{
+			this.updatedAt = updatedAt.toInstant();
+		}
 	}
-
-	public void setLoginTime(Instant loginTime) {
-		this.loginTime = loginTime;
+	public void setLoginTime(Timestamp loginTime)
+	{
+		if(loginTime != null)
+		{
+			this.loginTime = loginTime.toInstant();
+		}
 	}
 
 	@Override
