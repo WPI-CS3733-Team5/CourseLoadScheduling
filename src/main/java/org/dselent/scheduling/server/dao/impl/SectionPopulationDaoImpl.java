@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.dselent.scheduling.server.dao.LabInfoDao;
+import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
 import org.dselent.scheduling.server.extractor.LabInfoExtractor;
+import org.dselent.scheduling.server.extractor.SectionPopulationExtractor;
 import org.dselent.scheduling.server.extractor.UsersRolesLinksExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
 import org.dselent.scheduling.server.model.LabInfo;
+import org.dselent.scheduling.server.model.SectionPopulation;
 import org.dselent.scheduling.server.model.User_Info;
 import org.dselent.scheduling.server.model.UsersRolesLink;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
@@ -25,15 +28,15 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
+public class SectionPopulationDaoImpl extends BaseDaoImpl<SectionPopulation> implements SectionPopulationDao
 {
     @Override
-    public int insert(LabInfo labInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+    public int insert(SectionPopulation sectionPopulationModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
     {
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(LabInfo.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(SectionPopulation.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -41,7 +44,7 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
         for(String insertColumnName : insertColumnNameList)
         {
-           addParameterMapValue(parameters, insertColumnName, labInfoModel);
+            addParameterMapValue(parameters, insertColumnName, sectionPopulationModel);
         }
 
         int rowsAffected = namedParameterJdbcTemplate.update(queryTemplate, parameters, keyHolder);
@@ -50,19 +53,18 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
         for(String keyHolderColumnName : keyHolderColumnNameList)
         {
-           addObjectValue(keyMap, keyHolderColumnName, labInfoModel);
+            addObjectValue(keyMap, keyHolderColumnName, sectionPopulationModel);
         }
 
         return rowsAffected;
 
     }
 
-
     @Override
-    public List<LabInfo> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+    public List<SectionPopulation> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
-        LabInfoExtractor extractor = new LabInfoExtractor();
-        String queryTemplate = QueryStringBuilder.generateSelectString(LabInfo.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+        SectionPopulationExtractor extractor = new SectionPopulationExtractor();
+        String queryTemplate = QueryStringBuilder.generateSelectString(SectionPopulation.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -73,18 +75,19 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
         Object[] parameters = objectList.toArray();
 
-        List<LabInfo> labInfoList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<SectionPopulation> sectionPopulationList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
-        return labInfoList;
+        return sectionPopulationList;
 
     }
 
+
     @Override
-    public LabInfo findById(int id) throws SQLException
+    public SectionPopulation findById(int id) throws SQLException
     {
 
-        String columnName = QueryStringBuilder.convertColumnName(LabInfo.getColumnName(LabInfo.Columns.ID), false);
-        List<String> selectColumnNames = LabInfo.getColumnNameList();
+        String columnName = QueryStringBuilder.convertColumnName(SectionPopulation.getColumnName(SectionPopulation.Columns.ID), false);
+        List<String> selectColumnNames = SectionPopulation.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -94,23 +97,25 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<LabInfo> labInfoList = select(selectColumnNames, queryTermList, orderByList);
+        List<SectionPopulation> sectionPopulationList = select(selectColumnNames, queryTermList, orderByList);
 
-        LabInfo labInfo = null;
+        SectionPopulation sectionPopulation = null;
 
-        if(!labInfoList.isEmpty())
+        if(!sectionPopulationList.isEmpty())
         {
-            labInfo = labInfoList.get(0);
+            sectionPopulation = sectionPopulationList.get(0);
 
         }
 
-        return labInfo;
+        return sectionPopulation;
+
     }
 
     @Override
     public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateUpdateString(LabInfo.TABLE_NAME, columnName, queryTermList);
+
+        String queryTemplate = QueryStringBuilder.generateUpdateString(SectionPopulation.TABLE_NAME, columnName, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
         objectList.add(newValue);
@@ -131,7 +136,7 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
     @Override
     public int delete(List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateDeleteString(LabInfo.TABLE_NAME, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateDeleteString(SectionPopulation.TABLE_NAME, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -148,33 +153,29 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
     }
 
-    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, LabInfo labInfoModel)
+    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, SectionPopulation sectionPopulationModel)
     {
+
         String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
 
-        if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.ID)))
+        if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.ID)))
         {
-            parameters.addValue(parameterName, labInfoModel.getId());
+            parameters.addValue(parameterName, sectionPopulationModel.getId());
         }
 
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.SECTION_INFO_ID)))
+        else if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.EXPECTED_POPULATION)))
         {
-            parameters.addValue(parameterName, labInfoModel.getSectionInfoId());
+            parameters.addValue(parameterName, sectionPopulationModel.getExpectedPopulation());
         }
 
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.INSTRUCTOR_INFO_ID)))
+        else if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.POPULATION_CAP)))
         {
-            parameters.addValue(parameterName, labInfoModel.getInstructorInfoId());
+            parameters.addValue(parameterName, sectionPopulationModel.getPopulationCap());
         }
 
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.LOCATION)))
+        else if(insertColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.SECTION_INFO_ID)))
         {
-            parameters.addValue(parameterName, labInfoModel.getLocation());
-        }
-
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.CALENDAR_INFO_ID)))
-        {
-            parameters.addValue(parameterName, labInfoModel.getCalendarInfoId());
+            parameters.addValue(parameterName, sectionPopulationModel.getSectionInfoId());
         }
 
         else
@@ -184,31 +185,27 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
     }
 
-    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, LabInfo labInfoModel)
+    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, SectionPopulation sectionPopulationModel)
     {
-        if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.ID)))
+
+        if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.ID)))
         {
-            labInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
+            sectionPopulationModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.SECTION_INFO_ID)))
+        else if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.EXPECTED_POPULATION)))
         {
-            labInfoModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
+            sectionPopulationModel.setExpectedPopulation((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.INSTRUCTOR_INFO_ID)))
+        else if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.POPULATION_CAP)))
         {
-            labInfoModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
+            sectionPopulationModel.setPopulationCap((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.LOCATION)))
+        else if(keyHolderColumnName.equals(SectionPopulation.getColumnName(SectionPopulation.Columns.SECTION_INFO_ID)))
         {
-            labInfoModel.setLocation((String) keyMap.get(keyHolderColumnName));
-        }
-
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.CALENDAR_INFO_ID)))
-        {
-            labInfoModel.setCalendarInfoId((Integer) keyMap.get(keyHolderColumnName));
+            sectionPopulationModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
 
         else
@@ -221,7 +218,7 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
     @Override
     public void validateColumnNames(List<String> columnNameList)
     {
-        List<String> actualColumnNames = LabInfo.getColumnNameList();
+        List<String> actualColumnNames = SectionPopulation.getColumnNameList();
         boolean valid = actualColumnNames.containsAll(columnNameList);
 
         if(!valid)
@@ -230,7 +227,7 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
             invalidColumnNames.removeAll(actualColumnNames);
 
             throw new IllegalArgumentException("Invalid column names provided: " + invalidColumnNames);
-        }
 
+        }
     }
 }

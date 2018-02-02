@@ -7,14 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.dselent.scheduling.server.dao.LabInfoDao;
+import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
+import org.dselent.scheduling.server.dao.WishlistLinksDao;
 import org.dselent.scheduling.server.extractor.LabInfoExtractor;
+import org.dselent.scheduling.server.extractor.SectionPopulationExtractor;
 import org.dselent.scheduling.server.extractor.UsersRolesLinksExtractor;
+import org.dselent.scheduling.server.extractor.WishlistLinksExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.LabInfo;
-import org.dselent.scheduling.server.model.User_Info;
-import org.dselent.scheduling.server.model.UsersRolesLink;
+import org.dselent.scheduling.server.model.*;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -25,15 +27,16 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
+public class WishlistLinksDaoImpl extends BaseDaoImpl<WishlistLinks> implements WishlistLinksDao
 {
+
     @Override
-    public int insert(LabInfo labInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+    public int insert(WishlistLinks wishlistLinksModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
     {
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(LabInfo.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(WishlistLinks.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -41,7 +44,7 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
         for(String insertColumnName : insertColumnNameList)
         {
-           addParameterMapValue(parameters, insertColumnName, labInfoModel);
+            addParameterMapValue(parameters, insertColumnName, wishlistLinksModel);
         }
 
         int rowsAffected = namedParameterJdbcTemplate.update(queryTemplate, parameters, keyHolder);
@@ -50,19 +53,18 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
         for(String keyHolderColumnName : keyHolderColumnNameList)
         {
-           addObjectValue(keyMap, keyHolderColumnName, labInfoModel);
+            addObjectValue(keyMap, keyHolderColumnName, wishlistLinksModel);
         }
 
         return rowsAffected;
 
     }
 
-
     @Override
-    public List<LabInfo> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+    public List<WishlistLinks> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
-        LabInfoExtractor extractor = new LabInfoExtractor();
-        String queryTemplate = QueryStringBuilder.generateSelectString(LabInfo.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+        WishlistLinksExtractor extractor = new WishlistLinksExtractor();
+        String queryTemplate = QueryStringBuilder.generateSelectString(WishlistLinks.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -73,18 +75,17 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
         Object[] parameters = objectList.toArray();
 
-        List<LabInfo> labInfoList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<WishlistLinks> wishlistLinksList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
-        return labInfoList;
+        return wishlistLinksList;
 
     }
 
     @Override
-    public LabInfo findById(int id) throws SQLException
+    public WishlistLinks findById(int id) throws SQLException
     {
-
-        String columnName = QueryStringBuilder.convertColumnName(LabInfo.getColumnName(LabInfo.Columns.ID), false);
-        List<String> selectColumnNames = LabInfo.getColumnNameList();
+        String columnName = QueryStringBuilder.convertColumnName(WishlistLinks.getColumnName(WishlistLinks.Columns.ID), false);
+        List<String> selectColumnNames = WishlistLinks.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -94,23 +95,24 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<LabInfo> labInfoList = select(selectColumnNames, queryTermList, orderByList);
+        List<WishlistLinks> wishlistLinksList = select(selectColumnNames, queryTermList, orderByList);
 
-        LabInfo labInfo = null;
+        WishlistLinks wishlistLinks = null;
 
-        if(!labInfoList.isEmpty())
+        if(!wishlistLinksList.isEmpty())
         {
-            labInfo = labInfoList.get(0);
+            wishlistLinks = wishlistLinksList.get(0);
 
         }
 
-        return labInfo;
+        return wishlistLinks;
     }
 
     @Override
     public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateUpdateString(LabInfo.TABLE_NAME, columnName, queryTermList);
+
+        String queryTemplate = QueryStringBuilder.generateUpdateString(WishlistLinks.TABLE_NAME, columnName, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
         objectList.add(newValue);
@@ -131,7 +133,8 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
     @Override
     public int delete(List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateDeleteString(LabInfo.TABLE_NAME, queryTermList);
+
+        String queryTemplate = QueryStringBuilder.generateDeleteString(WishlistLinks.TABLE_NAME, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -148,33 +151,24 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
     }
 
-    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, LabInfo labInfoModel)
+    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, WishlistLinks wishlistLinksModel)
     {
+
         String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
 
-        if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.ID)))
+        if(insertColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.ID)))
         {
-            parameters.addValue(parameterName, labInfoModel.getId());
+            parameters.addValue(parameterName, wishlistLinksModel.getId());
         }
 
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.SECTION_INFO_ID)))
+        else if(insertColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.INSTRUCTOR_INFO_ID)))
         {
-            parameters.addValue(parameterName, labInfoModel.getSectionInfoId());
+            parameters.addValue(parameterName, wishlistLinksModel.getInstructorInfoId());
         }
 
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.INSTRUCTOR_INFO_ID)))
+        else if(insertColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.SECTION_INFO_ID)))
         {
-            parameters.addValue(parameterName, labInfoModel.getInstructorInfoId());
-        }
-
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.LOCATION)))
-        {
-            parameters.addValue(parameterName, labInfoModel.getLocation());
-        }
-
-        else if(insertColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.CALENDAR_INFO_ID)))
-        {
-            parameters.addValue(parameterName, labInfoModel.getCalendarInfoId());
+            parameters.addValue(parameterName, wishlistLinksModel.getSectionInfoId());
         }
 
         else
@@ -184,31 +178,21 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
 
     }
 
-    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, LabInfo labInfoModel)
+    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, WishlistLinks wishlistLinksModel)
     {
-        if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.ID)))
+        if(keyHolderColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.ID)))
         {
-            labInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
+            wishlistLinksModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.SECTION_INFO_ID)))
+        else if(keyHolderColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.INSTRUCTOR_INFO_ID)))
         {
-            labInfoModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
+            wishlistLinksModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
 
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.INSTRUCTOR_INFO_ID)))
+        else if(keyHolderColumnName.equals(WishlistLinks.getColumnName(WishlistLinks.Columns.SECTION_INFO_ID)))
         {
-            labInfoModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
-        }
-
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.LOCATION)))
-        {
-            labInfoModel.setLocation((String) keyMap.get(keyHolderColumnName));
-        }
-
-        else if(keyHolderColumnName.equals(LabInfo.getColumnName(LabInfo.Columns.CALENDAR_INFO_ID)))
-        {
-            labInfoModel.setCalendarInfoId((Integer) keyMap.get(keyHolderColumnName));
+            wishlistLinksModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
 
         else
@@ -221,7 +205,7 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
     @Override
     public void validateColumnNames(List<String> columnNameList)
     {
-        List<String> actualColumnNames = LabInfo.getColumnNameList();
+        List<String> actualColumnNames = WishlistLinks.getColumnNameList();
         boolean valid = actualColumnNames.containsAll(columnNameList);
 
         if(!valid)
@@ -230,7 +214,9 @@ public class LabInfoDaoImpl extends BaseDaoImpl<LabInfo> implements LabInfoDao
             invalidColumnNames.removeAll(actualColumnNames);
 
             throw new IllegalArgumentException("Invalid column names provided: " + invalidColumnNames);
+
         }
 
     }
+
 }
