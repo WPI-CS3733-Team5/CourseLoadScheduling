@@ -3,7 +3,7 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
-public class Instructor_Info extends Model{
+public class InstructorInfo extends Model {
 
     // table name
     public static final String TABLE_NAME = "instructor_info";
@@ -21,58 +21,58 @@ public class Instructor_Info extends Model{
     }
 
     // enum list
-    private static final List<Instructor_Info.Columns> COLUMN_LIST = new ArrayList<>();
+    private static final List<InstructorInfo.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<Instructor_Info.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
+    private static final Map<InstructorInfo.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
     static
     {
-        for(Instructor_Info.Columns key : Instructor_Info.Columns.values())
+        for(InstructorInfo.Columns key : InstructorInfo.Columns.values())
         {
             COLUMN_LIST.add(key);
         }
 
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.RANK, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.COURSE_LOAD, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.PHONE_NUMBER, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.OFFICE, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.USER_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Instructor_Info.Columns.DEPARTMENT, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.RANK, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.COURSE_LOAD, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.PHONE_NUMBER, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.OFFICE, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.USER_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(InstructorInfo.Columns.DEPARTMENT, JDBCType.VARCHAR);
     };
 
     // attributes
     private Integer id;
     private String rank;
     private Integer courseLoad;
-    private String email;
     private String phoneNumber;
     private String office;
     private Integer userInfoId;
     private String department;
 
+    // methods
+
+    public static JDBCType getColumnType(InstructorInfo.Columns column)
+    {
+        return COLUMN_TYPE_MAP.get(column);
+    }
+
+    public static String getColumnName(InstructorInfo.Columns column)
+    {
+        return column.toString().toLowerCase();
+    }
+
     public static List<String> getColumnNameList()
     {
         List<String> columnNameList = new ArrayList<>();
 
-        for(Columns column : COLUMN_LIST)
+        for(InstructorInfo.Columns column : COLUMN_LIST)
         {
             columnNameList.add(getColumnName(column));
         }
 
         return columnNameList;
-    }
-
-
-    public static JDBCType getColumnType(Columns column)
-    {
-        return COLUMN_TYPE_MAP.get(column);
-    }
-
-    public static String getColumnName(Columns column)
-    {
-        return column.toString().toLowerCase();
     }
 
     public static String getTableName() {
@@ -111,14 +111,6 @@ public class Instructor_Info extends Model{
         this.courseLoad = courseLoad;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -152,29 +144,13 @@ public class Instructor_Info extends Model{
     }
 
     @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Instructor_Info{");
-        sb.append("id=").append(id);
-        sb.append(", rank='").append(rank).append('\'');
-        sb.append(", courseLoad=").append(courseLoad);
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
-        sb.append(", office='").append(office).append('\'');
-        sb.append(", userInfoId=").append(userInfoId);
-        sb.append(", department='").append(department).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Instructor_Info that = (Instructor_Info) o;
+        InstructorInfo that = (InstructorInfo) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(rank, that.rank) &&
                 Objects.equals(courseLoad, that.courseLoad) &&
-                Objects.equals(email, that.email) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(office, that.office) &&
                 Objects.equals(userInfoId, that.userInfoId) &&
@@ -184,6 +160,20 @@ public class Instructor_Info extends Model{
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, rank, courseLoad, email, phoneNumber, office, userInfoId, department);
+        return Objects.hash(id, rank, courseLoad, phoneNumber, office, userInfoId, department);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("InstructorInfo{");
+        sb.append("id=").append(id);
+        sb.append(", rank='").append(rank).append('\'');
+        sb.append(", courseLoad=").append(courseLoad);
+        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+        sb.append(", office='").append(office).append('\'');
+        sb.append(", userInfoId=").append(userInfoId);
+        sb.append(", department='").append(department).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

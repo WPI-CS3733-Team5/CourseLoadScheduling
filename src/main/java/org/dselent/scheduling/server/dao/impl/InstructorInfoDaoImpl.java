@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.dao.impl;
 
-import org.dselent.scheduling.server.dao.Instructor_InfoDao;
-import org.dselent.scheduling.server.extractor.Instructor_InfoExtractor;
+import org.dselent.scheduling.server.dao.InstructorInfoDao;
+import org.dselent.scheduling.server.extractor.InstructorInfoExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.Instructor_Info;
+import org.dselent.scheduling.server.model.InstructorInfo;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -13,21 +13,20 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> implements Instructor_InfoDao {
+public class InstructorInfoDaoImpl extends BaseDaoImpl<InstructorInfo> implements InstructorInfoDao {
     
     @Override
-    public int insert(Instructor_Info InstructorInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+    public int insert(InstructorInfo InstructorInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
     {
 
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(Instructor_Info.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(InstructorInfo.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -54,10 +53,10 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
     }
 
     @Override
-    public List<Instructor_Info> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+    public List<InstructorInfo> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
-        Instructor_InfoExtractor extractor = new Instructor_InfoExtractor();
-        String queryTemplate = QueryStringBuilder.generateSelectString(Instructor_Info.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+        InstructorInfoExtractor extractor = new InstructorInfoExtractor();
+        String queryTemplate = QueryStringBuilder.generateSelectString(InstructorInfo.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -68,16 +67,16 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
 
         Object[] parameters = objectList.toArray();
 
-        List<Instructor_Info> instructorList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<InstructorInfo> instructorInfoList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
-        return instructorList;
+        return instructorInfoList;
     }
 
     @Override
-    public Instructor_Info findById(int id) throws SQLException
+    public InstructorInfo findById(int id) throws SQLException
     {
-        String columnName = QueryStringBuilder.convertColumnName(Instructor_Info.getColumnName(Instructor_Info.Columns.ID), false);
-        List<String> selectColumnNames = Instructor_Info.getColumnNameList();
+        String columnName = QueryStringBuilder.convertColumnName(InstructorInfo.getColumnName(InstructorInfo.Columns.ID), false);
+        List<String> selectColumnNames = InstructorInfo.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -87,22 +86,22 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<Instructor_Info> instructorList = select(selectColumnNames, queryTermList, orderByList);
+        List<InstructorInfo> usersList = select(selectColumnNames, queryTermList, orderByList);
 
-        Instructor_Info instructorInfo = null;
+        InstructorInfo userInfo = null;
 
-        if(!instructorList.isEmpty())
+        if(!usersList.isEmpty())
         {
-            instructorInfo = instructorList.get(0);
+            userInfo = usersList.get(0);
         }
 
-        return instructorInfo;
+        return userInfo;
     }
 
     @Override
     public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateUpdateString(Instructor_Info.TABLE_NAME, columnName, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateUpdateString(InstructorInfo.TABLE_NAME, columnName, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
         objectList.add(newValue);
@@ -122,7 +121,7 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
     @Override
     public int delete(List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateDeleteString(Instructor_Info.TABLE_NAME, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateDeleteString(InstructorInfo.TABLE_NAME, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -138,7 +137,7 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         return rowsAffected;
     }
 
-    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, Instructor_Info InstructorInfoModel)
+    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, InstructorInfo InstructorInfoModel)
     {
         String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
 
@@ -146,31 +145,32 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         // The getter must be distinguished unless the models are designed as simply a map of columns-values
         // Would prefer not being that generic since it may end up leading to all code being collections of strings
 
-        if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.ID)))
+        if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.ID)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getId());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.RANK)))
+        else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getRank());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.COURSE_LOAD)))
+        else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getCourseLoad());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.PHONE_NUMBER)))
+        else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getPhoneNumber());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.OFFICE)))
+        else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getOffice());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USER_INFO_ID)))
+        else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getUserInfoId());
         }
-        else if(insertColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DEPARTMENT))) {
+        else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.DEPARTMENT)))
+        {
             parameters.addValue(parameterName, InstructorInfoModel.getDepartment());
         }
         else
@@ -181,33 +181,33 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
         }
     }
 
-    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, Instructor_Info InstructorInfoModel)
+    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, InstructorInfo InstructorInfoModel)
     {
-        if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.ID)))
+        if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.ID)))
         {
             InstructorInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.RANK)))
+        else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK)))
         {
             InstructorInfoModel.setRank((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.COURSE_LOAD)))
+        else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD)))
         {
             InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.PHONE_NUMBER)))
+        else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER)))
         {
-            InstructorInfoModel.setPhoneNumber((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.OFFICE)))
+        else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE)))
         {
             InstructorInfoModel.setOffice((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.USER_INFO_ID)))
+        else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID)))
         {
             InstructorInfoModel.setUserInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(Instructor_Info.getColumnName(Instructor_Info.Columns.DEPARTMENT)))
+        else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.DEPARTMENT)))
         {
             InstructorInfoModel.setDepartment((String) keyMap.get(keyHolderColumnName));
         }
@@ -222,7 +222,7 @@ public class Instructor_InfoDaoImpl extends BaseDaoImpl<Instructor_Info> impleme
     @Override
     public void validateColumnNames(List<String> columnNameList)
     {
-        List<String> actualColumnNames = Instructor_Info.getColumnNameList();
+        List<String> actualColumnNames = InstructorInfo.getColumnNameList();
         boolean valid = actualColumnNames.containsAll(columnNameList);
 
         if(!valid)
