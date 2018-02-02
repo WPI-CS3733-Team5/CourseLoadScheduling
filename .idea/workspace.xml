@@ -67,8 +67,8 @@
       <file leaf-file-name="Instructor_InfoDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dao/impl/Instructor_InfoDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="234" column="5" selection-start-line="221" selection-start-column="4" selection-end-line="234" selection-end-column="5" />
+            <state relative-caret-position="83">
+              <caret line="181" column="5" selection-start-line="181" selection-start-column="5" selection-end-line="181" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#insert#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
@@ -83,7 +83,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationDaoImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LabInfo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/model/LabInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NotificationDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dao/impl/NotificationDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="151">
@@ -748,6 +758,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6b3b7a9b-b9c5-4409-baf5-145af216f98f" name="Default" comment="" />
@@ -959,23 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dao/impl/Instructor_InfoDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="234" column="5" selection-start-line="221" selection-start-column="4" selection-end-line="234" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#insert#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-            <element signature="method#select#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-            <element signature="method#findById#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-            <element signature="method#update#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-            <element signature="method#delete#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-            <element signature="method#addParameterMapValue#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-            <element signature="method#addObjectValue#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/model/section_population.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1008,6 +1004,31 @@
             <element signature="method#addParameterMapValue#0;class#NotificationDaoImpl#0" expanded="false" />
             <element signature="method#addObjectValue#0;class#NotificationDaoImpl#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dao/impl/Instructor_InfoDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="181" column="5" selection-start-line="181" selection-start-column="5" selection-end-line="181" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#insert#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+            <element signature="method#select#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+            <element signature="method#findById#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+            <element signature="method#update#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+            <element signature="method#delete#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+            <element signature="method#addParameterMapValue#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+            <element signature="method#addObjectValue#0;class#Instructor_InfoDaoImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/model/LabInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
