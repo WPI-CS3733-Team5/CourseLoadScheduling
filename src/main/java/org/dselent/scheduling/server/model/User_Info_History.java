@@ -226,12 +226,19 @@ public class User_Info_History extends Model
 		this.userRole = userRole;
 	}
 
-	public void setUpdatedAt(Instant updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setLoginTime(Timestamp loginTime)
+	{
+		if(loginTime != null)
+		{
+			this.loginTime = loginTime.toInstant();
+		}
 	}
-
-	public void setLoginTime(Instant loginTime) {
-		this.loginTime = loginTime;
+	public void setUpdatedAt(Timestamp updatedAt)
+	{
+		if(updatedAt != null)
+		{
+			this.updatedAt = updatedAt.toInstant();
+		}
 	}
 
 	@Override
