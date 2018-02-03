@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.dselent.scheduling.server.config.AppConfig;
 import org.dselent.scheduling.server.miscellaneous.Pair;
-import org.dselent.scheduling.server.model.User_Info;
+import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UsersDaoTest
 {
 	@Autowired
-	private User_infoDao userinfoDao;
+	private UserInfoDao userinfoDao;
 	
 	/*
 	 * Not really an using this as a JUnit test
@@ -34,36 +34,45 @@ public class UsersDaoTest
     {
     	// INSERT
     	
-    	User_Info userInfo1 = new User_Info();
+    	UserInfo userInfo1 = new UserInfo();
+		userInfo1.setId(22222222);
+		userInfo1.setUserRole(3);
     	userInfo1.setUserName("userInfo1");
     	userInfo1.setFirstName("user");
     	userInfo1.setLastName("one");
     	userInfo1.setEmail("userone@wpi.edu");
+		userInfo1.setDeleted(false);
     	userInfo1.setEncryptedPassword("11111111"); // simplified for now
     	userInfo1.setSalt("11111111"); // also simplified for now
-    	userInfo1.setUserStateId(1); // assumes 1 = activated
-    	
+		userInfo1.setAccountState(1);
+
     	List<String> insertColumnNameList = new ArrayList<>();
     	List<String> keyHolderColumnNameList = new ArrayList<>();
-    	
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_NAME));
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.FIRST_NAME));
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.LAST_NAME));
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.EMAIL));
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD));
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.SALT));
-    	insertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID));
-    	
-    	keyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.ID));
-    	keyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.CREATED_AT));
-    	keyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.UPDATED_AT));
+
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ID));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.USER_ROLE));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.USERNAME));
+    	insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.FIRST_NAME));
+    	insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LAST_NAME));
+    	insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.EMAIL));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.DELETED));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ENCRYPTED_PASSWORD));
+    	insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.SALT));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ACCOUNT_STATE));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.CREATED_AT));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.UPDATED_AT));
+		insertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LOGIN_TIME));
+
+		keyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ID));
+    	keyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.CREATED_AT));
+    	keyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.UPDATED_AT));
    	
     	userinfoDao.insert(userInfo1, insertColumnNameList, keyHolderColumnNameList);
     	
     	
     	// UPDATE
     	
-    	String updateColumnName = User_Info.getColumnName(User_Info.Columns.USER_NAME);
+    	String updateColumnName = UserInfo.getColumnName(UserInfo.Columns.USERNAME);
     	String oldUserName = "userInfo1";
     	String newUserName = "newUserName";
     	List<QueryTerm> updateQueryTermList = new ArrayList<>();
@@ -80,7 +89,7 @@ public class UsersDaoTest
     	// SELECT
     	// by user name
     	
-    	String selectColumnName = User_Info.getColumnName(User_Info.Columns.USER_NAME);
+    	String selectColumnName = UserInfo.getColumnName(UserInfo.Columns.USERNAME);
     	String selectUserName = newUserName;
     	
     	List<QueryTerm> selectQueryTermList = new ArrayList<>();
@@ -91,14 +100,14 @@ public class UsersDaoTest
     	selectUseNameTerm.setValue(selectUserName);
     	selectQueryTermList.add(selectUseNameTerm);
     	
-    	List<String> selectColumnNameList = User_Info.getColumnNameList();
+    	List<String> selectColumnNameList = UserInfo.getColumnNameList();
     	
     	List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
     	Pair<String, ColumnOrder> orderPair1 = new Pair<String, ColumnOrder>(selectColumnName, ColumnOrder.ASC);
     	orderByList.add(orderPair1);
     	
 		@SuppressWarnings("unused")
-		List<User_Info> selectedUserInfoList = userinfoDao.select(selectColumnNameList, selectQueryTermList, orderByList);
+		List<UserInfo> selectedUserInfoList = userinfoDao.select(selectColumnNameList, selectQueryTermList, orderByList);
     	
     	System.out.println();
     }
