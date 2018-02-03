@@ -5,10 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.scheduling.server.model.Calendar_Info;
 import org.dselent.scheduling.server.model.LabInfo;
-import org.dselent.scheduling.server.model.User_Info;
-import org.dselent.scheduling.server.model.UsersRolesLink;
 
 public class LabInfoExtractor extends Extractor<List<LabInfo>>
 {

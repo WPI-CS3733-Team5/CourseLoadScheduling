@@ -1,18 +1,11 @@
 package org.dselent.scheduling.server.dao.impl;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.dselent.scheduling.server.dao.LabInfoDao;
-import org.dselent.scheduling.server.dao.SectionPopulationDao;
-import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
 import org.dselent.scheduling.server.dao.WishlistLinksDao;
-import org.dselent.scheduling.server.extractor.LabInfoExtractor;
-import org.dselent.scheduling.server.extractor.SectionPopulationExtractor;
-import org.dselent.scheduling.server.extractor.UsersRolesLinksExtractor;
 import org.dselent.scheduling.server.extractor.WishlistLinksExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;

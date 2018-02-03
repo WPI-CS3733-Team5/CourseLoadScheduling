@@ -4,10 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dselent.scheduling.server.dao.User_infoDao;
+import org.dselent.scheduling.server.dao.UserInfoDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
 import org.dselent.scheduling.server.dto.RegisterUserDto;
-import org.dselent.scheduling.server.model.User_Info;
+import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.model.UsersRolesLink;
 import org.dselent.scheduling.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService
 {
 	@Autowired
-	private User_infoDao userinfoDao;
+	private UserInfoDao userinfoDao;
 	
 	@Autowired
 	private UsersRolesLinksDao usersRolesLinksDao;
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService
 		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
 		String encryptedPassword = passwordEncorder.encode(saltedPassword);
 		
-		User_Info userInfo = new User_Info();
+		UserInfo userInfo = new UserInfo();
 		userInfo.setUserName(dto.getUserName());
 		userInfo.setFirstName(dto.getFirstName());
 		userInfo.setLastName(dto.getLastName());
@@ -66,17 +66,17 @@ public class UserServiceImpl implements UserService
     	List<String> userInsertColumnNameList = new ArrayList<>();
     	List<String> userKeyHolderColumnNameList = new ArrayList<>();
     	
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USERNAME));
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.FIRST_NAME));
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.LAST_NAME));
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.EMAIL));
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.ENCRYPTED_PASSWORD));
-    	userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.SALT));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.USERNAME));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.FIRST_NAME));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LAST_NAME));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.EMAIL));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ENCRYPTED_PASSWORD));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.SALT));
     	//userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID));
     	
-    	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.ID));
-    	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.CREATED_AT));
-    	userKeyHolderColumnNameList.add(User_Info.getColumnName(User_Info.Columns.UPDATED_AT));
+    	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ID));
+    	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.CREATED_AT));
+    	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.UPDATED_AT));
 		
     	rowsAffectedList.add(userinfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
 
@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService
 	//
 
 	@Override
-	public User_Info loginUser(String userName, String password)
+	public UserInfo loginUser(String userName, String password)
 	{
 		// TODO Auto-generated method stub
 		return null;
