@@ -26,6 +26,9 @@ public class QueryPathConstants
 	private static String TIMES_GIVEN_USERNAME_AND_TERM_PATH = BASE_QUERY_PATH + "selectStartAndEndTimesGivenUsernameAndTerm" + SQL_EXTENSION;
 	private static String COURSES_GIVEN_USERNAME_AND_DEPARTMENT_PATH = BASE_QUERY_PATH + "selectCoursesGivenUserAndDepartment" + SQL_EXTENSION;
 	private static String SECTIONS_WITH_WISHLIST_QUERY_PATH = BASE_QUERY_PATH + "selectSectionInfoGivenUsernameAndTerm" + SQL_EXTENSION;
+	private static String WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY_PATH = BASE_QUERY_PATH + "selectWishlistSectionsGivenUsernameAndCourseNAme" + SQL_EXTENSION;
+	private static String WISHLIST_FROM_USER_PATH = BASE_QUERY_PATH + "SelectWishlistGivenUser.sql" + SQL_EXTENSION;
+	private static String SECTIONS_WITH_DEPARTMENT_PATH = BASE_QUERY_PATH + "SectionsWithDepartment" + SQL_EXTENSION;
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
@@ -35,7 +38,9 @@ public class QueryPathConstants
 	public static String TIMES_GIVEN_USERNAME_AND_TERM = readFile(TIMES_GIVEN_USERNAME_AND_TERM_PATH);
 	public static String COURSES_GIVEN_USERNAME_AND_DEPARTMENT = readFile(COURSES_GIVEN_USERNAME_AND_DEPARTMENT_PATH);
 	public static String SECTIONS_WITH_WISHLIST_QUERY = readFile(SECTIONS_WITH_WISHLIST_QUERY_PATH);
-
+	public static String WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY = readFile(WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY_PATH);
+	public static String WISHLIST_FROM_USERNAME_QUERY = readFile(WISHLIST_FROM_USER_PATH);
+	public static String SECTIONS_WITH_DEPARTMENT_QUERY = readFile(SECTIONS_WITH_DEPARTMENT_PATH);
 	private QueryPathConstants()
 	{
 		

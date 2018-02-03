@@ -62,7 +62,7 @@ public class CustomDaoImpl implements CustomDao
 	}
 
 	@Override
-	public List<SectionInfo> getAllCoursesGivenUserAndDept(String username, String department)
+	public List<SectionInfo> getAllSectionsGivenUserAndDept(String username, String department)
 	{
 		SectionInfoExtractor extractor = new SectionInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.COURSES_GIVEN_USERNAME_AND_DEPARTMENT);
@@ -83,5 +83,39 @@ public class CustomDaoImpl implements CustomDao
 		List<SectionInfo> sectionsFromTermAndId = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return sectionsFromTermAndId;
 	}
+
+	@Override
+	public List<SectionInfo> getAllWishListSectionsGivenUserAndCourseName(String username, String courseName){
+		SectionInfoExtractor extractor = new SectionInfoExtractor();
+		String queryTemplate = new String(QueryPathConstants.WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY);
+		MapSqlParameterSource parameters = new MapSqlParameterSource();
+		parameters.addValue("username", username);
+		parameters.addValue("course_name", courseName);
+		List<SectionInfo> wishListSectionList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
+		return wishListSectionList;
+	}
+
+	@Override
+	public List<SectionInfo> getAllWishListSectionsGivenUser(String username)
+	{
+		SectionInfoExtractor extractor = new SectionInfoExtractor();
+		String queryTemplate = new String(QueryPathConstants.WISHLIST_FROM_USERNAME_QUERY);
+		MapSqlParameterSource parameters = new MapSqlParameterSource();
+		parameters.addValue("roleId", username);
+		List<SectionInfo> usersWithRoleList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
+		return usersWithRoleList;
+	}
+
+	@Override
+	public List<SectionInfo> getAllSectionsGivenDepartment(String department)
+	{
+			SectionInfoExtractor extractor = new SectionInfoExtractor();
+			String queryTemplate = new String(QueryPathConstants.SECTIONS_WITH_DEPARTMENT_QUERY);
+		    MapSqlParameterSource parameters = new MapSqlParameterSource();
+		    parameters.addValue("department", department);
+		    List<SectionInfo> sectionsWithDepartmentList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
+		    return sectionsWithDepartmentList;
+	}
+
 
 }
