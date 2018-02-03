@@ -3,9 +3,9 @@ package org.dselent.scheduling.server.dao.impl;
 import java.util.List;
 
 import org.dselent.scheduling.server.dao.CustomDao;
-import org.dselent.scheduling.server.extractor.User_InfoExtractor;
+import org.dselent.scheduling.server.extractor.UserInfoExtractor;
 import org.dselent.scheduling.server.miscellaneous.QueryPathConstants;
-import org.dselent.scheduling.server.model.User_Info;
+import org.dselent.scheduling.server.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -19,16 +19,17 @@ public class CustomDaoImpl implements CustomDao
 	protected NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	// can make custom models and extractors as needed or reuse existing ones if applicable
-	
+
 	@Override
-	public List<User_Info> getAllUsersWithRole(int roleId)
+	public List<UserInfo> getAllUsersWithDepartment(String department)
 	{
-		User_InfoExtractor extractor = new User_InfoExtractor();
-		String queryTemplate = new String(QueryPathConstants.USERS_WITH_ROLE_QUERY);
+		UserInfoExtractor extractor = new UserInfoExtractor();
+		String queryTemplate = new String(QueryPathConstants.USERS_WITH_DEPT_QUERY);
 	    MapSqlParameterSource parameters = new MapSqlParameterSource();
-	    parameters.addValue("roleId", roleId);
-	    List<User_Info> usersWithRoleList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
+	    parameters.addValue("department", department);
+	    List<UserInfo> usersWithRoleList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 	    return usersWithRoleList;
 	}
-	
+
+
 }

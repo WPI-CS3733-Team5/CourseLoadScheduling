@@ -20,12 +20,14 @@ public class QueryPathConstants
 	private static String SQL_EXTENSION = ".sql";
 
 	private static String USERS_WITH_ROLE_PATH = BASE_QUERY_PATH + "CustomUsersWithRole" + SQL_EXTENSION;
+	private static String USERS_WITH_DEPT_PATH = BASE_QUERY_PATH + "SelectUserGivenDepartment" + SQL_EXTENSION;
 
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
 	public static String USERS_WITH_ROLE_QUERY = readFile(USERS_WITH_ROLE_PATH);
+	public static String USERS_WITH_DEPT_QUERY = readFile(USERS_WITH_DEPT_PATH);
 
 	
 	private QueryPathConstants()

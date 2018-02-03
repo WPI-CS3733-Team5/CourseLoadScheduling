@@ -2,7 +2,7 @@ package org.dselent.scheduling.server.dao;
 
 import java.util.List;
 
-import org.dselent.scheduling.server.model.User_Info;
+import org.dselent.scheduling.server.model.UserInfo;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomDao
 {
 	// custom queries here
-	
-	public List<User_Info> getAllUsersWithRole(int roleId);
+	public List<UserInfo> getAllUsersWithDepartment(String department);
+
 }
