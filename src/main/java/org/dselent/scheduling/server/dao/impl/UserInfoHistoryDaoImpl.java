@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.dao.impl;
 
-import org.dselent.scheduling.server.dao.User_Info_HistoryDao;
-import org.dselent.scheduling.server.extractor.User_Info_HistoryExtractor;
+import org.dselent.scheduling.server.dao.UserInfoHistoryDao;
+import org.dselent.scheduling.server.extractor.UserInfoHistoryExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.User_Info_History;
+import org.dselent.scheduling.server.model.UserInfoHistory;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -28,16 +28,16 @@ import java.util.Map;
  * https://howtodoinjava.com/spring/spring-core/how-to-use-spring-component-repository-service-and-controller-annotations/
  */
 @Repository
-public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> implements User_Info_HistoryDao
+public class UserInfoHistoryDaoImpl extends BaseDaoImpl<UserInfoHistory> implements UserInfoHistoryDao
 {
     @Override
-    public int insert(User_Info_History userInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
+    public int insert(UserInfoHistory userInfoModel, List<String> insertColumnNameList, List<String> keyHolderColumnNameList) throws SQLException
     {
 
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(User_Info_History.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(UserInfoHistory.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -65,10 +65,10 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
 
 
     @Override
-    public List<User_Info_History> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
+    public List<UserInfoHistory> select(List<String> selectColumnNameList, List<QueryTerm> queryTermList, List<Pair<String, ColumnOrder>> orderByList) throws SQLException
     {
-        User_Info_HistoryExtractor extractor = new User_Info_HistoryExtractor();
-        String queryTemplate = QueryStringBuilder.generateSelectString(User_Info_History.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
+        UserInfoHistoryExtractor extractor = new UserInfoHistoryExtractor();
+        String queryTemplate = QueryStringBuilder.generateSelectString(UserInfoHistory.TABLE_NAME, selectColumnNameList, queryTermList, orderByList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -79,16 +79,16 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
 
         Object[] parameters = objectList.toArray();
 
-        List<User_Info_History> usersList = jdbcTemplate.query(queryTemplate, extractor, parameters);
+        List<UserInfoHistory> usersList = jdbcTemplate.query(queryTemplate, extractor, parameters);
 
         return usersList;
     }
 
     @Override
-    public User_Info_History findById(int id) throws SQLException
+    public UserInfoHistory findById(int id) throws SQLException
     {
-        String columnName = QueryStringBuilder.convertColumnName(User_Info_History.getColumnName(User_Info_History.Columns.ID), false);
-        List<String> selectColumnNames = User_Info_History.getColumnNameList();
+        String columnName = QueryStringBuilder.convertColumnName(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ID), false);
+        List<String> selectColumnNames = UserInfoHistory.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);
@@ -98,9 +98,9 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
         Pair<String, ColumnOrder> order = new Pair<String, ColumnOrder>(columnName, ColumnOrder.ASC);
         orderByList.add(order);
 
-        List<User_Info_History> usersList = select(selectColumnNames, queryTermList, orderByList);
+        List<UserInfoHistory> usersList = select(selectColumnNames, queryTermList, orderByList);
 
-        User_Info_History userInfo = null;
+        UserInfoHistory userInfo = null;
 
         if(!usersList.isEmpty())
         {
@@ -113,7 +113,7 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
     @Override
     public int update(String columnName, Object newValue, List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateUpdateString(User_Info_History.TABLE_NAME, columnName, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateUpdateString(UserInfoHistory.TABLE_NAME, columnName, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
         objectList.add(newValue);
@@ -133,7 +133,7 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
     @Override
     public int delete(List<QueryTerm> queryTermList)
     {
-        String queryTemplate = QueryStringBuilder.generateDeleteString(User_Info_History.TABLE_NAME, queryTermList);
+        String queryTemplate = QueryStringBuilder.generateDeleteString(UserInfoHistory.TABLE_NAME, queryTermList);
 
         List<Object> objectList = new ArrayList<Object>();
 
@@ -149,7 +149,7 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
         return rowsAffected;
     }
 
-    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, User_Info_History userInfoModel)
+    private void addParameterMapValue(MapSqlParameterSource parameters, String insertColumnName, UserInfoHistory userInfoModel)
     {
         String parameterName = QueryStringBuilder.convertColumnName(insertColumnName, false);
 
@@ -157,51 +157,51 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
         // The getter must be distinguished unless the models are designed as simply a map of columns-values
         // Would prefer not being that generic since it may end up leading to all code being collections of strings
 
-        if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.ID)))
+        if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ID)))
         {
             parameters.addValue(parameterName, userInfoModel.getId());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.USER_ROLE)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.USER_ROLE)))
         {
             parameters.addValue(parameterName, userInfoModel.getUserRole());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.USERNAME)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.USERNAME)))
         {
             parameters.addValue(parameterName, userInfoModel.getUserName());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.FIRST_NAME)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.FIRST_NAME)))
         {
             parameters.addValue(parameterName, userInfoModel.getFirstName());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.LAST_NAME)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.LAST_NAME)))
         {
             parameters.addValue(parameterName, userInfoModel.getLastName());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.EMAIL)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.EMAIL)))
         {
             parameters.addValue(parameterName, userInfoModel.getEmail());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.ENCRYPTED_PASSWORD)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ENCRYPTED_PASSWORD)))
         {
             parameters.addValue(parameterName, userInfoModel.getEncryptedPassword());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.SALT)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.SALT)))
         {
             parameters.addValue(parameterName, userInfoModel.getSalt());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.ACCOUNT_STATE)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ACCOUNT_STATE)))
         {
             parameters.addValue(parameterName, userInfoModel.getAccountState());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.CREATED_AT)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.CREATED_AT)))
         {
             parameters.addValue(parameterName, userInfoModel.getCreatedAt());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.UPDATED_AT)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.UPDATED_AT)))
         {
             parameters.addValue(parameterName, userInfoModel.getUpdatedAt());
         }
-        else if(insertColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.LOGIN_TIME)))
+        else if(insertColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.LOGIN_TIME)))
         {
             parameters.addValue(parameterName, userInfoModel.getLoginTime());
         }
@@ -213,53 +213,53 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
         }
     }
 
-    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, User_Info_History userInfoModel)
+    private void addObjectValue(Map<String, Object> keyMap, String keyHolderColumnName, UserInfoHistory userInfoModel)
     {
-        if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.ID)))
+        if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ID)))
         {
             userInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.USER_ROLE)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.USER_ROLE)))
         {
             userInfoModel.setUserRole((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.USERNAME)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.USERNAME)))
         {
             userInfoModel.setUserName((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.FIRST_NAME)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.FIRST_NAME)))
         {
             userInfoModel.setFirstName((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.LAST_NAME)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.LAST_NAME)))
         {
             userInfoModel.setLastName((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.EMAIL)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.EMAIL)))
         {
             userInfoModel.setEmail((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.ENCRYPTED_PASSWORD)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ENCRYPTED_PASSWORD)))
         {
             userInfoModel.setEncryptedPassword((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.SALT)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.SALT)))
         {
             userInfoModel.setSalt((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.ACCOUNT_STATE)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.ACCOUNT_STATE)))
         {
             userInfoModel.setAccountState((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.CREATED_AT)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.CREATED_AT)))
         {
             userInfoModel.setCreatedAt((Timestamp) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.UPDATED_AT)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.UPDATED_AT)))
         {
             userInfoModel.setUpdatedAt((Timestamp) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(User_Info_History.getColumnName(User_Info_History.Columns.LOGIN_TIME)))
+        else if(keyHolderColumnName.equals(UserInfoHistory.getColumnName(UserInfoHistory.Columns.LOGIN_TIME)))
         {
             userInfoModel.setLoginTime((Timestamp) keyMap.get(keyHolderColumnName));
         }
@@ -274,7 +274,7 @@ public class User_Info_HistoryDaoImpl extends BaseDaoImpl<User_Info_History> imp
     @Override
     public void validateColumnNames(List<String> columnNameList)
     {
-        List<String> actualColumnNames = User_Info_History.getColumnNameList();
+        List<String> actualColumnNames = UserInfoHistory.getColumnNameList();
         boolean valid = actualColumnNames.containsAll(columnNameList);
 
         if(!valid)
