@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
 
-public class Calendar_Info extends Model {
+public class CalendarInfo extends Model {
     // table name
     public static final String TABLE_NAME = "calendar_info";
 
@@ -21,23 +21,23 @@ public class Calendar_Info extends Model {
         END_TIME
     }
     // enum list
-    private static final List<Calendar_Info.Columns> COLUMN_LIST = new ArrayList<>();
+    private static final List<CalendarInfo.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<Calendar_Info.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
+    private static final Map<CalendarInfo.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
     static {
-        for (Calendar_Info.Columns key : Calendar_Info.Columns.values()) {
+        for (CalendarInfo.Columns key : CalendarInfo.Columns.values()) {
             COLUMN_LIST.add(key);
         }
 
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.YEAR, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.SEMESTER, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.CREDIT_AMOUNT, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.DAYS, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.START_TIME, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(Calendar_Info.Columns.END_TIME, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.YEAR, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.SEMESTER, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.CREDIT_AMOUNT, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.DAYS, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.START_TIME, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.END_TIME, JDBCType.INTEGER);
     }
 
     ;
@@ -55,12 +55,12 @@ public class Calendar_Info extends Model {
 
     // methods
 
-    public static JDBCType getColumnType(Calendar_Info.Columns column)
+    public static JDBCType getColumnType(CalendarInfo.Columns column)
     {
         return COLUMN_TYPE_MAP.get(column);
     }
 
-    public static String getColumnName(Calendar_Info.Columns column)
+    public static String getColumnName(CalendarInfo.Columns column)
     {
         return column.toString().toLowerCase();
     }
@@ -69,7 +69,7 @@ public class Calendar_Info extends Model {
     {
         List<String> columnNameList = new ArrayList<>();
 
-        for(Calendar_Info.Columns column : COLUMN_LIST)
+        for(CalendarInfo.Columns column : COLUMN_LIST)
         {
             columnNameList.add(getColumnName(column));
         }
@@ -139,7 +139,7 @@ public class Calendar_Info extends Model {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Calendar_Info that = (Calendar_Info) o;
+        CalendarInfo that = (CalendarInfo) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(year, that.year) &&
                 Objects.equals(semester, that.semester) &&
@@ -157,7 +157,7 @@ public class Calendar_Info extends Model {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Calendar_Info{");
+        final StringBuilder sb = new StringBuilder("CalendarInfo{");
         sb.append("id=").append(id);
         sb.append(", year=").append(year);
         sb.append(", semester=").append(semester);

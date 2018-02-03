@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.dao;
 
-import org.dselent.scheduling.server.model.Calendar_Info;
+import org.dselent.scheduling.server.model.CalendarInfo;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Calendar_InfoDao extends Dao<Calendar_Info>
+public interface CalendarInfoDao extends Dao<CalendarInfo>
 {
     // add functions here as needed
 }
