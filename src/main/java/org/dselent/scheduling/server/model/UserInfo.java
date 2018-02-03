@@ -6,7 +6,7 @@ import java.time.Instant;
 import java.util.*;
 
 
-public class User_Info extends Model
+public class UserInfo extends Model
 {
 	// table name
 	public static final String TABLE_NAME = "user_info";
@@ -219,7 +219,7 @@ public class User_Info extends Model
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		User_Info user_info = (User_Info) o;
+		UserInfo user_info = (UserInfo) o;
 		return Objects.equals(getId(), user_info.getId()) &&
 				Objects.equals(getUserRole(), user_info.getUserRole()) &&
 				Objects.equals(getUserName(), user_info.getUserName()) &&
