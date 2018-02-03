@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -21,13 +20,14 @@ public class QueryPathConstants
 	private static String SQL_EXTENSION = ".sql";
 
 	private static String USERS_WITH_ROLE_PATH = BASE_QUERY_PATH + "CustomUsersWithRole" + SQL_EXTENSION;
-	private static String COURSES_WITH_USERNAME_AND_TERM_PATH = BASE_QUERY_PATH + "selectCourseNameGivenUsernameAndTermm" + SQL_EXTENSION;
+	private static String USERS_WITH_DEPT_PATH = BASE_QUERY_PATH + "SelectUserGivenDepartment" + SQL_EXTENSION;
+
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
 	public static String USERS_WITH_ROLE_QUERY = readFile(USERS_WITH_ROLE_PATH);
-	public static String COURSES_WITH_USERNAME_AND_TERM = readFile(COURSES_WITH_USERNAME_AND_TERM_PATH);
+	public static String USERS_WITH_DEPT_QUERY = readFile(USERS_WITH_DEPT_PATH);
 
 	
 	private QueryPathConstants()

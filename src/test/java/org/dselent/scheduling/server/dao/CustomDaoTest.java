@@ -24,6 +24,7 @@ public class CustomDaoTest
 	 * Not really an using this as a JUnit test
 	 * More of an example on how to use the classes
 	 */
+	/*
     @Test
     public void testCustomDao() throws SQLException
     {
@@ -34,4 +35,5 @@ public class CustomDaoTest
     	// see things in debugger
     	System.out.println();
     }
+    */
 }
