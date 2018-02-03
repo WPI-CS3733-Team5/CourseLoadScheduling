@@ -29,6 +29,7 @@ public class UsersDaoTest
 	 * Not really an using this as a JUnit test
 	 * More of an example on how to use the classes
 	 */
+	/*
     @Test
     public void testUsersDao() throws SQLException
     {
@@ -110,5 +111,5 @@ public class UsersDaoTest
 		List<UserInfo> selectedUserInfoList = userinfoDao.select(selectColumnNameList, selectQueryTermList, orderByList);
     	
     	System.out.println();
-    }
+    } */
 }
