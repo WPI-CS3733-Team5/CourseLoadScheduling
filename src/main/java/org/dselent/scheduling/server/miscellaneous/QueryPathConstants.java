@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.dselent.scheduling.server.dao.impl.BaseDaoImpl;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -23,6 +24,8 @@ public class QueryPathConstants
 	private static String USERS_WITH_DEPT_PATH = BASE_QUERY_PATH + "SelectUserGivenDepartment" + SQL_EXTENSION;
 	private static String COURSES_GIVEN_USERNAME_AND_TERM_PATH = BASE_QUERY_PATH + "selectCourseNameGivenUsernameAndTerm" + SQL_EXTENSION;
 	private static String TIMES_GIVEN_USERNAME_AND_TERM_PATH = BASE_QUERY_PATH + "selectStartAndEndTimesGivenUsernameAndTerm" + SQL_EXTENSION;
+	private static String COURSES_GIVEN_USERNAME_AND_DEPARTMENT_PATH = BASE_QUERY_PATH + "selectCoursesGivenUserAndDepartment" + SQL_EXTENSION;
+	private static String SECTIONS_WITH_WISHLIST_QUERY_PATH = BASE_QUERY_PATH + "selectSectionInfoGivenUsernameAndTerm" + SQL_EXTENSION;
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
@@ -30,6 +33,8 @@ public class QueryPathConstants
 	public static String USERS_WITH_DEPT_QUERY = readFile(USERS_WITH_DEPT_PATH);
 	public static String COURSES_GIVEN_USERNAME_AND_TERM = readFile(COURSES_GIVEN_USERNAME_AND_TERM_PATH);
 	public static String TIMES_GIVEN_USERNAME_AND_TERM = readFile(TIMES_GIVEN_USERNAME_AND_TERM_PATH);
+	public static String COURSES_GIVEN_USERNAME_AND_DEPARTMENT = readFile(COURSES_GIVEN_USERNAME_AND_DEPARTMENT_PATH);
+	public static String SECTIONS_WITH_WISHLIST_QUERY = readFile(SECTIONS_WITH_WISHLIST_QUERY_PATH);
 
 	private QueryPathConstants()
 	{
