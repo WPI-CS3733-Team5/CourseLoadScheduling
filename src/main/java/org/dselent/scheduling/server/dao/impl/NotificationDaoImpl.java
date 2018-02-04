@@ -3,7 +3,6 @@ package org.dselent.scheduling.server.dao.impl;
 import org.dselent.scheduling.server.dao.NotificationDao;
 import org.dselent.scheduling.server.extractor.NotificationExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
-import org.dselent.scheduling.server.model.InstructorInfo;
 import org.dselent.scheduling.server.model.Notification;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
@@ -29,7 +28,7 @@ public class NotificationDaoImpl extends BaseDaoImpl<Notification> implements No
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(InstructorInfo.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(Notification.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -78,7 +77,7 @@ public class NotificationDaoImpl extends BaseDaoImpl<Notification> implements No
     public Notification findById(int id) throws SQLException
     {
         String columnName = QueryStringBuilder.convertColumnName(Notification.getColumnName(Notification.Columns.ID), false);
-        List<String> selectColumnNames = InstructorInfo.getColumnNameList();
+        List<String> selectColumnNames = Notification.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);

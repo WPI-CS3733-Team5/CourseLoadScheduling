@@ -8,7 +8,7 @@ import java.util.Map;
 import org.dselent.scheduling.server.dao.WishlistLinksDao;
 import org.dselent.scheduling.server.extractor.WishlistLinksExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
-import org.dselent.scheduling.server.model.*;
+import org.dselent.scheduling.server.model.WishlistLinks;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryStringBuilder;
