@@ -23,7 +23,7 @@ public class Notification extends Model {
     private static final List<Notification.Columns> COLUMN_LIST = new ArrayList<>();
 
     // type mapping
-    private static final Map<Notification.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap();
+    private static final Map<Notification.Columns, JDBCType> COLUMN_TYPE_MAP = new HashMap<>();
 
     static{
         for(Notification.Columns key : Notification.Columns.values()){

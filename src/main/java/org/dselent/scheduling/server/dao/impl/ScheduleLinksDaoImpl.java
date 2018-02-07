@@ -1,7 +1,6 @@
 package org.dselent.scheduling.server.dao.impl;
 
 import java.sql.SQLException;
-//import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,10 +9,9 @@ import org.dselent.scheduling.server.dao.ScheduleLinksDao;
 import org.dselent.scheduling.server.model.ScheduleLinks;
 import org.dselent.scheduling.server.extractor.ScheduleLinksExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
-import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-//import org.dselent.scheduling.server.model.sectionInfo;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
+import org.dselent.scheduling.server.sqlutils.QueryStringBuilder;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

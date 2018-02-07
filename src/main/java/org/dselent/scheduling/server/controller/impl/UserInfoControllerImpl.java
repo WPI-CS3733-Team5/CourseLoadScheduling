@@ -1,9 +1,10 @@
-package org.dselent.scheduling.server.controller;
+package org.dselent.scheduling.server.controller.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.dselent.scheduling.server.controller.UserInfoController;
 import org.dselent.scheduling.server.dto.RegisterUserDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.Register;
@@ -13,8 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Controller for handling requests related to the user such as logging in or registering.
@@ -25,8 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author dselent
  */
 @Controller
-@RequestMapping("/user")
-public class UsersController
+public class UserInfoControllerImpl implements UserInfoController
 {
 	@Autowired
     private UserService userService;
@@ -37,7 +35,6 @@ public class UsersController
 	 * @return A ResponseEntity for the response object(s) and the status code
 	 * @throws Exception 
 	 */
-    @RequestMapping(method=RequestMethod.POST, value=Register.REQUEST_NAME)
 	public ResponseEntity<String> register(@RequestBody Map<String, String> request) throws Exception 
     {
     	// Print is for testing purposes

@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dselent.scheduling.server.model.CalendarInfo;
-import org.dselent.scheduling.server.model.LabInfo;
-import org.dselent.scheduling.server.model.User_Info;
-import org.dselent.scheduling.server.model.UsersRolesLink;
 
 public class CalendarInfoExtractor extends Extractor<List<CalendarInfo>>{
 

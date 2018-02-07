@@ -3,18 +3,16 @@ package org.dselent.scheduling.server.dao.impl;
 import org.dselent.scheduling.server.dao.NotificationDao;
 import org.dselent.scheduling.server.extractor.NotificationExtractor;
 import org.dselent.scheduling.server.miscellaneous.Pair;
-import org.dselent.scheduling.server.miscellaneous.QueryStringBuilder;
-import org.dselent.scheduling.server.model.InstructorInfo;
 import org.dselent.scheduling.server.model.Notification;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
+import org.dselent.scheduling.server.sqlutils.QueryStringBuilder;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +28,7 @@ public class NotificationDaoImpl extends BaseDaoImpl<Notification> implements No
         validateColumnNames(insertColumnNameList);
         validateColumnNames(keyHolderColumnNameList);
 
-        String queryTemplate = QueryStringBuilder.generateInsertString(InstructorInfo.TABLE_NAME, insertColumnNameList);
+        String queryTemplate = QueryStringBuilder.generateInsertString(Notification.TABLE_NAME, insertColumnNameList);
         MapSqlParameterSource parameters = new MapSqlParameterSource();
 
         List<Map<String, Object>> keyList = new ArrayList<>();
@@ -79,7 +77,7 @@ public class NotificationDaoImpl extends BaseDaoImpl<Notification> implements No
     public Notification findById(int id) throws SQLException
     {
         String columnName = QueryStringBuilder.convertColumnName(Notification.getColumnName(Notification.Columns.ID), false);
-        List<String> selectColumnNames = InstructorInfo.getColumnNameList();
+        List<String> selectColumnNames = Notification.getColumnNameList();
 
         List<QueryTerm> queryTermList = new ArrayList<>();
         QueryTerm idTerm = new QueryTerm(columnName, ComparisonOperator.EQUAL, id, null);

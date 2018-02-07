@@ -4,10 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.Instant;
-import java.sql.Timestamp;
-
-
 import org.dselent.scheduling.server.model.UserInfo;
 
 public class UserInfoExtractor extends Extractor<List<UserInfo>>
