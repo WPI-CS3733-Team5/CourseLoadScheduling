@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RequestMapping("/user")
-public interface UsersController
+public interface UserInfoController
 {
     
     @RequestMapping(method=RequestMethod.POST, value=Register.REQUEST_NAME)
