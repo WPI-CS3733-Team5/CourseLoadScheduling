@@ -4,12 +4,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.scheduling.server.dao.InstructorInfoDao;
 import org.dselent.scheduling.server.dao.UserInfoDao;
 import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
-import org.dselent.scheduling.server.dto.RegisterUserDto;
+import org.dselent.scheduling.server.dto.CreateUserDto;
+import org.dselent.scheduling.server.dto.GetAllUserDto;
+import org.dselent.scheduling.server.dto.GetOneUserDto;
+import org.dselent.scheduling.server.miscellaneous.Pair;
+import org.dselent.scheduling.server.model.InstructorInfo;
 import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.model.UsersRolesLink;
 import org.dselent.scheduling.server.service.UserService;
+import org.dselent.scheduling.server.sqlutils.ColumnOrder;
+import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.keygen.KeyGenerators;
@@ -25,7 +32,7 @@ public class UserServiceImpl implements UserService
 	private UserInfoDao userinfoDao;
 	
 	@Autowired
-	private UsersRolesLinksDao usersRolesLinksDao;
+	private InstructorInfoDao instructorInfoDao;
 	
     public UserServiceImpl()
     {
@@ -34,34 +41,30 @@ public class UserServiceImpl implements UserService
     
     /*
      * (non-Javadoc)
-     * @see org.dselent.scheduling.server.service.UserService#registerUser(org.dselent.scheduling.server.dto.RegisterUserDto)
+     * @see org.dselent.scheduling.server.service.UserService#registerUser(org.dselent.scheduling.server.dto.CreateUserDto)
      */
     @Transactional
     @Override
-	public List<Integer> registerUser(RegisterUserDto dto) throws SQLException
+	public List<Integer> create(CreateUserDto dto) throws SQLException
 	{
 		List<Integer> rowsAffectedList = new ArrayList<>();
-		
-		// TODO validate business constraints
-			// ^^students should do this^^
-			// password strength requirements
-			// email requirements
-			// null values
-			// etc...
-		
+
 		String salt = KeyGenerators.string().generateKey();
-		String saltedPassword = dto.getPassword() + salt;
+		String saltedPassword = dto.getEncrypted_password() + salt;
 		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
 		String encryptedPassword = passwordEncorder.encode(saltedPassword);
 		
 		UserInfo userInfo = new UserInfo();
-		userInfo.setUserName(dto.getUserName());
-		userInfo.setFirstName(dto.getFirstName());
-		userInfo.setLastName(dto.getLastName());
+		userInfo.setUserRole(dto.getUser_role());
+		userInfo.setUserName(dto.getUsername());
+		userInfo.setFirstName(dto.getFirst_name());
+		userInfo.setLastName(dto.getLast_name());
 		userInfo.setEmail(dto.getEmail());
+		userInfo.setDeleted(dto.getDeleted());
 		userInfo.setEncryptedPassword(encryptedPassword);
 		userInfo.setSalt(salt);
-    	//userInfo.setUserStateId(1);
+		userInfo.setAccountState(dto.getAccount_state());
+
     	
     	List<String> userInsertColumnNameList = new ArrayList<>();
     	List<String> userKeyHolderColumnNameList = new ArrayList<>();
@@ -72,38 +75,64 @@ public class UserServiceImpl implements UserService
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.EMAIL));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ENCRYPTED_PASSWORD));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.SALT));
-    	//userInsertColumnNameList.add(User_Info.getColumnName(User_Info.Columns.USER_STATE_ID));
-    	
+
     	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ID));
     	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.CREATED_AT));
     	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.UPDATED_AT));
-		
-    	rowsAffectedList.add(userinfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
+		userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LOGIN_TIME));
 
-		//
-     	
-    	// for now, assume users can only register with default role id
-    	// may change in the future
-    	
-		UsersRolesLink usersRolesLink = new UsersRolesLink();
-		usersRolesLink.setUserId(userInfo.getId());
-		usersRolesLink.setRoleId(1); // hard coded as regular userInfo
-    	
-    	List<String> usersRolesLinksInsertColumnNameList = new ArrayList<>();
-    	List<String> usersRolesLinksKeyHolderColumnNameList = new ArrayList<>();
-    	
-    	usersRolesLinksInsertColumnNameList.add(UsersRolesLink.getColumnName(UsersRolesLink.Columns.USER_ID));
-    	usersRolesLinksInsertColumnNameList.add(UsersRolesLink.getColumnName(UsersRolesLink.Columns.ROLE_ID));
-    	
-    	usersRolesLinksKeyHolderColumnNameList.add(UsersRolesLink.getColumnName(UsersRolesLink.Columns.ID));
-    	usersRolesLinksKeyHolderColumnNameList.add(UsersRolesLink.getColumnName(UsersRolesLink.Columns.CREATED_AT));
-    	usersRolesLinksKeyHolderColumnNameList.add(UsersRolesLink.getColumnName(UsersRolesLink.Columns.DELETED));
-		
-    	rowsAffectedList.add(usersRolesLinksDao.insert(usersRolesLink, usersRolesLinksInsertColumnNameList, usersRolesLinksKeyHolderColumnNameList));
-		
+
+		rowsAffectedList.add(userinfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
+
+		if(!dto.getRank().equals(null)){
+			InstructorInfo instructorInfo = new InstructorInfo();
+			instructorInfo.setRank(dto.getRank());
+			instructorInfo.setCourseLoad(dto.getCourse_load());
+			instructorInfo.setPhoneNumber(dto.getPhone_number());
+			instructorInfo.setOffice(dto.getOffice());
+			instructorInfo.setDepartment(dto.getDepartment());
+			instructorInfo.setUserInfoId(userInfo.getId());
+
+			List<String> instructorInsertColumnNameList = new ArrayList<>();
+			List<String> instructorKeyHolderColumnNameList = new ArrayList<>();
+
+			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK));
+			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD));
+			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER));
+			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE));
+			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID));
+			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.DEPARTMENT));
+
+			instructorKeyHolderColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.ID));
+
+			rowsAffectedList.add(instructorInfoDao.insert(instructorInfo, instructorInsertColumnNameList, instructorKeyHolderColumnNameList));
+			}
+
 		return rowsAffectedList;
 	}
-	
+
+	@Transactional
+	@Override
+	public UserInfo getOne(GetOneUserDto dto) throws SQLException
+	{
+
+		UserInfo userInfo = userinfoDao.findById(dto.getId());
+
+		return  userInfo;
+	}
+
+	@Transactional
+	@Override
+	public List<UserInfo> getAll(GetAllUserDto dto) throws SQLException {
+
+		List<String> selectColumnNameList = new ArrayList<>();
+		List<QueryTerm> queryTermList = new ArrayList<>();
+		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
+		selectColumnNameList.addAll(UserInfo.getColumnNameList());
+		Pair<String, ColumnOrder> byId = new Pair<>(UserInfo.getColumnName(UserInfo.Columns.ID), ColumnOrder.ASC);
+
+		return userinfoDao.select(selectColumnNameList, queryTermList, orderByList);
+	}
 	//
 
 	@Override
