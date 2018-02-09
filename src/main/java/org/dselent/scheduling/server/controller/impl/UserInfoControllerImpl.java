@@ -5,9 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.dselent.scheduling.server.controller.UserInfoController;
-import org.dselent.scheduling.server.dto.RegisterUserDto;
+import org.dselent.scheduling.server.dto.CreateUserDto;
+import org.dselent.scheduling.server.dto.GetAllUserDto;
+import org.dselent.scheduling.server.dto.GetOneUserDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
-import org.dselent.scheduling.server.requests.Register;
+import org.dselent.scheduling.server.requests.CreateUser;
+import org.dselent.scheduling.server.requests.GetAllUser;
+import org.dselent.scheduling.server.requests.GetOneUser;
 import org.dselent.scheduling.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +39,9 @@ public class UserInfoControllerImpl implements UserInfoController
 	 * @return A ResponseEntity for the response object(s) and the status code
 	 * @throws Exception 
 	 */
-	public ResponseEntity<String> register(@RequestBody Map<String, String> request) throws Exception 
+
+	@Override
+	public ResponseEntity<String> createUser(@RequestBody Map<String, String> request) throws Exception
     {
     	// Print is for testing purposes
 		System.out.println("controller reached");
@@ -43,26 +49,134 @@ public class UserInfoControllerImpl implements UserInfoController
 		// add any objects that need to be returned to the success list
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
-		
-		String userName = request.get(Register.getBodyName(Register.BodyKey.USER_NAME));
-		String firstName = request.get(Register.getBodyName(Register.BodyKey.FIRST_NAME));
-		String lastName = request.get(Register.getBodyName(Register.BodyKey.LAST_NAME));
-		String email = request.get(Register.getBodyName(Register.BodyKey.EMAIL));
-		String password = request.get(Register.getBodyName(Register.BodyKey.PASSWORD));
 
-		RegisterUserDto.Builder builder = RegisterUserDto.builder();
-		RegisterUserDto registerUserDto = builder.withUserName(userName)
-		.withFirstName(firstName)
-		.withLastName(lastName)
-		.withEmail(email)
-		.withPassword(password)
-		.build();
+		Integer user_role = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_ROLE)));
+		String user_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_NAME));
+		String first_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.FIRST_NAME));
+		String last_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.LAST_NAME));
+		String email = request.get(CreateUser.getBodyName(CreateUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(CreateUser.getBodyName(CreateUser.BodyKey.DELETED)));
+		String encrypted_password = request.get(CreateUser.getBodyName(CreateUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer account_state = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(CreateUser.getBodyName(CreateUser.BodyKey.RANK));
+		Integer course_load = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.COURSE_LOAD)));
+		String phone_number = request.get(CreateUser.getBodyName(CreateUser.BodyKey.PHONE_NUMBER));
+		String office = request.get(CreateUser.getBodyName(CreateUser.BodyKey.OFFICE));
+		String department = request.get(CreateUser.getBodyName(CreateUser.BodyKey.DEPARTMENT));
+
+		CreateUserDto.Builder builder = CreateUserDto.builder();
+		CreateUserDto createUserDto = builder.withUserRole(user_role)
+				.withUserName(user_name)
+				.withFirstName(first_name)
+				.withLastName(last_name)
+				.withEmail(email)
+				.withDeleted(deleted)
+				.withPassword(encrypted_password)
+				.withAccountState(account_state)
+				.withRank(rank)
+				.withCourseLoad(course_load)
+				.withPhoneNumber(phone_number)
+				.withOffice(office)
+				.withDepartment(department)
+				.build();
 		
-		userService.registerUser(registerUserDto);
+		userService.createUser(createUserDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
     }
+
+	@Override
+	public ResponseEntity<String> getOneUser(@RequestBody Map<String, String> request) throws Exception
+	{
+		// Print is for testing purposes
+		System.out.println("controller reached");
+
+		// add any objects that need to be returned to the success list
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+
+		Integer user_role = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_ROLE)));
+		String user_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_NAME));
+		String first_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.FIRST_NAME));
+		String last_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.LAST_NAME));
+		String email = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.DELETED)));
+		String encrypted_password = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer account_state = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.RANK));
+		Integer course_load = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.COURSE_LOAD)));
+		String phone_number = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.PHONE_NUMBER));
+		String office = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.OFFICE));
+		String department = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.DEPARTMENT));
+
+		GetOneUserDto.Builder builder = GetOneUserDto.builder();
+		GetOneUserDto getOneUserDto = builder.withUserRole(user_role)
+				.withUserName(user_name)
+				.withFirstName(first_name)
+				.withLastName(last_name)
+				.withEmail(email)
+				.withDeleted(deleted)
+				.withPassword(encrypted_password)
+				.withAccountState(account_state)
+				.withRank(rank)
+				.withCourseLoad(course_load)
+				.withPhoneNumber(phone_number)
+				.withOffice(office)
+				.withDepartment(department)
+				.build();
+
+		userService.getOneUser(getOneUserDto);
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<String> getAllUser(@RequestBody Map<String, String> request) throws Exception
+	{
+		// Print is for testing purposes
+		System.out.println("controller reached");
+
+		// add any objects that need to be returned to the success list
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+
+		Integer user_role = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.USER_ROLE)));
+		String user_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.USER_NAME));
+		String first_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.FIRST_NAME));
+		String last_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.LAST_NAME));
+		String email = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.DELETED)));
+		String encrypted_password = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer account_state = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.RANK));
+		Integer course_load = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.COURSE_LOAD)));
+		String phone_number = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.PHONE_NUMBER));
+		String office = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.OFFICE));
+		String department = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.DEPARTMENT));
+
+		GetAllUserDto.Builder builder = GetAllUserDto.builder();
+		GetAllUserDto getAllUserDto = builder.withUserRole(user_role)
+				.withUserName(user_name)
+				.withFirstName(first_name)
+				.withLastName(last_name)
+				.withEmail(email)
+				.withDeleted(deleted)
+				.withPassword(encrypted_password)
+				.withAccountState(account_state)
+				.withRank(rank)
+				.withCourseLoad(course_load)
+				.withPhoneNumber(phone_number)
+				.withOffice(office)
+				.withDepartment(department)
+				.build();
+
+		userService.getAllUser(getAllUserDto);
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
 }
 
 	
