@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c82ef57-b2c6-42c7-bdb2-30844d87b707" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllSections.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSection.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllUser.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllUser.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetWishlistLinks.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetWishlistLinks.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/InstructorService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/SectionInfoController.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/SectionInfoController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/SectionInfoControllerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/SectionInfoControllerImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/CreateSectionDto.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/CreateSectionDto.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateSection.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateSection.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/SectionService.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/SectionService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/SectionServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/SectionServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -38,14 +39,83 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetAllSections.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GetAllSections.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllSections.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+            <state relative-caret-position="550">
+              <caret line="96" column="49" lean-forward="true" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2230#2231#0" expanded="true" />
+                <element signature="e#2298#2299#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/SectionServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/SectionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionInfoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/SectionInfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="49" lean-forward="true" selection-start-line="0" selection-start-column="49" selection-end-line="0" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SectionInfoControllerImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/SectionInfoControllerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateSectionDto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/CreateSectionDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="86" column="45" lean-forward="true" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="45" />
+              <folding>
+                <element signature="e#4082#4083#0" expanded="true" />
+                <element signature="e#4139#4140#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateSection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateSection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -448,6 +518,12 @@
         <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllSections.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/SectionInfoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateSection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/CreateSectionDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/SectionInfoControllerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/SectionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/SectionServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -520,7 +596,7 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="requests" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -529,17 +605,26 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
@@ -682,7 +767,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518205669113</updated>
-      <workItem from="1518205670556" duration="4801000" />
+      <workItem from="1518205670556" duration="5794000" />
     </task>
     <task id="LOCAL-00001" summary="## Commit by Leo&#10;&#10;  Fixed:&#10;     GetOneNotificationDTO&#10;  Created:&#10;     InstructorService&#10;     NotificationService&#10;     NotificationServiceImpl">
       <created>1518215839076</created>
@@ -691,11 +776,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518215839076</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="## Commit by Leo&#10;&#10;  Created:&#10;     GetAllSections&#10;     GetOneSection&#10;     &#10;  Other minor fixes">
+      <created>1518217225219</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1518217225219</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4801000" />
+    <option name="totallyTimeSpent" value="5794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="15" y="24" width="1400" height="837" extended-state="0" />
@@ -742,7 +834,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="## Commit by Leo&#10;&#10;  Fixed:&#10;     GetOneNotificationDTO&#10;  Created:&#10;     InstructorService&#10;     NotificationService&#10;     NotificationServiceImpl" />
-    <option name="LAST_COMMIT_MESSAGE" value="## Commit by Leo&#10;&#10;  Fixed:&#10;     GetOneNotificationDTO&#10;  Created:&#10;     InstructorService&#10;     NotificationService&#10;     NotificationServiceImpl" />
+    <MESSAGE value="## Commit by Leo&#10;&#10;  Created:&#10;     GetAllSections&#10;     GetOneSection&#10;     &#10;  Other minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="## Commit by Leo&#10;&#10;  Created:&#10;     GetAllSections&#10;     GetOneSection&#10;     &#10;  Other minor fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -785,14 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-541">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -910,6 +995,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllSections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="96" column="49" lean-forward="true" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2230#2231#0" expanded="true" />
+            <element signature="e#2298#2299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="583">
@@ -920,13 +1017,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetAllSections.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+        <state relative-caret-position="165">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/SectionInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="49" lean-forward="true" selection-start-line="0" selection-start-column="49" selection-end-line="0" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/CreateSection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/CreateSectionDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="86" column="45" lean-forward="true" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="45" />
+          <folding>
+            <element signature="e#4082#4083#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/SectionInfoControllerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/SectionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/SectionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>

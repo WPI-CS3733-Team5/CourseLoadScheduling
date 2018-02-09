@@ -1,6 +1,7 @@
 package org.dselent.scheduling.server.dto;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.dselent.scheduling.server.requests.CreateSection;
 
 import javax.annotation.Generated;
 import java.util.Objects;
@@ -22,6 +23,16 @@ public class CreateSectionDto
     private final Boolean deleted;
     private final Integer course_info_id;
     private final Integer calendar_info_id;
+
+    private CreateSectionDto(Builder builder){
+        this.section_number = builder.section_number;
+        this.section_type = builder.section_type;
+        this.instructor_info_id = builder.instructor_info_id;
+        this.location = builder.location;
+        this.deleted = builder.deleted;
+        this.course_info_id = builder.course_info_id;
+        this.calendar_info_id = builder.calendar_info_id;
+    }
 
     @java.lang.Override
     public java.lang.String toString() {
@@ -64,11 +75,7 @@ public class CreateSectionDto
         private Integer course_info_id;
         private Integer calendar_info_id;
 
-        private Builder() {
-        }
-
-        public static Builder aCreateSectionDto() {
-            return new Builder();
+        public Builder() {
         }
 
         public Builder withSection_number(Integer section_number) {
@@ -107,15 +114,7 @@ public class CreateSectionDto
         }
 
         public CreateSectionDto build() {
-            CreateSectionDto createSectionDto = new CreateSectionDto();
-            createSectionDto.section_number = this.section_number;
-            createSectionDto.section_type = this.section_type;
-            createSectionDto.calendar_info_id = this.calendar_info_id;
-            createSectionDto.location = this.location;
-            createSectionDto.deleted = this.deleted;
-            createSectionDto.instructor_info_id = this.instructor_info_id;
-            createSectionDto.course_info_id = this.course_info_id;
-            return createSectionDto;
+            return new CreateSectionDto(this);
         }
     }
 }
