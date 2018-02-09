@@ -271,5 +271,4 @@ public class UserInfo extends Model
 				", loginTime=" + loginTime +
 				'}';
 	}
-
 }
