@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71a1e7c8-d888-42f4-a8d9-9f115f04c998" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/ScheduleLinksController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/ScheduleLinksControllerImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/GetOneScheduleDto.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSchedule.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/ScheduleService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/ScheduleServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/course_load_scheduler.iml" afterPath="$PROJECT_DIR$/.idea/modules/course_load_scheduler.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/course_load_scheduler_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/course_load_scheduler_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/course_load_scheduler_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/course_load_scheduler_test.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -30,12 +20,12 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="ScheduleLinksController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/ScheduleLinksController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="231">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,7 +36,7 @@
       <file leaf-file-name="GetOneScheduleDto.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/GetOneScheduleDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
+            <state relative-caret-position="2184">
               <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -66,8 +56,8 @@
       <file leaf-file-name="ScheduleLinksControllerImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/ScheduleLinksControllerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="840">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,7 +68,7 @@
       <file leaf-file-name="GetOneSchedule.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSchedule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
+            <state relative-caret-position="2121">
               <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -90,7 +80,7 @@
       <file leaf-file-name="ScheduleService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/ScheduleService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
+            <state relative-caret-position="399">
               <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,8 +92,8 @@
       <file leaf-file-name="ScheduleServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/ScheduleServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+            <state relative-caret-position="553">
+              <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,17 +112,18 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="C:\Gradle\gradle-4.5" />
+        <entry key="$PROJECT_DIR$" value="C:\Gradle\gradle-4.4.1" />
       </map>
     </option>
     <option name="myGradleVersions">
       <map>
-        <entry key="$PROJECT_DIR$" value="4.5" />
+        <entry key="$PROJECT_DIR$" value="4.4.1" />
       </map>
     </option>
     <option name="availableProjects">
@@ -307,7 +298,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/build.gradle" value="952115686" />
+        <entry key="$PROJECT_DIR$" value="3035129898431" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="490898028" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2210575731" />
       </map>
     </option>
@@ -330,80 +322,80 @@
               <option name="name" value="course_load_scheduler" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="C:/Gradle/gradle-4.5/lib/ant-1.9.9.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/ant-launcher-1.9.9.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-base-services-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-base-services-groovy-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-build-cache-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-build-option-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-cli-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-core-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-core-api-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-docs-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-installation-beacon-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-jvm-services-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-kotlin-dsl-0.14.2.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-kotlin-dsl-tooling-builders-0.14.2.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-kotlin-dsl-tooling-models-0.14.2.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-launcher-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-logging-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-messaging-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-model-core-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-model-groovy-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-native-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-persistent-cache-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-process-services-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-resources-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-runtime-api-info-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-tooling-api-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/gradle-wrapper-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/groovy-all-2.4.12.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-announce-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-antlr-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-build-cache-http-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-build-comparison-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-build-init-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-code-quality-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-composite-builds-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-dependency-management-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-diagnostics-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-ear-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-ide-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-ide-native-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-ide-play-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-ivy-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-jacoco-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-javascript-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-language-groovy-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-language-java-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-language-jvm-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-language-native-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-language-scala-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-maven-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-osgi-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-platform-base-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-platform-jvm-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-platform-native-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-platform-play-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-plugin-development-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-plugin-use-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-plugins-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-publish-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-reporting-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-resources-gcs-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-resources-http-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-resources-s3-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-resources-sftp-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-scala-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-signing-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-test-kit-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-testing-base-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-testing-jvm-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-testing-native-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-tooling-api-builders-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-version-control-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/gradle-workers-4.5.jar" />
-                  <option value="C:/Gradle/gradle-4.5/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/ant-1.9.9.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/ant-launcher-1.9.9.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-base-services-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-base-services-groovy-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-build-cache-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-build-option-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-cli-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-core-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-core-api-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-docs-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-installation-beacon-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-jvm-services-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-kotlin-dsl-0.13.2.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-kotlin-dsl-tooling-builders-0.13.2.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-kotlin-dsl-tooling-models-0.13.2.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-launcher-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-logging-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-messaging-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-model-core-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-model-groovy-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-native-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-persistent-cache-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-process-services-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-resources-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-runtime-api-info-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-tooling-api-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/gradle-wrapper-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/groovy-all-2.4.12.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-announce-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-antlr-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-build-cache-http-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-build-comparison-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-build-init-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-code-quality-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-composite-builds-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-dependency-management-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-diagnostics-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-ear-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-ide-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-ide-native-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-ide-play-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-ivy-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-jacoco-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-javascript-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-language-groovy-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-language-java-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-language-jvm-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-language-native-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-language-scala-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-maven-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-osgi-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-platform-base-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-platform-jvm-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-platform-native-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-platform-play-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-plugin-development-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-plugin-use-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-plugins-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-publish-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-reporting-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-resources-gcs-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-resources-http-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-resources-s3-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-resources-sftp-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-scala-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-signing-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-test-kit-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-testing-base-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-testing-jvm-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-testing-native-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-tooling-api-builders-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-version-control-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/gradle-workers-4.4.1.jar" />
+                  <option value="C:/Gradle/gradle-4.4.1/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
@@ -424,6 +416,7 @@
         <entry key="$PROJECT_DIR$/../../Assignment 3 V3" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../../Assignment 3/CourseLoadScheduling" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../../Assignment 4/CourseLoadScheduling" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
       </map>
     </option>
   </component>
@@ -460,8 +453,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -474,32 +465,13 @@
               <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CourseLoadScheduling" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CourseLoadScheduling" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -614,39 +586,46 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24450952" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3536184" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24427083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3536184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'master' of https://github.com/WPI-CS3733-Team5/CourseLoadScheduling&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/modules/course_load_scheduler_main.iml&#10;#&#9;.idea/modules/course_load_scheduler_test.iml" />
+    <MESSAGE value="## commit by Tommy Maloney adding GetAllCourses.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="## commit by Tommy Maloney adding GetAllCourses.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -655,7 +634,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/ScheduleLinksController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="231">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -665,7 +644,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/GetOneScheduleDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="2184">
           <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -683,7 +662,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/ScheduleLinksControllerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
+        <state relative-caret-position="840">
           <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -693,7 +672,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSchedule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="2121">
           <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -703,7 +682,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/ScheduleService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="399">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -713,8 +692,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/ScheduleServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="462">
           <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/ScheduleLinksController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/GetOneScheduleDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2184">
+          <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
+            <element signature="e#2977#2978#0" expanded="true" />
+            <element signature="e#3035#3036#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/controller/impl/ScheduleLinksControllerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/requests/GetOneSchedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2121">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/ScheduleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/service/impl/ScheduleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
