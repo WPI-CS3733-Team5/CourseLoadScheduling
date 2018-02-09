@@ -3,6 +3,7 @@ package org.dselent.scheduling.server.requests;
 import java.util.ArrayList;
 import java.util.List;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.dselent.scheduling.server.miscellaneous.RequestParameterConverter;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,7 +39,7 @@ public class GetWishlistLinks
 	}
 	
 
-	
+
 	static
 	{
 		HEADER_KEY_LIST = new ArrayList<HeaderKey>();
@@ -49,23 +50,20 @@ public class GetWishlistLinks
 		{
 			HEADER_KEY_LIST.add(key);
 		}
-		
 		for(ParameterKey key : ParameterKey.values())
 		{
 			PARAMETER_KEY_LIST.add(key);
 		}
-		
 		for(BodyKey key : BodyKey.values())
 		{
 			BODY_KEY_LIST.add(key);
 		}
-		
-	};
+	}
 	
 	private GetWishlistLinks()
 	{
 		
-	};
+	}
 	
 	public static String getHeaderName(HeaderKey key)
 	{

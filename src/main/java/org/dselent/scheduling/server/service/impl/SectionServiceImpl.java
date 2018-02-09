@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class SecctionServiceImpl implements SectionService {
+public class SectionServiceImpl implements SectionService {
 
     @Autowired
     private SectionInfoDao sectionInfoDao;

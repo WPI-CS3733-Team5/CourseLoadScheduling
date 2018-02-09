@@ -57,6 +57,10 @@ public class SectionInfoControllerImpl implements SectionInfoController{
     }
 
     public ResponseEntity<String> getOneSection(@RequestBody Map<String, String> request) throws Exception{
+        String response = "";
+        List<Object> success = new ArrayList<Object>();
+
+
 
     }
 
