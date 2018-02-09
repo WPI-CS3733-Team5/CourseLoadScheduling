@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.requests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dselent.scheduling.server.miscellaneous.RequestParameterConverter;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Defines information for the register request including the keys for the
@@ -13,24 +13,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author dselent
  *
  */
-public class Create
+public class GetAllUser
 {
 	public static final RequestMethod REQUEST_TYPE = RequestMethod.POST;
-	public static final String REQUEST_NAME = "create";
+	public static final String REQUEST_NAME = "getAllUser";
 	private static final List<HeaderKey> HEADER_KEY_LIST;
 	private static final List<ParameterKey> PARAMETER_KEY_LIST;
 	private static final List<BodyKey> BODY_KEY_LIST;
-	
+
 	public static enum HeaderKey
 	{
-		
+
 	}
-	
+
 	public static enum ParameterKey
 	{
 
 	}
-	
+
 	public static enum BodyKey
 	{
 		USER_ROLE,
@@ -47,33 +47,33 @@ public class Create
 		OFFICE,
 		DEPARTMENT;
 	}
-	
 
-	
+
+
 	static
 	{
 		HEADER_KEY_LIST = new ArrayList<HeaderKey>();
 		BODY_KEY_LIST = new ArrayList<BodyKey>();
 		PARAMETER_KEY_LIST = new ArrayList<ParameterKey>();
-		
+
 		for(HeaderKey key : HeaderKey.values())
 		{
 			HEADER_KEY_LIST.add(key);
 		}
-		
+
 		for(ParameterKey key : ParameterKey.values())
 		{
 			PARAMETER_KEY_LIST.add(key);
 		}
-		
+
 		for(BodyKey key : BodyKey.values())
 		{
 			BODY_KEY_LIST.add(key);
 		}
-		
+
 	};
-	
-	private Create()
+
+	private GetAllUser()
 	{
 		
 	};
