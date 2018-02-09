@@ -49,6 +49,11 @@ public class SectionServiceImpl implements SectionService {
     @Transactional
     @Override
     public List<Integer> createSection(CreateSectionDto createSectionDto) throws SQLException{
+    	List<Integer> rowsAffectedList = new ArrayList<>();
+    	
+    	SectionInfo sectionInfo = new SectionInfo();
+    	//sectionInfo.setCourseInfoId(createSectionDto.);
+    	
         return null;
     }
 
