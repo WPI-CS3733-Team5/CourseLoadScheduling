@@ -25,7 +25,7 @@ public class CreateCourseDto
 
 	// I added to the auto-generated code
 	@Generated("SparkTools")
-	private CreateUserDto(Builder builder)
+	private CreateCourseDto(Builder builder)
 	{
 		// can add defaults if null for other places where the builder pattern is used
 
@@ -94,7 +94,7 @@ public class CreateCourseDto
 
 
 
-	public String getCreditAmount() {
+	public Float getCreditAmount() {
 		return creditAmount;
 	}
 
@@ -291,9 +291,9 @@ public class CreateCourseDto
 			return this;
 		}
 
-		public CreateUserDto build()
+		public CreateCourseDto build()
 		{
-			return new CreateUserDto(this);
+			return new CreateCourseDto(this);
 		}
 	}
 }
