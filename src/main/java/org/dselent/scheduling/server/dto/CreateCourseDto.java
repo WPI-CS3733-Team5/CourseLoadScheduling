@@ -25,7 +25,7 @@ public class CreateCourseDto
 
 	// I added to the auto-generated code
 	@Generated("SparkTools")
-	private CreateUserDto(Builder builder)
+	private CreateCourseDto(Builder builder)
 	{
 		// can add defaults if null for other places where the builder pattern is used
 
@@ -61,6 +61,8 @@ public class CreateCourseDto
 		{
 			throw new IllegalStateException("courseNumber cannot be null");
 		}
+
+
 	}
 
 
