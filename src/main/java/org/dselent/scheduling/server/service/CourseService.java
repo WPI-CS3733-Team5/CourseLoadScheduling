@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public interface CreateCourseService
+public interface CourseService
 {
     /**
      * Gets the schedule for the requesting user
