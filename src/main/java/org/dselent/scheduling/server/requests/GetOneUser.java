@@ -13,10 +13,10 @@ import java.util.List;
  * @author dselent
  *
  */
-public class GetAll
+public class GetOneUser
 {
 	public static final RequestMethod REQUEST_TYPE = RequestMethod.POST;
-	public static final String REQUEST_NAME = "getAll";
+	public static final String REQUEST_NAME = "getOneUser";
 	private static final List<HeaderKey> HEADER_KEY_LIST;
 	private static final List<ParameterKey> PARAMETER_KEY_LIST;
 	private static final List<BodyKey> BODY_KEY_LIST;
@@ -73,7 +73,7 @@ public class GetAll
 
 	};
 
-	private GetAll()
+	private GetOneUser()
 	{
 		
 	};

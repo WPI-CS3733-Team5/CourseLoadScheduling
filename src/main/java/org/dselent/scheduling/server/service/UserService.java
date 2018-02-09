@@ -27,8 +27,8 @@ public interface UserService
 	 * @return A list of rows affected for each insert operation
 	 * @throws SQLException
 	 */
-	public List<Integer> create(CreateUserDto createUserDto) throws SQLException;
-	public UserInfo getOne(GetOneUserDto getOneUserDto) throws SQLException;
-	public List<UserInfo> getAll(GetAllUserDto getAllUserDto) throws SQLException;
+	public List<Integer> createUser(CreateUserDto createUserDto) throws SQLException;
+	public UserInfo getOneUser(GetOneUserDto getOneUserDto) throws SQLException;
+	public List<UserInfo> getAllUser(GetAllUserDto getAllUserDto) throws SQLException;
     public UserInfo loginUser(String userName, String password);
 }

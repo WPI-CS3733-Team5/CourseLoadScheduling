@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.dselent.scheduling.server.controller.UserInfoController;
 import org.dselent.scheduling.server.dto.CreateUserDto;
 import org.dselent.scheduling.server.dto.GetAllUserDto;
 import org.dselent.scheduling.server.dto.GetOneUserDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
-import org.dselent.scheduling.server.requests.Create;
-import org.dselent.scheduling.server.requests.GetAll;
-import org.dselent.scheduling.server.requests.GetOne;
+import org.dselent.scheduling.server.requests.CreateUser;
+import org.dselent.scheduling.server.requests.GetAllUser;
+import org.dselent.scheduling.server.requests.GetOneUser;
 import org.dselent.scheduling.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +41,7 @@ public class UserInfoControllerImpl implements UserInfoController
 	 */
 
 	@Override
-	public ResponseEntity<String> create(@RequestBody Map<String, String> request) throws Exception
+	public ResponseEntity<String> createUser(@RequestBody Map<String, String> request) throws Exception
     {
     	// Print is for testing purposes
 		System.out.println("controller reached");
@@ -51,19 +50,19 @@ public class UserInfoControllerImpl implements UserInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 
-		Integer user_role = Integer.parseInt(request.get(Create.getBodyName(Create.BodyKey.USER_ROLE)));
-		String user_name = request.get(Create.getBodyName(Create.BodyKey.USER_NAME));
-		String first_name = request.get(Create.getBodyName(Create.BodyKey.FIRST_NAME));
-		String last_name = request.get(Create.getBodyName(Create.BodyKey.LAST_NAME));
-		String email = request.get(Create.getBodyName(Create.BodyKey.EMAIL));
-		Boolean deleted = Boolean.parseBoolean(request.get(Create.getBodyName(Create.BodyKey.DELETED)));
-		String encrypted_password = request.get(Create.getBodyName(Create.BodyKey.ENCRYPTED_PASSWORD));
-		Integer account_state = Integer.parseInt(request.get(Create.getBodyName(Create.BodyKey.ACCOUNT_STATE)));
-		String rank = request.get(Create.getBodyName(Create.BodyKey.RANK));
-		Integer course_load = Integer.parseInt(request.get(Create.getBodyName(Create.BodyKey.COURSE_LOAD)));
-		String phone_number = request.get(Create.getBodyName(Create.BodyKey.PHONE_NUMBER));
-		String office = request.get(Create.getBodyName(Create.BodyKey.OFFICE));
-		String department = request.get(Create.getBodyName(Create.BodyKey.DEPARTMENT));
+		Integer user_role = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_ROLE)));
+		String user_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_NAME));
+		String first_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.FIRST_NAME));
+		String last_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.LAST_NAME));
+		String email = request.get(CreateUser.getBodyName(CreateUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(CreateUser.getBodyName(CreateUser.BodyKey.DELETED)));
+		String encrypted_password = request.get(CreateUser.getBodyName(CreateUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer account_state = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(CreateUser.getBodyName(CreateUser.BodyKey.RANK));
+		Integer course_load = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.COURSE_LOAD)));
+		String phone_number = request.get(CreateUser.getBodyName(CreateUser.BodyKey.PHONE_NUMBER));
+		String office = request.get(CreateUser.getBodyName(CreateUser.BodyKey.OFFICE));
+		String department = request.get(CreateUser.getBodyName(CreateUser.BodyKey.DEPARTMENT));
 
 		CreateUserDto.Builder builder = CreateUserDto.builder();
 		CreateUserDto createUserDto = builder.withUserRole(user_role)
@@ -81,14 +80,14 @@ public class UserInfoControllerImpl implements UserInfoController
 				.withDepartment(department)
 				.build();
 		
-		userService.create(createUserDto);
+		userService.createUser(createUserDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
 	@Override
-	public ResponseEntity<String> getOne(@RequestBody Map<String, String> request) throws Exception
+	public ResponseEntity<String> getOneUser(@RequestBody Map<String, String> request) throws Exception
 	{
 		// Print is for testing purposes
 		System.out.println("controller reached");
@@ -97,19 +96,19 @@ public class UserInfoControllerImpl implements UserInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 
-		Integer user_role = Integer.parseInt(request.get(GetOne.getBodyName(GetOne.BodyKey.USER_ROLE)));
-		String user_name = request.get(GetOne.getBodyName(GetOne.BodyKey.USER_NAME));
-		String first_name = request.get(GetOne.getBodyName(GetOne.BodyKey.FIRST_NAME));
-		String last_name = request.get(GetOne.getBodyName(GetOne.BodyKey.LAST_NAME));
-		String email = request.get(GetOne.getBodyName(GetOne.BodyKey.EMAIL));
-		Boolean deleted = Boolean.parseBoolean(request.get(GetOne.getBodyName(GetOne.BodyKey.DELETED)));
-		String encrypted_password = request.get(GetOne.getBodyName(GetOne.BodyKey.ENCRYPTED_PASSWORD));
-		Integer account_state = Integer.parseInt(request.get(GetOne.getBodyName(GetOne.BodyKey.ACCOUNT_STATE)));
-		String rank = request.get(GetOne.getBodyName(GetOne.BodyKey.RANK));
-		Integer course_load = Integer.parseInt(request.get(GetOne.getBodyName(GetOne.BodyKey.COURSE_LOAD)));
-		String phone_number = request.get(GetOne.getBodyName(GetOne.BodyKey.PHONE_NUMBER));
-		String office = request.get(GetOne.getBodyName(GetOne.BodyKey.OFFICE));
-		String department = request.get(GetOne.getBodyName(GetOne.BodyKey.DEPARTMENT));
+		Integer user_role = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_ROLE)));
+		String user_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_NAME));
+		String first_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.FIRST_NAME));
+		String last_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.LAST_NAME));
+		String email = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.DELETED)));
+		String encrypted_password = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer account_state = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.RANK));
+		Integer course_load = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.COURSE_LOAD)));
+		String phone_number = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.PHONE_NUMBER));
+		String office = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.OFFICE));
+		String department = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.DEPARTMENT));
 
 		GetOneUserDto.Builder builder = GetOneUserDto.builder();
 		GetOneUserDto getOneUserDto = builder.withUserRole(user_role)
@@ -127,14 +126,14 @@ public class UserInfoControllerImpl implements UserInfoController
 				.withDepartment(department)
 				.build();
 
-		userService.getOne(getOneUserDto);
+		userService.getOneUser(getOneUserDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<String> getAll(@RequestBody Map<String, String> request) throws Exception
+	public ResponseEntity<String> getAllUser(@RequestBody Map<String, String> request) throws Exception
 	{
 		// Print is for testing purposes
 		System.out.println("controller reached");
@@ -143,19 +142,19 @@ public class UserInfoControllerImpl implements UserInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 
-		Integer user_role = Integer.parseInt(request.get(GetAll.getBodyName(GetAll.BodyKey.USER_ROLE)));
-		String user_name = request.get(GetAll.getBodyName(GetAll.BodyKey.USER_NAME));
-		String first_name = request.get(GetAll.getBodyName(GetAll.BodyKey.FIRST_NAME));
-		String last_name = request.get(GetAll.getBodyName(GetAll.BodyKey.LAST_NAME));
-		String email = request.get(GetAll.getBodyName(GetAll.BodyKey.EMAIL));
-		Boolean deleted = Boolean.parseBoolean(request.get(GetAll.getBodyName(GetAll.BodyKey.DELETED)));
-		String encrypted_password = request.get(GetAll.getBodyName(GetAll.BodyKey.ENCRYPTED_PASSWORD));
-		Integer account_state = Integer.parseInt(request.get(GetAll.getBodyName(GetAll.BodyKey.ACCOUNT_STATE)));
-		String rank = request.get(GetAll.getBodyName(GetAll.BodyKey.RANK));
-		Integer course_load = Integer.parseInt(request.get(GetAll.getBodyName(GetAll.BodyKey.COURSE_LOAD)));
-		String phone_number = request.get(GetAll.getBodyName(GetAll.BodyKey.PHONE_NUMBER));
-		String office = request.get(GetAll.getBodyName(GetAll.BodyKey.OFFICE));
-		String department = request.get(GetAll.getBodyName(GetAll.BodyKey.DEPARTMENT));
+		Integer user_role = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.USER_ROLE)));
+		String user_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.USER_NAME));
+		String first_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.FIRST_NAME));
+		String last_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.LAST_NAME));
+		String email = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.DELETED)));
+		String encrypted_password = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer account_state = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.RANK));
+		Integer course_load = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.COURSE_LOAD)));
+		String phone_number = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.PHONE_NUMBER));
+		String office = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.OFFICE));
+		String department = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.DEPARTMENT));
 
 		GetAllUserDto.Builder builder = GetAllUserDto.builder();
 		GetAllUserDto getAllUserDto = builder.withUserRole(user_role)
@@ -173,7 +172,7 @@ public class UserInfoControllerImpl implements UserInfoController
 				.withDepartment(department)
 				.build();
 
-		userService.getAll(getAllUserDto);
+		userService.getAllUser(getAllUserDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);

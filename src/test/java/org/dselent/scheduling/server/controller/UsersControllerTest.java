@@ -1,7 +1,7 @@
 package org.dselent.scheduling.server.controller;
 
 import org.dselent.scheduling.server.config.AppConfig;
-import org.dselent.scheduling.server.requests.Create;
+import org.dselent.scheduling.server.requests.CreateUser;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,11 +44,11 @@ public class UsersControllerTest
     public void testUsersController() throws Exception
     {
     	JSONObject jsonObject = new JSONObject();
-    	jsonObject.put(Create.getBodyName(Create.BodyKey.USER_NAME), "dselent");
-    	jsonObject.put(Create.getBodyName(Create.BodyKey.FIRST_NAME), "Doug");
-    	jsonObject.put(Create.getBodyName(Create.BodyKey.LAST_NAME), "Selent");
-    	jsonObject.put(Create.getBodyName(Create.BodyKey.ENCRYPTED_PASSWORD), "password1");
-    	jsonObject.put(Create.getBodyName(Create.BodyKey.EMAIL), "dselent@wpi.edu");
+    	jsonObject.put(CreateUser.getBodyName(CreateUser.BodyKey.USER_NAME), "dselent");
+    	jsonObject.put(CreateUser.getBodyName(CreateUser.BodyKey.FIRST_NAME), "Doug");
+    	jsonObject.put(CreateUser.getBodyName(CreateUser.BodyKey.LAST_NAME), "Selent");
+    	jsonObject.put(CreateUser.getBodyName(CreateUser.BodyKey.ENCRYPTED_PASSWORD), "password1");
+    	jsonObject.put(CreateUser.getBodyName(CreateUser.BodyKey.EMAIL), "dselent@wpi.edu");
     	String jsonString = jsonObject.toString();
         
     	// System.out.println(jsonString);

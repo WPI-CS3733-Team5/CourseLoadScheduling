@@ -12,15 +12,15 @@ public interface UserInfoController
 {
     
     @RequestMapping(method=RequestMethod.POST, value="getAll")
-	public ResponseEntity<String> getAll(@RequestBody Map<String, String> request) throws Exception;
+	public ResponseEntity<String> getAllUser(@RequestBody Map<String, String> request) throws Exception;
 
 
-    @RequestMapping(method=RequestMethod.POST, value="GetOne")
-    public ResponseEntity<String> getOne(@RequestBody Map<String, String> request) throws Exception;
+    @RequestMapping(method=RequestMethod.POST, value="GetOneUser")
+    public ResponseEntity<String> getOneUser(@RequestBody Map<String, String> request) throws Exception;
 
 
     @RequestMapping(method=RequestMethod.POST, value="create")
-    public ResponseEntity<String> create(@RequestBody Map<String, String> request) throws Exception;
+    public ResponseEntity<String> createUser(@RequestBody Map<String, String> request) throws Exception;
 }
 
 	
