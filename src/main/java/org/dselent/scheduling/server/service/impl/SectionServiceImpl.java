@@ -49,8 +49,16 @@ public class SectionServiceImpl implements SectionService {
     @Transactional
     @Override
     public List<Integer> createSection(CreateSectionDto createSectionDto) throws SQLException{
-
+        return null;
     }
 
+    @Override
+    public SectionInfo getOneSection() throws SQLException {
+        return null;
+    }
 
+    @Override
+    public List<SectionService> getAllSections() throws SQLException {
+        return null;
+    }
 }

@@ -59,7 +59,7 @@ public class NotificationControllerImpl implements NotificationController {
         Integer requestedNotificationId = Integer.parseInt(request.get(GetOneNotification.getBodyName(GetOneNotification.BodyKey.REQUESTED_NOTIFICATION_ID)));
 
         GetOneNotificationDto.Builder builder = GetOneNotificationDto.builder();
-        GetOneNotificationDto getOneNotificationDto = builder.withRequestedNotificationId(requestedNotificationId)
+        GetOneNotificationDto getOneNotificationDto = builder.withid(requestedNotificationId)
                 .build();
 
         notificationService.getOneNotification(getOneNotificationDto);
