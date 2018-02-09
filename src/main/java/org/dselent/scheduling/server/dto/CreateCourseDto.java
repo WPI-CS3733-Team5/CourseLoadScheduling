@@ -1,7 +1,7 @@
 package org.dselent.scheduling.server.dto;
 
 import javax.annotation.Generated;
-import java.util.Objects;
+//import java.util.Objects;
 
 /**
  * DTO = Data Transfer Object
@@ -251,6 +251,12 @@ public class CreateCourseDto
 		public Builder withRequiredFrequencyPerSemester(String requiredFrequencyPerSemester)
 		{
 			this.requiredFrequencyPerSemester = requiredFrequencyPerSemester;
+			return this;
+		}
+		
+		public Builder withRequiredFrequencyPerYear(String requiredFrequencyPerYear)
+		{
+			this.requiredFrequencyPerYear = requiredFrequencyPerYear;
 			return this;
 		}
 
