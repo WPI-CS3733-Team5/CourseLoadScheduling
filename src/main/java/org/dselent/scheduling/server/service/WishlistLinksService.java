@@ -19,12 +19,9 @@ import org.springframework.stereotype.Service;
 public interface WishlistLinksService
 {
 	/**
-	 * Registers a user into the system
-	 * Performs an insert into the users table and users_roles_links table as a transaction
-	 * 
-	 * @param registerUserDto DTO container information for the insertions
-	 * @return A list of rows affected for each insert operation
-	 * @throws SQLException
+	 *
+	 * DONT STRAIGHT COPY PASTE DOCUMENTATIONS PLEASE
+	 *
 	 */
 	public List<Integer> wishlistLinks(WishlistLinksDto wishlistLinksDto) throws SQLException;
     //public UserInfo loginUser(String userName, String password);

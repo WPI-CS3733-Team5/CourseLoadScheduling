@@ -61,6 +61,8 @@ public class CreateCourseDto
 		{
 			throw new IllegalStateException("courseNumber cannot be null");
 		}
+
+
 	}
 
 

@@ -6,4 +6,5 @@
 /vpproject
 /gradle
 /.idea
+./.idea
 .classpath
