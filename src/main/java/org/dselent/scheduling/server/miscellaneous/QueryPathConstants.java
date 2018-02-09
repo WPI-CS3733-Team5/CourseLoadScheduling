@@ -9,7 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
- * Register all custom SQL query files here
+ * CreateUser all custom SQL query files here
  * 
  * @author dselent
  *
