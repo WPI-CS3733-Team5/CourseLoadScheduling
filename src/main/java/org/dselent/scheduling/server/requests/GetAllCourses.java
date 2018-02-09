@@ -1,16 +1,15 @@
 package org.dselent.scheduling.server.requests;
 
-import org.dselent.scheduling.server.miscellaneous.RequestParameterConverter;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateNotification {
+import org.dselent.scheduling.server.miscellaneous.RequestParameterConverter;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-
+public class GetAllCourses
+{
     public static final RequestMethod REQUEST_TYPE = RequestMethod.POST;
-    public static final String REQUEST_NAME = "createNotification";
+    public static final String REQUEST_NAME = "getAllCourses";
     private static final List<HeaderKey> HEADER_KEY_LIST;
     private static final List<ParameterKey> PARAMETER_KEY_LIST;
     private static final List<BodyKey> BODY_KEY_LIST;
@@ -27,10 +26,10 @@ public class CreateNotification {
 
     public static enum BodyKey
     {
-        MESSAGE,
-        FROM_USER_INFO_ID,
-        TO_USER_INFO_ID;
+
     }
+
+
 
     static
     {
@@ -55,8 +54,10 @@ public class CreateNotification {
 
     };
 
-    private CreateNotification() {
-    }
+    private GetAllCourses()
+    {
+
+    };
 
     public static String getHeaderName(HeaderKey key)
     {
@@ -109,3 +110,4 @@ public class CreateNotification {
         return bodyNameList;
     }
 }
+
