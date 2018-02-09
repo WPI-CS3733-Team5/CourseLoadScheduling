@@ -1,6 +1,10 @@
 package org.dselent.scheduling.server.controller;
 
 import java.util.Map;
+
+import org.dselent.scheduling.server.requests.CreateNotification;
+import org.dselent.scheduling.server.requests.GetAllNotifications;
+import org.dselent.scheduling.server.requests.GetOneNotification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
