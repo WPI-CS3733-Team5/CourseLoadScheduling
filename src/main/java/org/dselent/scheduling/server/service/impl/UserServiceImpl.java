@@ -6,14 +6,12 @@ import java.util.List;
 
 import org.dselent.scheduling.server.dao.InstructorInfoDao;
 import org.dselent.scheduling.server.dao.UserInfoDao;
-import org.dselent.scheduling.server.dao.UsersRolesLinksDao;
 import org.dselent.scheduling.server.dto.CreateUserDto;
 import org.dselent.scheduling.server.dto.GetAllUserDto;
 import org.dselent.scheduling.server.dto.GetOneUserDto;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.model.InstructorInfo;
 import org.dselent.scheduling.server.model.UserInfo;
-import org.dselent.scheduling.server.model.UsersRolesLink;
 import org.dselent.scheduling.server.service.UserService;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -45,25 +43,25 @@ public class UserServiceImpl implements UserService
      */
     @Transactional
     @Override
-	public List<Integer> create(CreateUserDto dto) throws SQLException
+	public List<Integer> createUser(CreateUserDto dto) throws SQLException
 	{
 		List<Integer> rowsAffectedList = new ArrayList<>();
 
 		String salt = KeyGenerators.string().generateKey();
-		String saltedPassword = dto.getEncrypted_password() + salt;
+		String saltedPassword = dto.getEncryptedPassword() + salt;
 		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
 		String encryptedPassword = passwordEncorder.encode(saltedPassword);
 		
 		UserInfo userInfo = new UserInfo();
-		userInfo.setUserRole(dto.getUser_role());
+		userInfo.setUserRole(dto.getUserRole());
 		userInfo.setUserName(dto.getUsername());
-		userInfo.setFirstName(dto.getFirst_name());
-		userInfo.setLastName(dto.getLast_name());
+		userInfo.setFirstName(dto.getFirstName());
+		userInfo.setLastName(dto.getLastName());
 		userInfo.setEmail(dto.getEmail());
 		userInfo.setDeleted(dto.getDeleted());
 		userInfo.setEncryptedPassword(encryptedPassword);
 		userInfo.setSalt(salt);
-		userInfo.setAccountState(dto.getAccount_state());
+		userInfo.setAccountState(dto.getAccountState());
 
     	
     	List<String> userInsertColumnNameList = new ArrayList<>();
@@ -87,8 +85,8 @@ public class UserServiceImpl implements UserService
 		if(!dto.getRank().equals(null)){
 			InstructorInfo instructorInfo = new InstructorInfo();
 			instructorInfo.setRank(dto.getRank());
-			instructorInfo.setCourseLoad(dto.getCourse_load());
-			instructorInfo.setPhoneNumber(dto.getPhone_number());
+			instructorInfo.setCourseLoad(dto.getCourseLoad());
+			instructorInfo.setPhoneNumber(dto.getPhoneNumber());
 			instructorInfo.setOffice(dto.getOffice());
 			instructorInfo.setDepartment(dto.getDepartment());
 			instructorInfo.setUserInfoId(userInfo.getId());
@@ -113,7 +111,7 @@ public class UserServiceImpl implements UserService
 
 	@Transactional
 	@Override
-	public UserInfo getOne(GetOneUserDto dto) throws SQLException
+	public UserInfo getOneUser(GetOneUserDto dto) throws SQLException
 	{
 
 		UserInfo userInfo = userinfoDao.findById(dto.getId());
@@ -123,7 +121,7 @@ public class UserServiceImpl implements UserService
 
 	@Transactional
 	@Override
-	public List<UserInfo> getAll(GetAllUserDto dto) throws SQLException {
+	public List<UserInfo> getAllUser(GetAllUserDto dto) throws SQLException {
 
 		List<String> selectColumnNameList = new ArrayList<>();
 		List<QueryTerm> queryTermList = new ArrayList<>();

@@ -14,17 +14,17 @@ import java.util.Objects;
 public class GetOneUserDto
 {
 	private final Integer id;
-	private final Integer user_role;
+	private final Integer userRole;
 	private final String username;
-	private final String first_name;
-	private final String last_name;
+	private final String firstName;
+	private final String lastName;
 	private final String email;
 	private final Boolean deleted;
-	private final String encrypted_password;
-	private final Integer account_state;
+	private final String encryptedPassword;
+	private final Integer accountState;
 	private final String rank;
-	private final Integer course_load;
-	private final String phone_number;
+	private final Integer courseLoad;
+	private final String phoneNumber;
 	private final String office;
 	private final String department;
 
@@ -36,17 +36,17 @@ public class GetOneUserDto
 		// can add defaults if null for other places where the builder pattern is used
 
 		this.id = builder.id;
-		this.user_role = builder.userRole;
+		this.userRole = builder.userRole;
 		this.username = builder.userName;
-		this.first_name = builder.firstName;
-		this.last_name = builder.lastName;
+		this.firstName = builder.firstName;
+		this.lastName = builder.lastName;
 		this.email = builder.email;
 		this.deleted = builder.deleted;
-		this.encrypted_password = builder.password;
-		this.account_state = builder.accountState;
+		this.encryptedPassword = builder.password;
+		this.accountState = builder.accountState;
 		this.rank = builder.rank;
-		this.course_load = builder.couseLoad;
-		this.phone_number = builder.phoneNumber;
+		this.courseLoad = builder.couseLoad;
+		this.phoneNumber = builder.phoneNumber;
 		this.office = builder.office;
 		this.department = builder.department;
 		
@@ -57,11 +57,11 @@ public class GetOneUserDto
 		{
 			throw new IllegalStateException("userName cannot be null");
 		}
-		else if(this.first_name == null)
+		else if(this.firstName == null)
 		{
 			throw new IllegalStateException("firstName cannot be null");
 		}
-		else if(this.last_name == null)
+		else if(this.lastName == null)
 		{
 			throw new IllegalStateException("lastName cannot be null");
 		}
@@ -69,21 +69,21 @@ public class GetOneUserDto
 		{
 			throw new IllegalStateException("email cannot be null");
 		}
-		else if(this.encrypted_password == null)
+		else if(this.encryptedPassword == null)
 		{
 			throw new IllegalStateException("password cannot be null");
 		}
-		else if(this.user_role == null)
+		else if(this.userRole == null)
 		{
-			throw new IllegalStateException("user_role cannot be null");
+			throw new IllegalStateException("userRole cannot be null");
 		}
 		else if(this.deleted == null)
 		{
 			throw new IllegalStateException("deleted cannot be null");
 		}
-		else if(this.account_state == null)
+		else if(this.accountState == null)
 		{
-			throw new IllegalStateException("account_state cannot be null");
+			throw new IllegalStateException("accountState cannot be null");
 		}
 		else if(this.id == null)
 		{
@@ -93,20 +93,20 @@ public class GetOneUserDto
 
 	public Integer getId() { return id; }
 
-	public Integer getUser_role() {
-		return user_role;
+	public Integer getUserRole() {
+		return userRole;
 	}
 
 	public String getUsername() {
 		return username;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
 	public String getEmail() {
@@ -117,24 +117,24 @@ public class GetOneUserDto
 		return deleted;
 	}
 
-	public String getEncrypted_password() {
-		return encrypted_password;
+	public String getEncryptedPassword() {
+		return encryptedPassword;
 	}
 
-	public Integer getAccount_state() {
-		return account_state;
+	public Integer getAccountState() {
+		return accountState;
 	}
 
 	public String getRank() {
 		return rank;
 	}
 
-	public Integer getCourse_load() {
-		return course_load;
+	public Integer getCourseLoad() {
+		return courseLoad;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	public String getOffice() {
@@ -151,17 +151,17 @@ public class GetOneUserDto
 		if (o == null || getClass() != o.getClass()) return false;
 		GetOneUserDto that = (GetOneUserDto) o;
 		return Objects.equals(getId(), that.getId()) &&
-				Objects.equals(getUser_role(), that.getUser_role()) &&
+				Objects.equals(getUserRole(), that.getUserRole()) &&
 				Objects.equals(getUsername(), that.getUsername()) &&
-				Objects.equals(getFirst_name(), that.getFirst_name()) &&
-				Objects.equals(getLast_name(), that.getLast_name()) &&
+				Objects.equals(getFirstName(), that.getFirstName()) &&
+				Objects.equals(getLastName(), that.getLastName()) &&
 				Objects.equals(getEmail(), that.getEmail()) &&
 				Objects.equals(getDeleted(), that.getDeleted()) &&
-				Objects.equals(getEncrypted_password(), that.getEncrypted_password()) &&
-				Objects.equals(getAccount_state(), that.getAccount_state()) &&
+				Objects.equals(getEncryptedPassword(), that.getEncryptedPassword()) &&
+				Objects.equals(getAccountState(), that.getAccountState()) &&
 				Objects.equals(getRank(), that.getRank()) &&
-				Objects.equals(getCourse_load(), that.getCourse_load()) &&
-				Objects.equals(getPhone_number(), that.getPhone_number()) &&
+				Objects.equals(getCourseLoad(), that.getCourseLoad()) &&
+				Objects.equals(getPhoneNumber(), that.getPhoneNumber()) &&
 				Objects.equals(getOffice(), that.getOffice()) &&
 				Objects.equals(getDepartment(), that.getDepartment());
 	}
@@ -171,17 +171,17 @@ public class GetOneUserDto
 
 		return Objects.hash(
 				getId(),
-				getUser_role(),
+				getUserRole(),
 				getUsername(),
-				getFirst_name(),
-				getLast_name(),
+				getFirstName(),
+				getLastName(),
 				getEmail(),
 				getDeleted(),
-				getEncrypted_password(),
-				getAccount_state(),
+				getEncryptedPassword(),
+				getAccountState(),
 				getRank(),
-				getCourse_load(),
-				getPhone_number(),
+				getCourseLoad(),
+				getPhoneNumber(),
 				getOffice(),
 				getDepartment());
 	}
@@ -190,17 +190,17 @@ public class GetOneUserDto
 	public String toString() {
 		return "CreateUserDto{" +
 				"id ='" + id + '\'' +
-				", user_role='" + user_role + '\'' +
+				", userRole='" + userRole + '\'' +
 				", username='" + username + '\'' +
-				", first_name='" + first_name + '\'' +
-				", last_name='" + last_name + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
 				", email='" + email + '\'' +
 				", deleted=" + deleted +
-				", encrypted_password='" + encrypted_password + '\'' +
-				", account_state=" + account_state +
+				", encryptedPassword='" + encryptedPassword + '\'' +
+				", accountState=" + accountState +
 				", rank='" + rank + '\'' +
-				", course_load=" + course_load +
-				", phone_number=" + phone_number +
+				", courseLoad=" + courseLoad +
+				", phoneNumber=" + phoneNumber +
 				", office='" + office + '\'' +
 				", department='" + department + '\'' +
 				'}';
