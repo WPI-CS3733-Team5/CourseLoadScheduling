@@ -1,7 +1,7 @@
 package org.dselent.scheduling.server.dto;
 
 import javax.annotation.Generated;
-import java.util.Objects;
+//import java.util.Objects;
 
 /**
  * DTO = Data Transfer Object
@@ -96,7 +96,7 @@ public class CreateCourseDto
 
 
 
-	public String getCreditAmount() {
+	public Float getCreditAmount() {
 		return creditAmount;
 	}
 
@@ -255,6 +255,12 @@ public class CreateCourseDto
 			this.requiredFrequencyPerSemester = requiredFrequencyPerSemester;
 			return this;
 		}
+		
+		public Builder withRequiredFrequencyPerYear(String requiredFrequencyPerYear)
+		{
+			this.requiredFrequencyPerYear = requiredFrequencyPerYear;
+			return this;
+		}
 
 	
 		public Builder withDeleted(Boolean deleted)
@@ -293,9 +299,9 @@ public class CreateCourseDto
 			return this;
 		}
 
-		public CreateUserDto build()
+		public CreateCourseDto build()
 		{
-			return new CreateUserDto(this);
+			return new CreateCourseDto(this);
 		}
 	}
 }
