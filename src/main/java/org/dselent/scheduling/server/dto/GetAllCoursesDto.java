@@ -14,13 +14,14 @@ import java.util.Objects;
 public class GetAllCoursesDto
 {
     private final String courseName;
-    private final String requiredFrequencyPerTerm;
-    private final String requiredFrequencyPerSemester;
-    private final String requiredFrequencyPerYear;
+    private final Integer requiredFrequencyPerTerm;
+    private final Integer requiredFrequencyPerSemester;
+    private final Integer requiredFrequencyPerYear;
     private final Float creditAmount;
     private final Boolean deleted;
     private final String department;
     private final Integer courseNumber;
+
 
     private GetAllCoursesDto(Builder builder){
         courseName = builder.courseName;
@@ -68,9 +69,9 @@ public class GetAllCoursesDto
 
     public static final class Builder {
         private String courseName;
-        private String requiredFrequencyPerTerm;
-        private String requiredFrequencyPerSemester;
-        private String requiredFrequencyPerYear;
+        private Integer requiredFrequencyPerTerm;
+        private Integer requiredFrequencyPerSemester;
+        private Integer requiredFrequencyPerYear;
         private Float creditAmount;
         private Boolean deleted;
         private String department;
@@ -88,17 +89,17 @@ public class GetAllCoursesDto
             return this;
         }
 
-        public Builder withRequiredFrequencyPerTerm(String requiredFrequencyPerTerm) {
+        public Builder withRequiredFrequencyPerTerm(Integer requiredFrequencyPerTerm) {
             this.requiredFrequencyPerTerm = requiredFrequencyPerTerm;
             return this;
         }
 
-        public Builder withRequiredFrequencyPerSemester(String requiredFrequencyPerSemester) {
+        public Builder withRequiredFrequencyPerSemester(Integer requiredFrequencyPerSemester) {
             this.requiredFrequencyPerSemester = requiredFrequencyPerSemester;
             return this;
         }
 
-        public Builder withRequiredFrequencyPerYear(String requiredFrequencyPerYear) {
+        public Builder withRequiredFrequencyPerYear(Integer requiredFrequencyPerYear) {
             this.requiredFrequencyPerYear = requiredFrequencyPerYear;
             return this;
         }

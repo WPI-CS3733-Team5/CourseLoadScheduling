@@ -1,24 +1,20 @@
 package org.dselent.scheduling.server.service;
 
 import org.dselent.scheduling.server.dto.CreateCourseDto;
-//import org.dselent.scheduling.server.dto.GetOneScheduleDto;
-import org.dselent.scheduling.server.model.ScheduleLinks;
+import org.dselent.scheduling.server.dto.GetAllCoursesDto;
+import org.dselent.scheduling.server.model.CourseInfo;
 
 import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+// created by David McHorney
 
 @Service
 public interface CourseService
 {
-    /**
-     * Gets the schedule for the requesting user
-     *
-     * @param getOneScheduleDto DTO container information for the insertions
-     * @return A list of rows affected for each insert operation
-     * @throws SQLException
-     */
-
-    public ScheduleLinks createCourse(CreateCourseDto createCourseDto) throws SQLException;
+    public List<Integer> createCourse(CreateCourseDto createCourseDto) throws SQLException;
+    public List<CourseInfo> getAllCourses(GetAllCoursesDto getAllCoursesDto) throws SQLException;
 
 }
