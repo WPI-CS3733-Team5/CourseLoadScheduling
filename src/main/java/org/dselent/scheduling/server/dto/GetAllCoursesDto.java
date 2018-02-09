@@ -22,6 +22,7 @@ public class GetAllCoursesDto
     private final String department;
     private final Integer courseNumber;
 
+
     private GetAllCoursesDto(Builder builder){
         courseName = builder.courseName;
         requiredFrequencyPerTerm = builder.requiredFrequencyPerTerm;
