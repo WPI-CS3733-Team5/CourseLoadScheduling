@@ -2,6 +2,9 @@ package org.dselent.scheduling.server.controller;
 
 import java.util.Map;
 
+import org.dselent.scheduling.server.requests.CreateSection;
+import org.dselent.scheduling.server.requests.GetAllSections;
+import org.dselent.scheduling.server.requests.GetOneSection;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

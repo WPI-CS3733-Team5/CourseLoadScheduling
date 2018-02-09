@@ -1,22 +1,15 @@
 package org.dselent.scheduling.server.requests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.dselent.scheduling.server.miscellaneous.RequestParameterConverter;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Defines information for the register request including the keys for the
- * header, parameters, and body and the request type (RequestMethod).
- *
- * @author dselent
- *
- */
-public class CreateSection
-{
+import java.util.ArrayList;
+import java.util.List;
+
+public class GetOneSection {
+
     public static final RequestMethod REQUEST_TYPE = RequestMethod.POST;
-    public static final String REQUEST_NAME = "createSection";
+    public static final String REQUEST_NAME = "getOneSection";
     private static final List<HeaderKey> HEADER_KEY_LIST;
     private static final List<ParameterKey> PARAMETER_KEY_LIST;
     private static final List<BodyKey> BODY_KEY_LIST;
@@ -33,16 +26,12 @@ public class CreateSection
 
     public static enum BodyKey
     {
-        SECTION_NUMBER,
-        SECTION_TYPE,
-        INSTRUCTOR_INFO_ID,
-        LOCATION,
-        COURSE_INFO_ID,
-        CALENDAR_INFO_ID,
-        DELETED
+        COURSE,
+        LIST_OF_SECTIONS,
+        LIST_OF_LABS,
+        LIST_OF_CALENDARS,
+        LIST_OF_POPULATIONS
     }
-
-
 
     static
     {
@@ -65,12 +54,11 @@ public class CreateSection
             BODY_KEY_LIST.add(key);
         }
 
-    };
+    }
 
-    private CreateSection()
+    public GetOneSection()
     {
-
-    };
+    }
 
     public static String getHeaderName(HeaderKey key)
     {
@@ -122,4 +110,5 @@ public class CreateSection
 
         return bodyNameList;
     }
+
 }

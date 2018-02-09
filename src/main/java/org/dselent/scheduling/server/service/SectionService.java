@@ -7,10 +7,10 @@ import org.dselent.scheduling.server.dto.CreateSectionDto;
 import org.dselent.scheduling.server.model.SectionInfo;
 import org.springframework.stereotype.Service;
 
-@service
+@Service
 public interface SectionService{
 
     public List<Integer> createSection(CreateSectionDto createSectionDto) throws SQLException;
     public SectionInfo getOneSection() throws SQLException;
-    public List<UserInfo> getAllUser() throws SQLException;
+    public List<SectionService> getAllSections() throws SQLException;
 }

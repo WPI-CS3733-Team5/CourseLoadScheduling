@@ -46,13 +46,13 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 		
-		String CourseName = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSENAME));
-		String RequiredFrequencyPerTerm = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIREDFREQUENCYPERTERM));
-		String RequiredFrequencyPerSemester = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIREDFREQUENCYPERSEMESTER));
-		String RequiredFrequencyPerYear = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIREDFREQUENCYPERYEAR));
-		Float CreditAmount = Float.parseFloat(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDITAMOUNT));
+		String CourseName = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NAME));
+		String RequiredFrequencyPerTerm = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM));
+		String RequiredFrequencyPerSemester = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER));
+		String RequiredFrequencyPerYear = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR));
+		Float CreditAmount = Float.parseFloat(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT));
 		String Department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
-		Integer CourseNumber = Integer.parseInt(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSENUMBER));
+		Integer CourseNumber = Integer.parseInt(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER));
 		
 
 		CreateCourseDto.Builder builder = CreateCourseDto.builder();
