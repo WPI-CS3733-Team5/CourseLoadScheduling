@@ -33,12 +33,13 @@ public class CreateSection
 
     public static enum BodyKey
     {
-        SECTIONNUMBER,
-        SECTIONTYPE,
-        INSTRUCTORINFOID,
+        SECTION_NUMBER,
+        SECTION_TYPE,
+        INSTRUCTOR_INFO_ID,
         LOCATION,
-        COURSEINFOID,
-        CALENDARINFOID
+        COURSE_INFO_ID,
+        CALENDAR_INFO_ID,
+        DELETED
     }
 
 

@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class SecctionServiceImpl implements SectionService {
+public class SectionServiceImpl implements SectionService {
 
     @Autowired
     private SectionInfoDao sectionInfoDao;
@@ -49,8 +49,16 @@ public class SecctionServiceImpl implements SectionService {
     @Transactional
     @Override
     public List<Integer> createSection(CreateSectionDto createSectionDto) throws SQLException{
-
+        return null;
     }
 
+    @Override
+    public SectionInfo getOneSection() throws SQLException {
+        return null;
+    }
 
+    @Override
+    public List<SectionService> getAllSections() throws SQLException {
+        return null;
+    }
 }
