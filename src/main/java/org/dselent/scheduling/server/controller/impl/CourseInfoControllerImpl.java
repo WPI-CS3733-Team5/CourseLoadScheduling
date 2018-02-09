@@ -9,7 +9,7 @@ import org.dselent.scheduling.server.dto.CreateCourseDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateCourse;
 //import org.dselent.scheduling.server.requests.GetWishlistLinks;
-import org.dselent.scheduling.server.service.CreateCourseService;
+import org.dselent.scheduling.server.service.CourseService;
 //import org.dselent.scheduling.server.service.WishlistLinksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CourseInfoControllerImpl implements CourseInfoController
 {
 	@Autowired
-    private CreateCourseService createCourse;
+    private CourseService createCourse;
     
 	/**
 	 * 
