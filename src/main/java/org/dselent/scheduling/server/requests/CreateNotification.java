@@ -29,7 +29,7 @@ public class CreateNotification {
     {
         MESSAGE,
         FROM_USER_INFO_ID,
-        TO_USER_ID;
+        TO_USER_INFO_ID;
     }
 
     static

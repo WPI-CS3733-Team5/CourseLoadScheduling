@@ -6,15 +6,17 @@ import java.util.Objects;
  *  Data transfer object for creating and getting Notifications.
  *
  *  Written by: Leo Gonsalves
+ *
+ *  UPDATE: Reconfigured to be specific to creating Notifications by David McHorney
  */
-public class NotificationDto {
+public class CreateNotificationDto {
 
     private final String message;
     private final Integer fromUserInfoId;
     private final Integer toUserInfoId;
 
     /* Constructor */
-    private NotificationDto(Builder builder)
+    private CreateNotificationDto(Builder builder)
     {
         this.message = builder.message;
         this.fromUserInfoId = builder.fromUserInfoId;
@@ -57,7 +59,7 @@ public class NotificationDto {
         private Builder() {
         }
 
-        public static Builder aNotificationDto() {
+        public static Builder aCreateNotificationDto() {
             return new Builder();
         }
 
@@ -76,9 +78,9 @@ public class NotificationDto {
             return this;
         }
 
-        public NotificationDto build() {
-            NotificationDto notificationDto = new NotificationDto(this);
-            return notificationDto;
+        public CreateNotificationDto build() {
+            CreateNotificationDto createNotificationDto = new CreateNotificationDto(this);
+            return createNotificationDto;
         }
     }
 
@@ -88,7 +90,7 @@ public class NotificationDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NotificationDto that = (NotificationDto) o;
+        CreateNotificationDto that = (CreateNotificationDto) o;
         return Objects.equals(message, that.message) &&
                 Objects.equals(fromUserInfoId, that.fromUserInfoId) &&
                 Objects.equals(toUserInfoId, that.toUserInfoId);
@@ -102,7 +104,7 @@ public class NotificationDto {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("NotificationDto{");
+        final StringBuilder sb = new StringBuilder("CreateNotificationDto{");
         sb.append("message='").append(message).append('\'');
         sb.append(", fromUserInfoId=").append(fromUserInfoId);
         sb.append(", toUserInfoId=").append(toUserInfoId);

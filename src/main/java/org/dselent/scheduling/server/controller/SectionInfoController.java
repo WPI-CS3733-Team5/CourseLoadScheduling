@@ -2,7 +2,6 @@ package org.dselent.scheduling.server.controller;
 
 import java.util.Map;
 
-import org.dselent.scheduling.server.requests.Register;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,5 @@ public interface SectionInfoController{
 
     @RequestMapping(method = RequestMethod.POST, value = GetAllSections.REQUEST_NAME)
     public ResponseEntity<String> getAllSections(@RequestBody Map<String, String> request) throws Exception;
-
-
 
 }
