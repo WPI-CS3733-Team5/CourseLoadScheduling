@@ -60,7 +60,7 @@ public class SectionInfoControllerImpl implements SectionInfoController{
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        
+
 
     }
 
