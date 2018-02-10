@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.dselent.scheduling.server.controller.CourseInfoController;
 import org.dselent.scheduling.server.dto.CreateCourseDto;
+import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateCourse;
 //import org.dselent.scheduling.server.requests.GetWishlistLinks;
+import org.dselent.scheduling.server.requests.GetAllCourses;
 import org.dselent.scheduling.server.service.CourseService;
 //import org.dselent.scheduling.server.service.WishlistLinksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CourseInfoControllerImpl implements CourseInfoController
 {
 	@Autowired
-    private CourseService createCourse;
+    private CourseService courseService;
     
 	/**
 	 * 
@@ -47,10 +49,10 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		List<Object> success = new ArrayList<Object>();
 		
 		String CourseName = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NAME));
-		String RequiredFrequencyPerTerm = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM));
-		String RequiredFrequencyPerSemester = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER));
-		String RequiredFrequencyPerYear = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR));
-		Float CreditAmount = Float.parseFloat(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT));
+		Integer RequiredFrequencyPerTerm = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM)));
+		Integer RequiredFrequencyPerSemester = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER)));
+		Integer RequiredFrequencyPerYear = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR)));
+		Integer CreditAmount = Integer.parseInt(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT));
 		String Department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
 		Integer CourseNumber = Integer.parseInt(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER));
 		
@@ -65,11 +67,10 @@ public class CourseInfoControllerImpl implements CourseInfoController
 				.withCourseNumber(CourseNumber)
 				.build();
 		
-		createCourse.createCourse(createCourseDto);
+		courseService.createCourse(createCourseDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
     }
-
 }
 
