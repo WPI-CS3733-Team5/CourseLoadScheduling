@@ -20,6 +20,27 @@ public class CreateSectionDto
     private final Integer course_info_id;
     private final Integer calendar_info_id;
 
+    public Integer getSectionNumber() {
+    	return section_number;
+    }
+    public String getSectionType() {
+    	return section_type;
+    }
+    public Integer getInstructorInfoId() {
+    	return instructor_info_id;
+    }
+    public String getLocation() {
+    	return location;
+    }
+    public Boolean getDeleted() {
+    	return deleted;
+    }
+    public Integer getCourseInfoId() {
+    	return course_info_id;
+    }
+    public Integer getCalendarInfoId() {
+    	return calendar_info_id;
+    }
     private CreateSectionDto(Builder builder){
         this.section_number = builder.section_number;
         this.section_type = builder.section_type;
