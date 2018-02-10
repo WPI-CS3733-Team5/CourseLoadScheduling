@@ -9,10 +9,7 @@ import org.dselent.scheduling.server.dto.CreateCourseDto;
 import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateCourse;
-//import org.dselent.scheduling.server.requests.GetWishlistLinks;
-import org.dselent.scheduling.server.requests.GetAllCourses;
 import org.dselent.scheduling.server.service.CourseService;
-//import org.dselent.scheduling.server.service.WishlistLinksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,6 +68,22 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<String> getAllCourses(@RequestBody Map<String, String> request) throws Exception{
+        System.out.println("notification controller reached");
+
+        String response = "";
+        List<Object> success = new ArrayList<Object>();
+
+        GetAllCoursesDto.Builder builder = GetAllCoursesDto.builder();
+        GetAllCoursesDto getAllCoursesDto = builder.build();
+
+        courseService.getAllCourses(getAllCoursesDto);
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+        return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 }
 
