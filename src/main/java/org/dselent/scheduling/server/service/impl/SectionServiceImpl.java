@@ -10,11 +10,11 @@ import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dao.LabInfoDao;
 import org.dselent.scheduling.server.dao.CalendarInfoDao;
 import org.dselent.scheduling.server.dto.CreateSectionDto;
+import org.dselent.scheduling.server.dto.GetOneSectionDto;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.model.CourseInfo;
 import org.dselent.scheduling.server.model.SectionInfo;
 import org.dselent.scheduling.server.model.SectionPopulation;
-import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.model.LabInfo;
 import org.dselent.scheduling.server.model.CalendarInfo;
 
@@ -79,12 +79,21 @@ public class SectionServiceImpl implements SectionService {
     }
 
     @Override
-    public SectionInfo getOneSection() throws SQLException {
-    	return null;
+    public SectionInfo getOneSection(GetOneSectionDto dto) throws SQLException{
+    	SectionInfo SectionInfo = sectionInfoDao.findById(dto.getId());
+
+		return  SectionInfo;
+
     }
 
     @Override
-    public List<SectionService> getAllSections() throws SQLException {
-        return null;
+    public List<SectionInfo> getAllSections() throws SQLException {
+    	List<String> selectColumnNameList = new ArrayList<>();
+		List<QueryTerm> queryTermList = new ArrayList<>();
+		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
+		selectColumnNameList.addAll(SectionInfo.getColumnNameList());
+		Pair<String, ColumnOrder> byId = new Pair<>(SectionInfo.getColumnName(SectionInfo.Columns.ID), ColumnOrder.ASC);
+
+		return sectionInfoDao.select(selectColumnNameList, queryTermList, orderByList);
     }
 }
