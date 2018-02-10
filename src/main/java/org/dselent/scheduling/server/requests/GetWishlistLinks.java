@@ -3,7 +3,7 @@ package org.dselent.scheduling.server.requests;
 import java.util.ArrayList;
 import java.util.List;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+//import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.dselent.scheduling.server.miscellaneous.RequestParameterConverter;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,8 +34,8 @@ public class GetWishlistLinks
 	
 	public static enum BodyKey
 	{
-		INSTRUCTORINFOID,
-		SECTIONINFOID
+		INSTRUCTOR_INFO_ID,
+		SECTION_INFO_ID
 	}
 	
 

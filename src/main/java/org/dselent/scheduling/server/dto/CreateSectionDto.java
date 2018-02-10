@@ -1,6 +1,6 @@
 package org.dselent.scheduling.server.dto;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+//import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.dselent.scheduling.server.requests.CreateSection;
 
 import javax.annotation.Generated;
