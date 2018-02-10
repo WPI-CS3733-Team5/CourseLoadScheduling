@@ -67,6 +67,8 @@ public class GetAllCoursesDto
         }
     }
 
+    public static Builder builder(){return new Builder();}
+
     public static final class Builder {
         private String courseName;
         private Integer requiredFrequencyPerTerm;
