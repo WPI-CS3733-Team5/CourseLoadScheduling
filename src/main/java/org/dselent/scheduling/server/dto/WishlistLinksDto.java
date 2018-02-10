@@ -12,8 +12,8 @@ import javax.annotation.Generated;
  */
 public class WishlistLinksDto
 {
-	private final String instructorInfoId;
-	private final String sectionInfoId;
+	private final Integer instructorInfoId;
+	private final Integer sectionInfoId;
 
 
 	// I added to the auto-generated code
@@ -52,12 +52,12 @@ public class WishlistLinksDto
 		return new Builder();
 	}
 	
-	public String getInstructorInfoId()
+	public Integer getInstructorInfoId()
 	{
 		return instructorInfoId;
 	}
 
-	public String getSectionInfoId()
+	public Integer getSectionInfoId()
 	{
 		return sectionInfoId;
 	}
@@ -68,20 +68,20 @@ public class WishlistLinksDto
 	@Generated("SparkTools")
 	public static final class Builder
 	{
-		private String instructorInfoId;
-		private String sectionInfoId;
+		private Integer instructorInfoId;
+		private Integer sectionInfoId;
 
 		private Builder()
 		{
 		}
 
-		public Builder withInstructorInfoId(String instructorInfoId)
+		public Builder withInstructorInfoId(Integer instructorInfoId)
 		{
 			this.instructorInfoId = instructorInfoId;
 			return this;
 		}
 
-		public Builder withSectionInfoId(String sectionInfoId)
+		public Builder withSectionInfoId(Integer sectionInfoId)
 		{
 			this.sectionInfoId = sectionInfoId;
 			return this;
