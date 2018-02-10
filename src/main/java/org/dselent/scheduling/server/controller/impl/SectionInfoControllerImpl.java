@@ -6,8 +6,11 @@ import java.util.Map;
 
 import org.dselent.scheduling.server.controller.SectionInfoController;
 import org.dselent.scheduling.server.dto.CreateSectionDto;
+import org.dselent.scheduling.server.dto.GetOneSectionDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateSection;
+import org.dselent.scheduling.server.requests.GetAllSections;
+import org.dselent.scheduling.server.requests.GetOneSection;
 import org.dselent.scheduling.server.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,10 +58,47 @@ public class SectionInfoControllerImpl implements SectionInfoController{
     }
 
     public ResponseEntity<String> getOneSection(@RequestBody Map<String, String> request) throws Exception{
-        return null;
+
+        // add any objects that need to be returned to the success list
+        String response = "";
+        List<Object> success = new ArrayList<Object>();
+
+        Integer id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.ID)));
+        Integer section_number = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
+        String section_type = request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_TYPE));
+        Integer instructor_info_id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
+        String location = request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER));
+        Boolean deleted = Boolean.parseBoolean(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.DELETED)));
+        Integer course_info_id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
+        Integer calendar_info_id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.CALENDAR)));
+
+
+        GetOneSectionDto.Builder builder = GetOneSectionDto.builder();
+        GetOneSectionDto getOneSectionDto = builder.withId(id)
+                .withSectionNumber(section_number)
+                .withSectionType(section_type)
+                .withInstructorInfoId(instructor_info_id)
+                .withLocation(location)
+                .withDeleted(deleted)
+                .withCourseInfoId(course_info_id)
+                .withCalendarInfoId(calendar_info_id)
+                .build();
+
+        sectionService.getOneSection(getOneSectionDto);
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+        return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
     public ResponseEntity<String> getAllSections(@RequestBody Map<String, String> request) throws Exception{
-        return  null;
+
+        // add any objects that need to be returned to the success list
+        String response = "";
+        List<Object> success = new ArrayList<Object>();
+
+        sectionService.getAllSections();
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+        return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 }
