@@ -47,12 +47,12 @@ public class CourseInfo extends Model {
 
     private Integer id;
     private String courseName;
-    private Integer requireFrequencyPerTerm;
+    private Integer requiredFrequencyPerTerm;
     private Integer requiredFrequencyPerSemester;
     private Integer requiredFrequencyPerYear;
     private Integer creditAmount;
     private Boolean deleted;
-    private Integer department;
+    private String department;
     private Integer courseNumber;
 
     // methods
@@ -98,12 +98,12 @@ public class CourseInfo extends Model {
         this.courseName = courseName;
     }
 
-    public Integer getRequireFrequencyPerTerm() {
-        return requireFrequencyPerTerm;
+    public Integer getRequiredFrequencyPerTerm() {
+        return requiredFrequencyPerTerm;
     }
 
-    public void setRequireFrequencyPerTerm(Integer requireFrequencyPerTerm) {
-        this.requireFrequencyPerTerm = requireFrequencyPerTerm;
+    public void setRequiredFrequencyPerTerm(Integer requireFrequencyPerTerm) {
+        this.requiredFrequencyPerTerm = requireFrequencyPerTerm;
     }
 
     public Integer getRequiredFrequencyPerSemester() {
@@ -138,11 +138,11 @@ public class CourseInfo extends Model {
         this.deleted = deleted;
     }
 
-    public Integer getDepartment() {
+    public String getDepartment() {
         return department;
     }
 
-    public void setDepartment(Integer department) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 
@@ -161,7 +161,7 @@ public class CourseInfo extends Model {
         CourseInfo that = (CourseInfo) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(courseName, that.courseName) &&
-                Objects.equals(requireFrequencyPerTerm, that.requireFrequencyPerTerm) &&
+                Objects.equals(requiredFrequencyPerTerm, that.requiredFrequencyPerTerm) &&
                 Objects.equals(requiredFrequencyPerSemester, that.requiredFrequencyPerSemester) &&
                 Objects.equals(requiredFrequencyPerYear, that.requiredFrequencyPerYear) &&
                 Objects.equals(creditAmount, that.creditAmount) &&
@@ -173,7 +173,7 @@ public class CourseInfo extends Model {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, courseName, requireFrequencyPerTerm, requiredFrequencyPerSemester, requiredFrequencyPerYear, creditAmount, deleted, department, courseNumber);
+        return Objects.hash(id, courseName, requiredFrequencyPerTerm, requiredFrequencyPerSemester, requiredFrequencyPerYear, creditAmount, deleted, department, courseNumber);
     }
 
     @Override
@@ -181,7 +181,7 @@ public class CourseInfo extends Model {
         final StringBuilder sb = new StringBuilder("CourseInfo{");
         sb.append("id=").append(id);
         sb.append(", courseName='").append(courseName).append('\'');
-        sb.append(", requireFrequencyPerTerm=").append(requireFrequencyPerTerm);
+        sb.append(", requireFrequencyPerTerm=").append(requiredFrequencyPerTerm);
         sb.append(", requiredFrequencyPerSemester=").append(requiredFrequencyPerSemester);
         sb.append(", requiredFrequencyPerYear=").append(requiredFrequencyPerYear);
         sb.append(", creditAmount=").append(creditAmount);

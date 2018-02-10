@@ -25,8 +25,8 @@ public class CourseInfoExtractor extends Extractor<List<CourseInfo>>{
             if (rs.wasNull()) result.setCourseName(null);
 
             //Set requiredFrequencyPerTerm
-            result.setRequireFrequencyPerTerm(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_TERM)));
-            if (rs.wasNull()) result.setRequireFrequencyPerTerm(null);
+            result.setRequiredFrequencyPerTerm(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_TERM)));
+            if (rs.wasNull()) result.setRequiredFrequencyPerTerm(null);
 
             //Set requiredFrequencyPerSemester
             result.setRequiredFrequencyPerSemester(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_SEMESTER)));
@@ -45,7 +45,7 @@ public class CourseInfoExtractor extends Extractor<List<CourseInfo>>{
             if (rs.wasNull()) result.setDeleted(null);
 
             //Set department
-            result.setDepartment(rs.getInt(CourseInfo.getColumnName(CourseInfo.Columns.DEPARTMENT)));
+            result.setDepartment(rs.getString(CourseInfo.getColumnName(CourseInfo.Columns.DEPARTMENT)));
             if (rs.wasNull()) result.setDepartment(null);
 
             //Set courseNumber
