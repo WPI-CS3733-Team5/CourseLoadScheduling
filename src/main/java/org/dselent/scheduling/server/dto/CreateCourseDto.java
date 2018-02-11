@@ -1,7 +1,7 @@
 package org.dselent.scheduling.server.dto;
 
 import javax.annotation.Generated;
-import java.util.Objects;
+//import java.util.Objects;
 
 /**
  * DTO = Data Transfer Object
@@ -14,10 +14,10 @@ import java.util.Objects;
 public class CreateCourseDto
 {
 	private final String courseName;
-	private final String requiredFrequencyPerTerm;
-	private final String requiredFrequencyPerSemester;
-	private final String requiredFrequencyPerYear;
-	private final Float creditAmount;
+	private final Integer requiredFrequencyPerTerm;
+	private final Integer requiredFrequencyPerSemester;
+	private final Integer requiredFrequencyPerYear;
+	private final Integer creditAmount;
 	private final Boolean deleted;
 	private final String department;
 	private final Integer courseNumber;
@@ -25,7 +25,7 @@ public class CreateCourseDto
 
 	// I added to the auto-generated code
 	@Generated("SparkTools")
-	private CreateUserDto(Builder builder)
+	private CreateCourseDto(Builder builder)
 	{
 		// can add defaults if null for other places where the builder pattern is used
 
@@ -61,6 +61,8 @@ public class CreateCourseDto
 		{
 			throw new IllegalStateException("courseNumber cannot be null");
 		}
+
+
 	}
 
 
@@ -73,28 +75,28 @@ public class CreateCourseDto
 
 
 
-	public String getRequiredFrequencyPerTerm() {
+	public Integer getRequiredFrequencyPerTerm() {
 		return requiredFrequencyPerTerm;
 	}
 
 
 
 
-	public String getRequiredFrequencyPerSemester() {
+	public Integer getRequiredFrequencyPerSemester() {
 		return requiredFrequencyPerSemester;
 	}
 
 
 
 
-	public String getRequiredFrequencyPerYear() {
+	public Integer getRequiredFrequencyPerYear() {
 		return requiredFrequencyPerYear;
 	}
 
 
 
 
-	public String getCreditAmount() {
+	public Integer getCreditAmount() {
 		return creditAmount;
 	}
 
@@ -225,11 +227,11 @@ public class CreateCourseDto
 	{
 		public Integer courseNumber;
 		public String department;
-		public Float creditAmount;
+		public Integer creditAmount;
 		public Boolean deleted;
-		public String requiredFrequencyPerYear;
-		public String requiredFrequencyPerSemester;
-		public String requiredFrequencyPerTerm;
+		public Integer requiredFrequencyPerYear;
+		public Integer requiredFrequencyPerSemester;
+		public Integer requiredFrequencyPerTerm;
 		private  String courseName;
 
 		private Builder()
@@ -242,15 +244,21 @@ public class CreateCourseDto
 			return this;
 		}
 
-		public Builder withRequiredFrequencyPerTerm(String requiredFrequencyPerTerm)
+		public Builder withRequiredFrequencyPerTerm(Integer requiredFrequencyPerTerm)
 		{
 			this.requiredFrequencyPerTerm = requiredFrequencyPerTerm;
 			return this;
 		}
 
-		public Builder withRequiredFrequencyPerSemester(String requiredFrequencyPerSemester)
+		public Builder withRequiredFrequencyPerSemester(Integer requiredFrequencyPerSemester)
 		{
 			this.requiredFrequencyPerSemester = requiredFrequencyPerSemester;
+			return this;
+		}
+		
+		public Builder withRequiredFrequencyPerYear(Integer requiredFrequencyPerYear)
+		{
+			this.requiredFrequencyPerYear = requiredFrequencyPerYear;
 			return this;
 		}
 
@@ -261,7 +269,7 @@ public class CreateCourseDto
 			return this;
 		}
 
-		public Builder withCreditAmount(Float creditAmount)
+		public Builder withCreditAmount(Integer creditAmount)
 		{
 			this.creditAmount = creditAmount;
 			return this;
@@ -291,9 +299,9 @@ public class CreateCourseDto
 			return this;
 		}
 
-		public CreateUserDto build()
+		public CreateCourseDto build()
 		{
-			return new CreateUserDto(this);
+			return new CreateCourseDto(this);
 		}
 	}
 }

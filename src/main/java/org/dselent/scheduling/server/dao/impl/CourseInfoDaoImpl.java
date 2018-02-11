@@ -148,7 +148,7 @@ public class CourseInfoDaoImpl extends BaseDaoImpl<CourseInfo> implements Course
         }
 
         else if(insertColumnName.equals(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_TERM))) {
-            parameters.addValue(parameterName, courseInfoModel.getRequireFrequencyPerTerm());
+            parameters.addValue(parameterName, courseInfoModel.getRequiredFrequencyPerTerm());
         }
 
         else if(insertColumnName.equals(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_SEMESTER))) {
@@ -190,7 +190,7 @@ public class CourseInfoDaoImpl extends BaseDaoImpl<CourseInfo> implements Course
         }
 
         else if(keyHolderColumnName.equals(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_TERM))) {
-            courseInfoModel.setRequireFrequencyPerTerm((Integer) keyMap.get(keyHolderColumnName));
+            courseInfoModel.setRequiredFrequencyPerTerm((Integer) keyMap.get(keyHolderColumnName));
         }
 
         else if(keyHolderColumnName.equals(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_SEMESTER))) {
@@ -210,7 +210,7 @@ public class CourseInfoDaoImpl extends BaseDaoImpl<CourseInfo> implements Course
         }
 
         else if(keyHolderColumnName.equals(CourseInfo.getColumnName(CourseInfo.Columns.DEPARTMENT))) {
-            courseInfoModel.setDepartment((Integer) keyMap.get(keyHolderColumnName));
+            courseInfoModel.setDepartment((String) keyMap.get(keyHolderColumnName));
         }
 
         else if(keyHolderColumnName.equals(CourseInfo.getColumnName(CourseInfo.Columns.COURSE_NUMBER))) {

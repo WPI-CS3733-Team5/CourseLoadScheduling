@@ -6,30 +6,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateNotification {
-
+public class GetAllSections {
 
     public static final RequestMethod REQUEST_TYPE = RequestMethod.POST;
-    public static final String REQUEST_NAME = "createNotification";
+    public static final String REQUEST_NAME = "getAllNotifications";
     private static final List<HeaderKey> HEADER_KEY_LIST;
     private static final List<ParameterKey> PARAMETER_KEY_LIST;
     private static final List<BodyKey> BODY_KEY_LIST;
 
-    public static enum HeaderKey
+    public enum HeaderKey
     {
 
     }
 
-    public static enum ParameterKey
+    public enum ParameterKey
     {
 
     }
 
-    public static enum BodyKey
+    public enum BodyKey
     {
-        MESSAGE,
-        FROM_USER_INFO_ID,
-        TO_USER_INFO_ID;
+        COURSE,
+        SECTION,
+        LAB,
+        CALENDAR,
+        POPULATION
     }
 
     static
@@ -53,9 +54,10 @@ public class CreateNotification {
             BODY_KEY_LIST.add(key);
         }
 
-    };
+    }
 
-    private CreateNotification() {
+    public GetAllSections()
+    {
     }
 
     public static String getHeaderName(HeaderKey key)

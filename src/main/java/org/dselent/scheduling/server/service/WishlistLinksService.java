@@ -1,10 +1,10 @@
 package org.dselent.scheduling.server.service;
 
 import java.sql.SQLException;
-import java.util.List;
 
 //import org.dselent.scheduling.server.dto.RegisterUserDto;
 import org.dselent.scheduling.server.dto.WishlistLinksDto;
+import org.dselent.scheduling.server.model.WishlistLinks;
 //import org.dselent.scheduling.server.model.UserInfo;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface WishlistLinksService
 {
-	/**
-	 * Registers a user into the system
-	 * Performs an insert into the users table and users_roles_links table as a transaction
-	 * 
-	 * @param registerUserDto DTO container information for the insertions
-	 * @return A list of rows affected for each insert operation
-	 * @throws SQLException
-	 */
-	public List<Integer> wishlistLinks(WishlistLinksDto wishlistLinksDto) throws SQLException;
+	public WishlistLinks wishlistLinks(WishlistLinksDto wishlistLinksDto) throws SQLException;
     //public UserInfo loginUser(String userName, String password);
 }

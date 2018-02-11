@@ -71,7 +71,7 @@ public class GetAllUser
 			BODY_KEY_LIST.add(key);
 		}
 
-	};
+	}
 
 	private GetAllUser()
 	{
