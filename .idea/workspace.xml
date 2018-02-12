@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c82ef57-b2c6-42c7-bdb2-30844d87b707" name="Default" comment="## ben secino&#10;with create and populate tables">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sql/Inactive/course_load_scheduler_create" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sql/Inactive/course_load_scheduler_populate" />
+    <list default="true" id="8c82ef57-b2c6-42c7-bdb2-30844d87b707" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/Inactive/course_load_scheduler_create" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/Inactive/course_load_scheduler_populate" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -58,8 +58,8 @@
       <file leaf-file-name="GetAllCoursesDto.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/GetAllCoursesDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+            <state relative-caret-position="765">
+              <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="47" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -547,8 +547,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -643,7 +641,9 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -775,7 +775,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518217225219</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="## ben secino&#10;with create and populate tables">
+      <created>1518451374211</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1518451374211</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -856,7 +863,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="## Commit by Leo&#10;&#10;  Fixed:&#10;     GetOneNotificationDTO&#10;  Created:&#10;     InstructorService&#10;     NotificationService&#10;     NotificationServiceImpl" />
     <MESSAGE value="## Commit by Leo&#10;&#10;  Created:&#10;     GetAllSections&#10;     GetOneSection&#10;     &#10;  Other minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="## Commit by Leo&#10;&#10;  Created:&#10;     GetAllSections&#10;     GetOneSection&#10;     &#10;  Other minor fixes" />
+    <MESSAGE value="## ben secino&#10;with create and populate tables" />
+    <option name="LAST_COMMIT_MESSAGE" value="## ben secino&#10;with create and populate tables" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1055,8 +1063,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/dselent/scheduling/server/dto/GetAllCoursesDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="765">
+          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="47" selection-end-column="54" />
           <folding />
         </state>
       </provider>
