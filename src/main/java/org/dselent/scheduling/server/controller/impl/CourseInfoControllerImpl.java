@@ -52,7 +52,6 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		Integer CreditAmount = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT)));
 		String Department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
 		Integer CourseNumber = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER)));
-		
 
 		CreateCourseDto.Builder builder = CreateCourseDto.builder();
 		CreateCourseDto createCourseDto = builder.withCourseName(CourseName)
@@ -62,6 +61,7 @@ public class CourseInfoControllerImpl implements CourseInfoController
 				.withCreditAmount(CreditAmount)
 				.withDepartment(Department)
 				.withCourseNumber(CourseNumber)
+				.withDeleted(false)
 				.build();
 		
 		courseService.createCourse(createCourseDto);
