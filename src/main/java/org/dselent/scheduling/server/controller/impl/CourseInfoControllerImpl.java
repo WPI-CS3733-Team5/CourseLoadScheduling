@@ -45,22 +45,22 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 		
-		String CourseName = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NAME));
-		Integer RequiredFrequencyPerTerm = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM)));
-		Integer RequiredFrequencyPerSemester = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER)));
-		Integer RequiredFrequencyPerYear = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR)));
-		Integer CreditAmount = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT)));
-		String Department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
-		Integer CourseNumber = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER)));
+		String courseName = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NAME));
+		Integer requiredFrequencyPerTerm = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM)));
+		Integer requiredFrequencyPerSemester = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER)));
+		Integer requiredFrequencyPerYear = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR)));
+		Integer creditAmount = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT)));
+		String department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
+		Integer courseNumber = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER)));
 
 		CreateCourseDto.Builder builder = CreateCourseDto.builder();
-		CreateCourseDto createCourseDto = builder.withCourseName(CourseName)
-				.withRequiredFrequencyPerTerm(RequiredFrequencyPerTerm)
-				.withRequiredFrequencyPerSemester(RequiredFrequencyPerSemester)
-				.withRequiredFrequencyPerYear(RequiredFrequencyPerYear)
-				.withCreditAmount(CreditAmount)
-				.withDepartment(Department)
-				.withCourseNumber(CourseNumber)
+		CreateCourseDto createCourseDto = builder.withCourseName(courseName)
+				.withRequiredFrequencyPerTerm(requiredFrequencyPerTerm)
+				.withRequiredFrequencyPerSemester(requiredFrequencyPerSemester)
+				.withRequiredFrequencyPerYear(requiredFrequencyPerYear)
+				.withCreditAmount(creditAmount)
+				.withDepartment(department)
+				.withCourseNumber(courseNumber)
 				.withDeleted(false)
 				.build();
 		

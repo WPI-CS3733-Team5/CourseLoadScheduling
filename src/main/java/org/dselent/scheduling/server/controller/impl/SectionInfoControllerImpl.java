@@ -31,23 +31,23 @@ public class SectionInfoControllerImpl implements SectionInfoController{
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        Integer section_number = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.SECTION_NUMBER)));
-        String section_type = request.get(CreateSection.getBodyName(CreateSection.BodyKey.SECTION_TYPE));
-        Integer instructor_info_id = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.INSTRUCTOR_INFO_ID)));
+        Integer sectionNumber = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.SECTION_NUMBER)));
+        String sectionType = request.get(CreateSection.getBodyName(CreateSection.BodyKey.SECTION_TYPE));
+        Integer instructorInfoId = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.INSTRUCTOR_INFO_ID)));
         String location = request.get(CreateSection.getBodyName(CreateSection.BodyKey.LOCATION));
         Boolean deleted = Boolean.parseBoolean(request.get(CreateSection.getBodyName(CreateSection.BodyKey.DELETED)));
         Integer course_info_id = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.COURSE_INFO_ID)));
-        Integer calendar_info_id = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.CALENDAR_INFO_ID)));
+        Integer calendarInfoId = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.CALENDAR_INFO_ID)));
 
 
         CreateSectionDto.Builder builder = new CreateSectionDto.Builder();
-        CreateSectionDto createSectionDto = builder.withSection_number(section_number)
-                .withSection_type(section_type)
-                .withInstructor_info_id(instructor_info_id)
+        CreateSectionDto createSectionDto = builder.withSection_number(sectionNumber)
+                .withSection_type(sectionType)
+                .withInstructor_info_id(instructorInfoId)
                 .withLocation(location)
                 .withDeleted(deleted)
                 .withCourse_info_id(course_info_id)
-                .withCalendar_info_id(calendar_info_id)
+                .withCalendar_info_id(calendarInfoId)
                 .build();
 
         sectionService.createSection(createSectionDto);
@@ -63,24 +63,24 @@ public class SectionInfoControllerImpl implements SectionInfoController{
         List<Object> success = new ArrayList<Object>();
 
         Integer id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.ID)));
-        Integer section_number = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
-        String section_type = request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_TYPE));
-        Integer instructor_info_id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
+        Integer sectionNumber = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
+        String sectionType = request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_TYPE));
+        Integer instructorInfoId = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
         String location = request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER));
         Boolean deleted = Boolean.parseBoolean(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.DELETED)));
-        Integer course_info_id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
-        Integer calendar_info_id = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.CALENDAR)));
+        Integer courseInfoId = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.SECTION_NUMBER)));
+        Integer calendarInfoId = Integer.parseInt(request.get(GetOneSection.getBodyName(GetOneSection.BodyKey.CALENDAR)));
 
 
         GetOneSectionDto.Builder builder = GetOneSectionDto.builder();
         GetOneSectionDto getOneSectionDto = builder.withId(id)
-                .withSectionNumber(section_number)
-                .withSectionType(section_type)
-                .withInstructorInfoId(instructor_info_id)
+                .withSectionNumber(sectionNumber)
+                .withSectionType(sectionType)
+                .withInstructorInfoId(instructorInfoId)
                 .withLocation(location)
                 .withDeleted(deleted)
-                .withCourseInfoId(course_info_id)
-                .withCalendarInfoId(calendar_info_id)
+                .withCourseInfoId(courseInfoId)
+                .withCalendarInfoId(calendarInfoId)
                 .build();
 
         sectionService.getOneSection(getOneSectionDto);
