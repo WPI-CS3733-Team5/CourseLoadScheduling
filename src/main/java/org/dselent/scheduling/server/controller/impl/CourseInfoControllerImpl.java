@@ -49,9 +49,9 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		Integer RequiredFrequencyPerTerm = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM)));
 		Integer RequiredFrequencyPerSemester = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER)));
 		Integer RequiredFrequencyPerYear = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR)));
-		Integer CreditAmount = Integer.parseInt(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT));
+		Integer CreditAmount = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT)));
 		String Department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
-		Integer CourseNumber = Integer.parseInt(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER));
+		Integer CourseNumber = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER)));
 		
 
 		CreateCourseDto.Builder builder = CreateCourseDto.builder();
