@@ -11,6 +11,7 @@ import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.Map;
 /**
  * Created by dhmchorney on 2/2/2018.
  */
+@Repository
 public class NotificationDaoImpl extends BaseDaoImpl<Notification> implements NotificationDao{
 
     @Override

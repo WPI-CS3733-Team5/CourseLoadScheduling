@@ -9,7 +9,6 @@ import org.dselent.scheduling.server.dto.CreateSectionDto;
 import org.dselent.scheduling.server.dto.GetOneSectionDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateSection;
-import org.dselent.scheduling.server.requests.GetAllSections;
 import org.dselent.scheduling.server.requests.GetOneSection;
 import org.dselent.scheduling.server.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
