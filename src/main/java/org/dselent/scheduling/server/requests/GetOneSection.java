@@ -26,11 +26,14 @@ public class GetOneSection {
 
     public static enum BodyKey
     {
-        COURSE,
-        LIST_OF_SECTIONS,
-        LIST_OF_LABS,
-        LIST_OF_CALENDARS,
-        LIST_OF_POPULATIONS
+        ID,
+        SECTION_NUMBER,
+        SECTION_TYPE,
+        INSTRUCTOR_INFO_ID,
+        LOCATION,
+        DELETED,
+        COURSE_INFO_ID,
+        CALENDAR
     }
 
     static

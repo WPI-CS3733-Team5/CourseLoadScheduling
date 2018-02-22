@@ -51,32 +51,32 @@ public class UserInfoControllerImpl implements UserInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 
-		Integer user_role = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_ROLE)));
-		String user_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_NAME));
-		String first_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.FIRST_NAME));
-		String last_name = request.get(CreateUser.getBodyName(CreateUser.BodyKey.LAST_NAME));
+		Integer userRole = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_ROLE)));
+		String userName = request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_NAME));
+		String firstName = request.get(CreateUser.getBodyName(CreateUser.BodyKey.FIRST_NAME));
+		String lastName = request.get(CreateUser.getBodyName(CreateUser.BodyKey.LAST_NAME));
 		String email = request.get(CreateUser.getBodyName(CreateUser.BodyKey.EMAIL));
 		Boolean deleted = Boolean.parseBoolean(request.get(CreateUser.getBodyName(CreateUser.BodyKey.DELETED)));
-		String encrypted_password = request.get(CreateUser.getBodyName(CreateUser.BodyKey.ENCRYPTED_PASSWORD));
-		Integer account_state = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.ACCOUNT_STATE)));
+		String encryptedPassword = request.get(CreateUser.getBodyName(CreateUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer accountState = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.ACCOUNT_STATE)));
 		String rank = request.get(CreateUser.getBodyName(CreateUser.BodyKey.RANK));
-		Integer course_load = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.COURSE_LOAD)));
-		String phone_number = request.get(CreateUser.getBodyName(CreateUser.BodyKey.PHONE_NUMBER));
+		Integer courseLoad = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.COURSE_LOAD)));
+		String phoneNumber = request.get(CreateUser.getBodyName(CreateUser.BodyKey.PHONE_NUMBER));
 		String office = request.get(CreateUser.getBodyName(CreateUser.BodyKey.OFFICE));
 		String department = request.get(CreateUser.getBodyName(CreateUser.BodyKey.DEPARTMENT));
 
 		CreateUserDto.Builder builder = CreateUserDto.builder();
-		CreateUserDto createUserDto = builder.withUserRole(user_role)
-				.withUserName(user_name)
-				.withFirstName(first_name)
-				.withLastName(last_name)
+		CreateUserDto createUserDto = builder.withUserRole(userRole)
+				.withUserName(userName)
+				.withFirstName(firstName)
+				.withLastName(lastName)
 				.withEmail(email)
 				.withDeleted(deleted)
-				.withPassword(encrypted_password)
-				.withAccountState(account_state)
+				.withPassword(encryptedPassword)
+				.withAccountState(accountState)
 				.withRank(rank)
-				.withCourseLoad(course_load)
-				.withPhoneNumber(phone_number)
+				.withCourseLoad(courseLoad)
+				.withPhoneNumber(phoneNumber)
 				.withOffice(office)
 				.withDepartment(department)
 				.build();
