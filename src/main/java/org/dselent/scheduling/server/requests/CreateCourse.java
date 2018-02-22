@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CreateCourse
 {
 	public static final RequestMethod REQUEST_TYPE = RequestMethod.POST;
-	public static final String REQUEST_NAME = "create course";
+	public static final String REQUEST_NAME = "createCourse";
 	private static final List<HeaderKey> HEADER_KEY_LIST;
 	private static final List<ParameterKey> PARAMETER_KEY_LIST;
 	private static final List<BodyKey> BODY_KEY_LIST;
