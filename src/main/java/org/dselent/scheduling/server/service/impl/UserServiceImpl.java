@@ -111,10 +111,11 @@ public class UserServiceImpl implements UserService
 
 	@Transactional
 	@Override
-	public UserInfo getOneUser(GetOneUserDto dto) throws SQLException
+	public UserInfo getOneUser(Integer requestedId) throws SQLException
 	{
 
-		UserInfo userInfo = userinfoDao.findById(dto.getId());
+		UserInfo userInfo = userinfoDao.findById(requestedId);
+		//InstructorInfo instructorInfo = instructorInfoDao.
 
 		return  userInfo;
 	}

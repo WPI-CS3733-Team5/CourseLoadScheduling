@@ -9,6 +9,7 @@ import org.dselent.scheduling.server.dto.CreateUserDto;
 import org.dselent.scheduling.server.dto.GetAllUserDto;
 import org.dselent.scheduling.server.dto.GetOneUserDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.requests.CreateUser;
 import org.dselent.scheduling.server.requests.GetAllUser;
 import org.dselent.scheduling.server.requests.GetOneUser;
@@ -96,6 +97,8 @@ public class UserInfoControllerImpl implements UserInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 
+		Integer user_Id = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.REQUESTED_USER_ID)));
+		/*
 		Integer user_role = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_ROLE)));
 		String user_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_NAME));
 		String first_name = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.FIRST_NAME));
@@ -109,7 +112,8 @@ public class UserInfoControllerImpl implements UserInfoController
 		String phone_number = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.PHONE_NUMBER));
 		String office = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.OFFICE));
 		String department = request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.DEPARTMENT));
-
+		*/
+		/*
 		GetOneUserDto.Builder builder = GetOneUserDto.builder();
 		GetOneUserDto getOneUserDto = builder.withUserRole(user_role)
 				.withUserName(user_name)
@@ -125,8 +129,11 @@ public class UserInfoControllerImpl implements UserInfoController
 				.withOffice(office)
 				.withDepartment(department)
 				.build();
+				*/
 
-		userService.getOneUser(getOneUserDto);
+		UserInfo foundUser = userService.getOneUser(user_Id);
+		success.add(foundUser);
+		
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);

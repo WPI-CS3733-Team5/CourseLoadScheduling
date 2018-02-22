@@ -33,6 +33,9 @@ public class GetOneUser
 
 	public static enum BodyKey
 	{
+		REQUESTING_USER_ID,
+		REQUESTED_USER_ID;
+		/*
 		USER_ROLE,
 		USER_NAME,
 		FIRST_NAME,
@@ -46,6 +49,7 @@ public class GetOneUser
 		PHONE_NUMBER,
 		OFFICE,
 		DEPARTMENT;
+		*/
 	}
 
 

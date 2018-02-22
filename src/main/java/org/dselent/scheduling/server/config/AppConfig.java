@@ -33,8 +33,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableTransactionManagement
 @ComponentScan(basePackages="org.dselent.scheduling.server")
 public class AppConfig
-{	
-	
+{
+
 	public static String DATABASE_URL = "database_url";
 	public static String DATABASE_USER = "database_user";
 	public static String DATABASE_PASSWORD = "database_password";
