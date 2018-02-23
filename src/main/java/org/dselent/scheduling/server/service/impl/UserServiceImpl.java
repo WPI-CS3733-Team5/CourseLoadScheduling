@@ -14,6 +14,7 @@ import org.dselent.scheduling.server.model.InstructorInfo;
 import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.service.UserService;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
+import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -111,13 +112,29 @@ public class UserServiceImpl implements UserService
 
 	@Transactional
 	@Override
-	public UserInfo getOneUser(Integer requestedId) throws SQLException
+	public List<Object> getOneUser(Integer requestedId) throws SQLException
 	{
 
 		UserInfo userInfo = userinfoDao.findById(requestedId);
-		//InstructorInfo instructorInfo = instructorInfoDao.
+		
+		//Find the InstructorInfo with the matching userInfoId
+		List<String> selectColumnNameList = new ArrayList<String>();
+		selectColumnNameList.addAll(InstructorInfo.getColumnNameList());
+		
+		QueryTerm onlyTerm = new QueryTerm(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID), ComparisonOperator.EQUAL, requestedId, null);
+		List<QueryTerm> queryTermList = new ArrayList<QueryTerm>();
+		queryTermList.add(onlyTerm);
+		
+		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
 
-		return  userInfo;
+		InstructorInfo instructorInfo = instructorInfoDao.select(selectColumnNameList, queryTermList, orderByList).get(0);
+		
+		List<Object> returnList = new ArrayList<Object>();
+		returnList.add(userInfo);
+		returnList.add(instructorInfo);
+		
+
+		return  returnList;
 	}
 
 	@Transactional

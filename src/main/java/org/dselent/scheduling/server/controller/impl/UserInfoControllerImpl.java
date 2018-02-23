@@ -131,8 +131,9 @@ public class UserInfoControllerImpl implements UserInfoController
 				.build();
 				*/
 
-		UserInfo foundUser = userService.getOneUser(user_Id);
-		success.add(foundUser);
+		//UserInfo foundUser = userService.getOneUser(user_Id);
+		//success.add(foundUser);
+		success = userService.getOneUser(user_Id);
 		
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
