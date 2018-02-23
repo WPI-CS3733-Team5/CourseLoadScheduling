@@ -48,6 +48,14 @@ public class QueryPathConstants
 	public static String WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY = readFile(WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY_PATH);
 	public static String WISHLIST_FROM_USERNAME_QUERY = readFile(WISHLIST_FROM_USER_PATH);
 	public static String SECTIONS_WITH_DEPARTMENT_QUERY = readFile(SECTIONS_WITH_DEPARTMENT_PATH);
+	public static String ALL_USERS_QUERY = readFile(ALL_USERS_PATH);
+    public static String ALL_COURSES_QUERY = readFile(ALL_COURSES_PATH);
+    public static String ALL_INSTRUCTORS_QUERY = readFile(ALL_INSTRUCTORS_PATH);
+    public static String ALL_LABS_QUERY = readFile(ALL_LABS_PATH);
+    public static String ALL_SCHEDULES_QUERY = readFile(ALL_SCHEDULES_PATH);
+    public static String ALL_SECTIONS_QUERY = readFile(ALL_SECTIONS_PATH);
+    public static String ALL_CALENDARS_QUERY = readFile(ALL_CALENDARS_PATH);
+
 	private QueryPathConstants()
 	{
 		

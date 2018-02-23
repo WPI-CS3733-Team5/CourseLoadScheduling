@@ -1,6 +1,7 @@
 package org.dselent.scheduling.server.dao.impl;
 
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.dselent.scheduling.server.dao.CustomDao;
@@ -115,6 +116,7 @@ public class CustomDaoImpl implements CustomDao
 	/**
 	 *  The order of models to be returned is the following:
 	 *  - UserInfo
+     *  - InstructorInfo
 	 *  - CourseInfo
 	 *  - LabInfo
 	 *  - SectionInfo
@@ -123,11 +125,14 @@ public class CustomDaoImpl implements CustomDao
 	 *
 	 * @return
 	 * @throws SQLException
+     *
+     * @author Leo Gonsalves
 	 */
 	@Override
-	public List<List<Model>> selectAllTables()
+	public List<Object> selectAllTables()
     {
 		UserInfoExtractor userInfoExtractor = new UserInfoExtractor();
+		InstructorInfoExtractor instructorInfoExtractor = new InstructorInfoExtractor();
 		CourseInfoExtractor courseInfoExtractor = new CourseInfoExtractor();
 		LabInfoExtractor labInfoExtractor = new LabInfoExtractor();
 		SectionInfoExtractor sectionInfoExtractor = new SectionInfoExtractor();
@@ -135,9 +140,50 @@ public class CustomDaoImpl implements CustomDao
 		ScheduleLinksExtractor scheduleLinksExtractor = new ScheduleLinksExtractor();
 
 		/* Extracting All Users */
+        String userInfoQueryTemplate = new String(QueryPathConstants.ALL_USERS_QUERY);
+        MapSqlParameterSource userParameters = new MapSqlParameterSource();
+        List<UserInfo> allUsers = namedParameterJdbcTemplate.query(userInfoQueryTemplate, userParameters, userInfoExtractor);
 
+        /* Extracting All Instructors */
+        String instructorInfoQueryTemplate = new String(QueryPathConstants.ALL_INSTRUCTORS_QUERY);
+        MapSqlParameterSource instructorParameters = new MapSqlParameterSource();
+        List<InstructorInfo> allInstructors = namedParameterJdbcTemplate.query(instructorInfoQueryTemplate, instructorParameters, instructorInfoExtractor);
 
-		return null;
+        /* Extracting All Courses */
+        String courseInfoQueryTemplate = new String(QueryPathConstants.ALL_COURSES_QUERY);
+        MapSqlParameterSource courseParameters = new MapSqlParameterSource();
+        List<CourseInfo> allCourses = namedParameterJdbcTemplate.query(courseInfoQueryTemplate, courseParameters, courseInfoExtractor);
+
+        /* Extracting All Labs */
+        String labInfoQueryTemplate = new String(QueryPathConstants.ALL_LABS_QUERY);
+        MapSqlParameterSource labParameters = new MapSqlParameterSource();
+        List<LabInfo> allLabs = namedParameterJdbcTemplate.query(labInfoQueryTemplate, labParameters, labInfoExtractor);
+
+        /* Extracting All Sections */
+        String sectionInfoQueryTemplate = new String(QueryPathConstants.ALL_SECTIONS_QUERY);
+        MapSqlParameterSource sectionParameters = new MapSqlParameterSource();
+        List<SectionInfo> allSections = namedParameterJdbcTemplate.query(sectionInfoQueryTemplate, sectionParameters, sectionInfoExtractor);
+
+        /* Extracting All Calendars */
+        String calendarInfoQueryTemplate = new String(QueryPathConstants.ALL_CALENDARS_QUERY);
+        MapSqlParameterSource calendarParamenter = new MapSqlParameterSource();
+        List<CalendarInfo> allCalendars = namedParameterJdbcTemplate.query(calendarInfoQueryTemplate, calendarParamenter, calendarInfoExtractor);
+
+        /* Extracting All Schedule */
+        String scheduleInfoQueryTemplate = new String(QueryPathConstants.ALL_SCHEDULES_QUERY);
+        MapSqlParameterSource scheduleParameters = new MapSqlParameterSource();
+        List<ScheduleLinks> allSchedules = namedParameterJdbcTemplate.query(scheduleInfoQueryTemplate, scheduleParameters, scheduleLinksExtractor);
+
+        List<Object> l = new LinkedList<>();
+        l.add(allUsers);
+        l.add(allInstructors);
+        l.add(allCourses);
+        l.add(allLabs);
+        l.add(allSections);
+        l.add(allCalendars);
+        l.add(allSchedules);
+
+        return l;
 	}
 
 }
