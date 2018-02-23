@@ -1,17 +1,12 @@
 package org.dselent.scheduling.server.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.dselent.scheduling.server.dao.CustomDao;
-import org.dselent.scheduling.server.extractor.CalendarInfoExtractor;
-import org.dselent.scheduling.server.extractor.CourseInfoExtractor;
-import org.dselent.scheduling.server.extractor.SectionInfoExtractor;
-import org.dselent.scheduling.server.extractor.UserInfoExtractor;
+import org.dselent.scheduling.server.extractor.*;
 import org.dselent.scheduling.server.miscellaneous.QueryPathConstants;
-import org.dselent.scheduling.server.model.CalendarInfo;
-import org.dselent.scheduling.server.model.CourseInfo;
-import org.dselent.scheduling.server.model.SectionInfo;
-import org.dselent.scheduling.server.model.UserInfo;
+import org.dselent.scheduling.server.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -117,5 +112,32 @@ public class CustomDaoImpl implements CustomDao
 		    return sectionsWithDepartmentList;
 	}
 
+	/**
+	 *  The order of models to be returned is the following:
+	 *  - UserInfo
+	 *  - CourseInfo
+	 *  - LabInfo
+	 *  - SectionInfo
+	 *  - CalendarInfo
+	 *  - ScheduleLinks
+	 *
+	 * @return
+	 * @throws SQLException
+	 */
+	@Override
+	public List<List<Model>> selectAllTables()
+    {
+		UserInfoExtractor userInfoExtractor = new UserInfoExtractor();
+		CourseInfoExtractor courseInfoExtractor = new CourseInfoExtractor();
+		LabInfoExtractor labInfoExtractor = new LabInfoExtractor();
+		SectionInfoExtractor sectionInfoExtractor = new SectionInfoExtractor();
+		CalendarInfoExtractor calendarInfoExtractor = new CalendarInfoExtractor();
+		ScheduleLinksExtractor scheduleLinksExtractor = new ScheduleLinksExtractor();
+
+		/* Extracting All Users */
+
+
+		return null;
+	}
 
 }
