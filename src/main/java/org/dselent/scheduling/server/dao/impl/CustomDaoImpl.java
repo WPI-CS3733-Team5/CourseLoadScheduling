@@ -122,6 +122,11 @@ public class CustomDaoImpl implements CustomDao
 	 *  - SectionInfo
 	 *  - CalendarInfo
 	 *  - ScheduleLinks
+     *
+     *  ## WARNING ##
+     *
+     *  Lists must be cast in the right sequence in order to avoid
+     *  problems.
 	 *
 	 * @return
 	 * @throws SQLException
