@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService
 {
 	@Autowired
-	private UserInfoDao userinfoDao;
+	private UserInfoDao userInfoDao;
 	
 	@Autowired
 	private InstructorInfoDao instructorInfoDao;
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService
 		userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LOGIN_TIME));
 
 
-		rowsAffectedList.add(userinfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
+		rowsAffectedList.add(userInfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
 
 		if(!dto.getRank().equals(null)){
 			InstructorInfo instructorInfo = new InstructorInfo();
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService
 	public List<Object> getOneUser(Integer requestedId) throws SQLException
 	{
 
-		UserInfo userInfo = userinfoDao.findById(requestedId);
+		UserInfo userInfo = userInfoDao.findById(requestedId);
 		
 		//Find the InstructorInfo with the matching userInfoId
 		List<String> selectColumnNameList = new ArrayList<String>();
@@ -139,15 +139,28 @@ public class UserServiceImpl implements UserService
 
 	@Transactional
 	@Override
-	public List<UserInfo> getAllUser(GetAllUserDto dto) throws SQLException {
+	public List<Object> getAllUser() throws SQLException {
 
+		List<Object> returnList = new ArrayList<>();
+		
 		List<String> selectColumnNameList = new ArrayList<>();
+		selectColumnNameList.addAll(UserInfo.getColumnNameList());
 		List<QueryTerm> queryTermList = new ArrayList<>();
 		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
-		selectColumnNameList.addAll(UserInfo.getColumnNameList());
 		Pair<String, ColumnOrder> byId = new Pair<>(UserInfo.getColumnName(UserInfo.Columns.ID), ColumnOrder.ASC);
+		orderByList.add(byId);
 
-		return userinfoDao.select(selectColumnNameList, queryTermList, orderByList);
+		returnList.add(userInfoDao.select(selectColumnNameList, queryTermList, orderByList));
+		
+		List<String> instructorColumnNameList = new ArrayList<>();
+		instructorColumnNameList.addAll(InstructorInfo.getColumnNameList());
+		List<QueryTerm> instructorQueryList = new ArrayList<>();
+		List<Pair<String, ColumnOrder>> instructorOrderByList = new ArrayList<>();
+		Pair<String, ColumnOrder> byUserId = new Pair<>(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID), ColumnOrder.ASC);
+		instructorOrderByList.add(byUserId);
+		
+		returnList.add(instructorInfoDao.select(instructorColumnNameList, instructorQueryList, instructorOrderByList));
+		return returnList;
 	}
 	//
 

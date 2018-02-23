@@ -29,6 +29,6 @@ public interface UserService
 	 */
 	public List<Integer> createUser(CreateUserDto createUserDto) throws SQLException;
 	public List<Object> getOneUser(Integer requestedId) throws SQLException;
-	public List<UserInfo> getAllUser(GetAllUserDto getAllUserDto) throws SQLException;
+	public List<Object> getAllUser() throws SQLException;
     public UserInfo loginUser(String userName, String password);
 }
