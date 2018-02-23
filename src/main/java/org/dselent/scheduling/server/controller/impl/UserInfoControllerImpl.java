@@ -135,6 +135,7 @@ public class UserInfoControllerImpl implements UserInfoController
 		//success.add(foundUser);
 		success = userService.getOneUser(user_Id);
 		
+		
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -150,6 +151,7 @@ public class UserInfoControllerImpl implements UserInfoController
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 
+		/*
 		Integer user_role = Integer.parseInt(request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.USER_ROLE)));
 		String user_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.USER_NAME));
 		String first_name = request.get(GetAllUser.getBodyName(GetAllUser.BodyKey.FIRST_NAME));
@@ -179,8 +181,8 @@ public class UserInfoControllerImpl implements UserInfoController
 				.withOffice(office)
 				.withDepartment(department)
 				.build();
-
-		userService.getAllUser(getAllUserDto);
+		*/
+		success = userService.getAllUser();
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);

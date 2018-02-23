@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface UserInfoController
 {
     
-    @RequestMapping(method=RequestMethod.POST, value="getAll")
+    @RequestMapping(method=RequestMethod.POST, value="getAllUser")
 	public ResponseEntity<String> getAllUser(@RequestBody Map<String, String> request) throws Exception;
 
 
-    @RequestMapping(method=RequestMethod.POST, value="GetOneUser")
+    @RequestMapping(method=RequestMethod.POST, value="getOneUser")
     public ResponseEntity<String> getOneUser(@RequestBody Map<String, String> request) throws Exception;
 
 
