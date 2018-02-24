@@ -163,11 +163,11 @@ public class ScheduleLinksDaoImpl extends BaseDaoImpl<ScheduleLinks> implements 
         {
             parameters.addValue(parameterName, userInfoModel.getId());
         }
-        else if(insertColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTORINFOID)))
+        else if(insertColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTOR_INFO_ID)))
         {
             parameters.addValue(parameterName, userInfoModel.getInstructorInfoId());
         }
-        else if(insertColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.SECTIONINFOID)))
+        else if(insertColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.SECTION_INFO_ID)))
         {
             parameters.addValue(parameterName, userInfoModel.getSectionInfoId());
         }
@@ -186,11 +186,11 @@ public class ScheduleLinksDaoImpl extends BaseDaoImpl<ScheduleLinks> implements 
         {
             userInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTORINFOID)))
+        else if(keyHolderColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTOR_INFO_ID)))
         {
             userInfoModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.SECTIONINFOID)))
+        else if(keyHolderColumnName.equals(ScheduleLinks.getColumnName(ScheduleLinks.Columns.SECTION_INFO_ID)))
         {
             userInfoModel.setSectionInfoId((Integer) keyMap.get(keyHolderColumnName));
         }

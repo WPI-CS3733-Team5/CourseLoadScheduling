@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class WishlistLinksServiceImpl implements WishlistLinksService
@@ -29,6 +31,11 @@ public class WishlistLinksServiceImpl implements WishlistLinksService
     @Transactional
     @Override
     public WishlistLinks wishlistLinks(WishlistLinksDto dto) throws SQLException {
+    	
+    	List<String> selectedWishlistIds = new ArrayList<String>();
+    	selectedWishlistIds.addAll(WishlistLinks.getColumnNameList());
+    	
+    	QueryTerm
 
         WishlistLinks wishlistLinks = wishlistLinksDao.findById(dto.getInstructorInfoId());
 

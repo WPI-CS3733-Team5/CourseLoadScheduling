@@ -40,7 +40,7 @@ public class ScheduleServiceImpl implements ScheduleService
     	List<String> selectedInstructorIds = new ArrayList<String>();
     	selectedInstructorIds.addAll(ScheduleLinks.getColumnNameList());
     	
-    	QueryTerm onlyTerm = new QueryTerm(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTORINFOID), ComparisonOperator.EQUAL, instructorInfoId, null);
+    	QueryTerm onlyTerm = new QueryTerm(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTOR_INFO_ID), ComparisonOperator.EQUAL, instructorInfoId, null);
     	
     	List<QueryTerm> queryTermList = new ArrayList<QueryTerm>();
     	
