@@ -11,6 +11,7 @@ import org.dselent.scheduling.server.dto.GetOneUserDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.requests.CreateUser;
+import org.dselent.scheduling.server.requests.EditUser;
 import org.dselent.scheduling.server.requests.GetAllUser;
 import org.dselent.scheduling.server.requests.GetOneUser;
 import org.dselent.scheduling.server.service.UserService;
@@ -97,7 +98,6 @@ public class UserInfoControllerImpl implements UserInfoController
 		// add any objects that need to be returned to the success list
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
-
 		Integer user_Id = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.REQUESTED_USER_ID)));
 		/*
 		Integer user_role = Integer.parseInt(request.get(GetOneUser.getBodyName(GetOneUser.BodyKey.USER_ROLE)));
@@ -184,6 +184,58 @@ public class UserInfoControllerImpl implements UserInfoController
 				.build();
 		*/
 		success = userService.getAllUser();
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<String> login(Map<String, String> request) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<String> editUser(@RequestBody Map<String, String> request) throws Exception {
+    	// Print is for testing purposes
+		System.out.println("controller reached");
+    	
+		// add any objects that need to be returned to the success list
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+		System.out.println(EditUser.getBodyName(EditUser.BodyKey.USER_ID));
+		Integer userId = Integer.parseInt(request.get(EditUser.getBodyName(EditUser.BodyKey.USER_ID)));
+		
+		Integer userRole = Integer.parseInt(request.get(EditUser.getBodyName(EditUser.BodyKey.USER_ROLE)));
+		String userName = request.get(EditUser.getBodyName(EditUser.BodyKey.USER_NAME));
+		String firstName = request.get(EditUser.getBodyName(EditUser.BodyKey.FIRST_NAME));
+		String lastName = request.get(EditUser.getBodyName(EditUser.BodyKey.LAST_NAME));
+		String email = request.get(EditUser.getBodyName(EditUser.BodyKey.EMAIL));
+		Boolean deleted = Boolean.parseBoolean(request.get(EditUser.getBodyName(EditUser.BodyKey.DELETED)));
+		String encryptedPassword = request.get(EditUser.getBodyName(EditUser.BodyKey.ENCRYPTED_PASSWORD));
+		Integer accountState = Integer.parseInt(request.get(EditUser.getBodyName(EditUser.BodyKey.ACCOUNT_STATE)));
+		String rank = request.get(EditUser.getBodyName(EditUser.BodyKey.RANK));
+		Integer courseLoad = Integer.parseInt(request.get(EditUser.getBodyName(EditUser.BodyKey.COURSE_LOAD)));
+		String office = request.get(EditUser.getBodyName(EditUser.BodyKey.OFFICE));
+		String department = request.get(EditUser.getBodyName(EditUser.BodyKey.DEPARTMENT));
+
+		CreateUserDto.Builder builder = CreateUserDto.builder();
+		CreateUserDto createUserDto = builder.withUserRole(userRole)
+				.withUserName(userName)
+				.withFirstName(firstName)
+				.withLastName(lastName)
+				.withEmail(email)
+				.withDeleted(deleted)
+				.withPassword(encryptedPassword)
+				.withAccountState(accountState)
+				.withRank(rank)
+				.withCourseLoad(courseLoad)
+				//.withPhoneNumber(phoneNumber)
+				.withOffice(office)
+				.withDepartment(department)
+				.build();
+		
+		userService.editUser(createUserDto, userId);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);

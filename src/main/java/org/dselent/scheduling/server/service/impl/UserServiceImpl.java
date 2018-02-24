@@ -165,13 +165,74 @@ public class UserServiceImpl implements UserService
 		returnList.add(instructorInfoDao.select(instructorColumnNameList, instructorQueryList, instructorOrderByList));
 		return returnList;
 	}
-	//
 
 	@Override
 	public UserInfo loginUser(String userName, String password)
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Integer> editUser(CreateUserDto dto, Integer userId) throws SQLException {
+		List<Integer> rowsAffectedList = new ArrayList<>();
+		
+		List<QueryTerm> queryTermList = new ArrayList<QueryTerm>();
+		QueryTerm updateUser = new QueryTerm(UserInfo.getColumnName(UserInfo.Columns.ID), ComparisonOperator.EQUAL, userId, null);
+		queryTermList.add(updateUser);
+		
+		String salt = KeyGenerators.string().generateKey();
+		String saltedPassword = dto.getEncryptedPassword() + salt;
+		PasswordEncoder passwordEncorder = new BCryptPasswordEncoder();
+		String encryptedPassword = passwordEncorder.encode(saltedPassword);
+		/*
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUserRole(dto.getUserRole());
+		userInfo.setUserName(dto.getUsername());
+		userInfo.setFirstName(dto.getFirstName());
+		userInfo.setLastName(dto.getLastName());
+		userInfo.setEmail(dto.getEmail());
+		userInfo.setDeleted(dto.getDeleted());
+		userInfo.setEncryptedPassword(encryptedPassword);
+		userInfo.setSalt(salt);
+		userInfo.setAccountState(dto.getAccountState());
+		*/
+		
+		Integer userRole = dto.getUserRole();
+		String userName = dto.getUsername();
+		String firstName = dto.getFirstName();
+		String lastName = dto.getLastName();
+		String email = dto.getEmail();
+		Boolean deleted = dto.getDeleted();
+		Integer accountState = dto.getAccountState();
+
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.USER_ROLE), userRole, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.USERNAME), userName, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.FIRST_NAME), firstName, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.LAST_NAME), lastName, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.EMAIL), email, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.DELETED), deleted, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.ENCRYPTED_PASSWORD), encryptedPassword, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.SALT), salt, queryTermList);
+		userInfoDao.update(UserInfo.getColumnName(UserInfo.Columns.ACCOUNT_STATE), accountState, queryTermList);
+		
+		QueryTerm updateInstructor = new QueryTerm(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID), ComparisonOperator.EQUAL, userId, null);
+		queryTermList.remove(updateUser);
+		queryTermList.add(updateInstructor);
+		
+		Integer rank = (Integer.parseInt(dto.getRank()));
+		Integer courseLoad = dto.getCourseLoad();
+		String office = dto.getOffice();
+		String department = dto.getDepartment();
+		
+		instructorInfoDao.update(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK), rank, queryTermList);
+		instructorInfoDao.update(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD), courseLoad, queryTermList);
+		instructorInfoDao.update(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE), office, queryTermList);
+		instructorInfoDao.update(InstructorInfo.getColumnName(InstructorInfo.Columns.DEPARTMENT), department, queryTermList);
+		
+		
+		
+		return rowsAffectedList;
 	}   
 
 }

@@ -21,4 +21,10 @@ public interface UserInfoController
 
     @RequestMapping(method=RequestMethod.POST, value="createUser")
     public ResponseEntity<String> createUser(@RequestBody Map<String, String> request) throws Exception;
+    
+    @RequestMapping(method=RequestMethod.POST, value="login")
+    public ResponseEntity<String> login(@RequestBody Map<String, String> request) throws Exception;
+    
+    @RequestMapping(method=RequestMethod.POST, value="editUser")
+    public ResponseEntity<String> editUser(@RequestBody Map<String, String> request) throws Exception;
 }
