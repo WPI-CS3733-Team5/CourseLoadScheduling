@@ -46,13 +46,13 @@ public class SectionServiceImpl implements SectionService {
     	List<String> sectionInsertColumnNameList = new ArrayList<>();
     	List<String> sectionKeyHolderColumnNameList = new ArrayList<>();
     	
-    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.COURSEINFOID));
-    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.CALENDARINFOID));
+    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.COURSE_INFO_ID));
+    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.CALENDAR_INFO_ID));
     	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.DELETED));
-    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTORINFOID));
+    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTOR_INFO_ID));
     	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.LOCATION));
-    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONNUMBER));
-    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONTYPE));
+    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER));
+    	sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_TYPE));
     	
     	sectionKeyHolderColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.ID));
     	rowsAffectedList.add(sectionInfoDao.insert(sectionInfo, sectionInsertColumnNameList, sectionKeyHolderColumnNameList));

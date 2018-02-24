@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
 public interface CourseService
 {
     public List<Integer> createCourse(CreateCourseDto createCourseDto) throws SQLException;
-    public List<CourseInfo> getAllCourses(GetAllCoursesDto getAllCoursesDto) throws SQLException;
+    public List<Object> getAllCourses() throws SQLException;
 
 }

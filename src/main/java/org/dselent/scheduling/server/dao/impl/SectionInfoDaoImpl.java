@@ -163,15 +163,15 @@ public class SectionInfoDaoImpl extends BaseDaoImpl<SectionInfo> implements Sect
         {
             parameters.addValue(parameterName, userInfoModel.getId());
         }
-        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONNUMBER)))
+        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER)))
         {
             parameters.addValue(parameterName, userInfoModel.getSectionNumber());
         }
-        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONTYPE)))
+        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_TYPE)))
         {
             parameters.addValue(parameterName, userInfoModel.getSectionType());
         }
-        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTORINFOID)))
+        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTOR_INFO_ID)))
         {
             parameters.addValue(parameterName, userInfoModel.getInstructorInfoId());
         }
@@ -183,11 +183,11 @@ public class SectionInfoDaoImpl extends BaseDaoImpl<SectionInfo> implements Sect
         {
             parameters.addValue(parameterName, userInfoModel.getDeleted());
         }
-        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.COURSEINFOID)))
+        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.COURSE_INFO_ID)))
         {
             parameters.addValue(parameterName, userInfoModel.getCourseInfoId());
         }
-        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.CALENDARINFOID)))
+        else if(insertColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.CALENDAR_INFO_ID)))
         {
             parameters.addValue(parameterName, userInfoModel.getCalendarInfoId());
         }
@@ -205,15 +205,15 @@ public class SectionInfoDaoImpl extends BaseDaoImpl<SectionInfo> implements Sect
         {
             userInfoModel.setId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONNUMBER)))
+        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER)))
         {
             userInfoModel.setSectionNumber((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONTYPE)))
+        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_TYPE)))
         {
             userInfoModel.setSectionType((String) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTORINFOID)))
+        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTOR_INFO_ID)))
         {
             userInfoModel.setInstructorInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
@@ -225,11 +225,11 @@ public class SectionInfoDaoImpl extends BaseDaoImpl<SectionInfo> implements Sect
         {
             userInfoModel.setDeleted((Boolean) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.COURSEINFOID)))
+        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.COURSE_INFO_ID)))
         {
             userInfoModel.setCourseInfoId((Integer) keyMap.get(keyHolderColumnName));
         }
-        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.CALENDARINFOID)))
+        else if(keyHolderColumnName.equals(SectionInfo.getColumnName(SectionInfo.Columns.CALENDAR_INFO_ID)))
         {
             userInfoModel.setCalendarInfoId((Integer) keyMap.get(keyHolderColumnName));
         }

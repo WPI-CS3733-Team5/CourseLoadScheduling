@@ -28,18 +28,18 @@ public class SectionInfoExtractor extends Extractor<List<SectionInfo>>
             }
 
             //int
-            result.setSectionNumber(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONNUMBER)));
+            result.setSectionNumber(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER)));
 
             if(rs.wasNull())
             {
-                result.setSectionNumber(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONNUMBER)));
+                result.setSectionNumber(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER)));
             }
 
             //varchar
-            result.setSectionType(rs.getString(SectionInfo.getColumnName(SectionInfo.Columns.SECTIONTYPE)));
+            result.setSectionType(rs.getString(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_TYPE)));
 
             //int
-            result.setInstructorInfoId(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTORINFOID)));
+            result.setInstructorInfoId(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTOR_INFO_ID)));
 
             if(rs.wasNull())
             {
@@ -58,7 +58,7 @@ public class SectionInfoExtractor extends Extractor<List<SectionInfo>>
             }
 
             //int
-            result.setCourseInfoId(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.COURSEINFOID)));
+            result.setCourseInfoId(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.COURSE_INFO_ID)));
 
             if(rs.wasNull())
             {
@@ -66,7 +66,7 @@ public class SectionInfoExtractor extends Extractor<List<SectionInfo>>
             }
 
             //int
-            result.setCalendarInfoId(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.CALENDARINFOID)));
+            result.setCalendarInfoId(rs.getInt(SectionInfo.getColumnName(SectionInfo.Columns.CALENDAR_INFO_ID)));
 
             resultList.add(result);
             //create the rest of these. follow examples above

@@ -142,11 +142,15 @@ public class CalendarInfoDaoImpl extends BaseDaoImpl<CalendarInfo> implements Ca
         else if(insertColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.SEMESTER))) {
             parameters.addValue(parameterName, calendarInfoModel.getSemester());
         }
-
+        
+        else if(insertColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.TERM))) {
+            parameters.addValue(parameterName, calendarInfoModel.getTerm());
+        }
+        /*
         else if(insertColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.CREDIT_AMOUNT))) {
             parameters.addValue(parameterName, calendarInfoModel.getCreditAmount());
         }
-
+		*/
         else if(insertColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.DAYS))){
             parameters.addValue(parameterName, calendarInfoModel.getDays());
         }
@@ -176,13 +180,17 @@ public class CalendarInfoDaoImpl extends BaseDaoImpl<CalendarInfo> implements Ca
         }
 
         else if(keyHolderColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.SEMESTER))) {
-            calendarInfoModel.setSemester((Integer) keyMap.get(keyHolderColumnName));
+            calendarInfoModel.setSemester((String) keyMap.get(keyHolderColumnName));
         }
-
+        
+        else if(keyHolderColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.TERM))) {
+            calendarInfoModel.setTerm((Integer) keyMap.get(keyHolderColumnName));
+        }
+        /*
         else if(keyHolderColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.CREDIT_AMOUNT))) {
             calendarInfoModel.setCreditAmount((Integer) keyMap.get(keyHolderColumnName));
         }
-
+		*/
         else if(keyHolderColumnName.equals(CalendarInfo.getColumnName(CalendarInfo.Columns.DAYS))) {
             calendarInfoModel.setDays((String) keyMap.get(keyHolderColumnName));
         }

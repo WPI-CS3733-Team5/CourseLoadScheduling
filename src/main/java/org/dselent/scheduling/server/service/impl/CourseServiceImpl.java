@@ -4,11 +4,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.scheduling.server.dao.CalendarInfoDao;
 import org.dselent.scheduling.server.dao.CourseInfoDao;
+import org.dselent.scheduling.server.dao.LabInfoDao;
+import org.dselent.scheduling.server.dao.SectionInfoDao;
+import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dto.CreateCourseDto;
 import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.Pair;
+import org.dselent.scheduling.server.model.CalendarInfo;
 import org.dselent.scheduling.server.model.CourseInfo;
+import org.dselent.scheduling.server.model.LabInfo;
+import org.dselent.scheduling.server.model.SectionInfo;
+import org.dselent.scheduling.server.model.SectionPopulation;
 import org.dselent.scheduling.server.service.CourseService;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
@@ -23,6 +31,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class CourseServiceImpl implements CourseService{
     @Autowired
     private CourseInfoDao courseInfoDao;
+    @Autowired
+    private SectionInfoDao sectionInfoDao;
+    @Autowired
+    private SectionPopulationDao sectionPopulationDao;
+    @Autowired
+    private LabInfoDao labInfoDao;
+    @Autowired
+    private CalendarInfoDao calendarInfoDao;
 
     public CourseServiceImpl(){}
 
@@ -62,13 +78,39 @@ public class CourseServiceImpl implements CourseService{
 
     @Transactional
     @Override
-    public List<CourseInfo> getAllCourses(GetAllCoursesDto getAllCoursesDto) throws SQLException{
+    public List<Object> getAllCourses() throws SQLException{
         List<String> selectColumnNameList = new ArrayList<>();
         List<QueryTerm> queryTermList = new ArrayList<>();
         List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
         selectColumnNameList.addAll(CourseInfo.getColumnNameList());
-        Pair<String, ColumnOrder> byId = new Pair<>(CourseInfo.getColumnName(CourseInfo.Columns.ID), ColumnOrder.ASC);
-
-        return courseInfoDao.select(selectColumnNameList, queryTermList, orderByList);
+        //Pair<String, ColumnOrder> byId = new Pair<>(CourseInfo.getColumnName(CourseInfo.Columns.ID), ColumnOrder.ASC);
+        //orderByList.add(byId);
+        
+        List<CourseInfo> allCourses = courseInfoDao.select(selectColumnNameList, queryTermList, orderByList);
+        
+        selectColumnNameList = new ArrayList<>();
+        selectColumnNameList.addAll(SectionInfo.getColumnNameList());
+        List<SectionInfo> allSections = sectionInfoDao.select(selectColumnNameList, queryTermList, orderByList);
+       
+        selectColumnNameList = new ArrayList<>();
+        selectColumnNameList.addAll(SectionPopulation.getColumnNameList());
+        List<SectionPopulation> allSecPops = sectionPopulationDao.select(selectColumnNameList, queryTermList, orderByList);
+        
+        selectColumnNameList = new ArrayList<>();
+        selectColumnNameList.addAll(LabInfo.getColumnNameList());
+        List<LabInfo> allLabs = labInfoDao.select(selectColumnNameList, queryTermList, orderByList);
+        
+        selectColumnNameList = new ArrayList<>();
+        selectColumnNameList.addAll(CalendarInfo.getColumnNameList());
+        List<CalendarInfo> allCalendars = calendarInfoDao.select(selectColumnNameList, queryTermList, orderByList);
+        
+        List<Object> returnList = new ArrayList<Object>();
+        returnList.add(allCourses);
+        returnList.add(allSections);
+        returnList.add(allSecPops);
+        returnList.add(allLabs);
+        returnList.add(allCalendars);
+        
+        return returnList;
     }
 }

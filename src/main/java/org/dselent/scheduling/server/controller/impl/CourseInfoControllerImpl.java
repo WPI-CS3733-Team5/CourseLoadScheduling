@@ -72,15 +72,14 @@ public class CourseInfoControllerImpl implements CourseInfoController
 
     @Override
     public ResponseEntity<String> getAllCourses(@RequestBody Map<String, String> request) throws Exception{
-        System.out.println("notification controller reached");
+        System.out.println("Courses controller reached");
 
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        GetAllCoursesDto.Builder builder = GetAllCoursesDto.builder();
-        GetAllCoursesDto getAllCoursesDto = builder.build();
 
-        courseService.getAllCourses(getAllCoursesDto);
+
+        success = courseService.getAllCourses();
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
