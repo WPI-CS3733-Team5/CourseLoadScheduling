@@ -25,9 +25,9 @@ public class InstructorInfoExtractor extends Extractor<List<InstructorInfo>> {
                 result.setId(null);
             }
 
-            result.setRank(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK)));
+            result.setRank(Integer.parseInt(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK))));
             result.setCourseLoad(Integer.parseInt(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD))));
-            result.setPhoneNumber(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER)));
+            //result.setPhoneNumber(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER)));
             result.setOffice(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE)));
             result.setUserInfoId(Integer.parseInt(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID))));
             result.setDepartment(rs.getString(InstructorInfo.getColumnName(InstructorInfo.Columns.DEPARTMENT)));

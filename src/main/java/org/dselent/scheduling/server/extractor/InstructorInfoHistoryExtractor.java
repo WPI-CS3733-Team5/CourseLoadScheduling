@@ -26,9 +26,9 @@ public class InstructorInfoHistoryExtractor extends Extractor<List<InstructorInf
             }
 
             result.setInstructorInfoId(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.INSTRUCTOR_INFO_ID)));
-            result.setRank(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.RANK)));
+            result.setRank(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.RANK)));
             result.setCourseLoad(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.COURSE_LOAD)));
-            result.setPhoneNumber(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)));
+            //result.setPhoneNumber(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)));
             result.setOffice(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.OFFICE)));
             result.setUserInfoId(rs.getInt(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.USER_INFO_ID)));
             result.setDepartment(rs.getString(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.DEPARTMENT)));

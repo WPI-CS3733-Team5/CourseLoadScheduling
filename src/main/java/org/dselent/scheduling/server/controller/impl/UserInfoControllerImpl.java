@@ -52,6 +52,7 @@ public class UserInfoControllerImpl implements UserInfoController
 		List<Object> success = new ArrayList<Object>();
 
 		Integer userRole = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_ROLE)));
+		System.out.println(userRole);
 		String userName = request.get(CreateUser.getBodyName(CreateUser.BodyKey.USER_NAME));
 		String firstName = request.get(CreateUser.getBodyName(CreateUser.BodyKey.FIRST_NAME));
 		String lastName = request.get(CreateUser.getBodyName(CreateUser.BodyKey.LAST_NAME));
@@ -61,7 +62,7 @@ public class UserInfoControllerImpl implements UserInfoController
 		Integer accountState = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.ACCOUNT_STATE)));
 		String rank = request.get(CreateUser.getBodyName(CreateUser.BodyKey.RANK));
 		Integer courseLoad = Integer.parseInt(request.get(CreateUser.getBodyName(CreateUser.BodyKey.COURSE_LOAD)));
-		String phoneNumber = request.get(CreateUser.getBodyName(CreateUser.BodyKey.PHONE_NUMBER));
+		//String phoneNumber = request.get(CreateUser.getBodyName(CreateUser.BodyKey.PHONE_NUMBER));
 		String office = request.get(CreateUser.getBodyName(CreateUser.BodyKey.OFFICE));
 		String department = request.get(CreateUser.getBodyName(CreateUser.BodyKey.DEPARTMENT));
 
@@ -76,7 +77,7 @@ public class UserInfoControllerImpl implements UserInfoController
 				.withAccountState(accountState)
 				.withRank(rank)
 				.withCourseLoad(courseLoad)
-				.withPhoneNumber(phoneNumber)
+				//.withPhoneNumber(phoneNumber)
 				.withOffice(office)
 				.withDepartment(department)
 				.build();

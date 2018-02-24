@@ -43,7 +43,7 @@ public class CreateUser
 		ACCOUNT_STATE,
 		RANK,
 		COURSE_LOAD,
-		PHONE_NUMBER,
+		//PHONE_NUMBER,
 		OFFICE,
 		DEPARTMENT;
 	}

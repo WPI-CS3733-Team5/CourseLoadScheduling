@@ -159,10 +159,11 @@ public class InstructorInfoDaoImpl extends BaseDaoImpl<InstructorInfo> implement
         {
             parameters.addValue(parameterName, InstructorInfoModel.getCourseLoad());
         }
+        /*
         else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getPhoneNumber());
-        }
+        }*/
         else if(insertColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE)))
         {
             parameters.addValue(parameterName, InstructorInfoModel.getOffice());
@@ -191,16 +192,16 @@ public class InstructorInfoDaoImpl extends BaseDaoImpl<InstructorInfo> implement
         }
         else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK)))
         {
-            InstructorInfoModel.setRank((String) keyMap.get(keyHolderColumnName));
+            InstructorInfoModel.setRank((Integer) keyMap.get(keyHolderColumnName));
         }
         else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD)))
         {
             InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
-        }
+        }/*
         else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER)))
         {
             InstructorInfoModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
-        }
+        }*/
         else if(keyHolderColumnName.equals(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE)))
         {
             InstructorInfoModel.setOffice((String) keyMap.get(keyHolderColumnName));

@@ -68,12 +68,14 @@ public class UserServiceImpl implements UserService
     	List<String> userInsertColumnNameList = new ArrayList<>();
     	List<String> userKeyHolderColumnNameList = new ArrayList<>();
     	
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.USER_ROLE));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.USERNAME));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.FIRST_NAME));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LAST_NAME));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.EMAIL));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ENCRYPTED_PASSWORD));
     	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.SALT));
+    	userInsertColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ACCOUNT_STATE));
 
     	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.ID));
     	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.CREATED_AT));
@@ -85,9 +87,10 @@ public class UserServiceImpl implements UserService
 
 		if(!dto.getRank().equals(null)){
 			InstructorInfo instructorInfo = new InstructorInfo();
-			instructorInfo.setRank(dto.getRank());
+			//Rank is incorrectly given as a string in DTO: This is a bandaid
+			instructorInfo.setRank(Integer.parseInt(dto.getRank()));
 			instructorInfo.setCourseLoad(dto.getCourseLoad());
-			instructorInfo.setPhoneNumber(dto.getPhoneNumber());
+			//instructorInfo.setPhoneNumber(dto.getPhoneNumber());
 			instructorInfo.setOffice(dto.getOffice());
 			instructorInfo.setDepartment(dto.getDepartment());
 			instructorInfo.setUserInfoId(userInfo.getId());
@@ -97,7 +100,7 @@ public class UserServiceImpl implements UserService
 
 			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.RANK));
 			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.COURSE_LOAD));
-			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER));
+			//instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.PHONE_NUMBER));
 			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.OFFICE));
 			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.USER_INFO_ID));
 			instructorInsertColumnNameList.add(InstructorInfo.getColumnName(InstructorInfo.Columns.DEPARTMENT));

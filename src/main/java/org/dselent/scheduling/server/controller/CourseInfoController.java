@@ -19,5 +19,3 @@ public interface CourseInfoController
     @RequestMapping(method=RequestMethod.POST, value= GetAllCourses.REQUEST_NAME)
     public ResponseEntity<String> getAllCourses(@RequestBody Map<String, String> request) throws Exception;
 }
-
-	

@@ -171,11 +171,11 @@ public class InstructorInfoHistoryDaoImpl extends BaseDaoImpl<InstructorInfoHist
     	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.COURSE_LOAD)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getCourseLoad());
-    	}
+    	}/*
     	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getPhoneNumber());
-    	}
+    	}*/
     	else if(insertColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.OFFICE)))
     	{
     		parameters.addValue(parameterName, instructorInfoHistoryModel.getOffice());
@@ -208,16 +208,16 @@ public class InstructorInfoHistoryDaoImpl extends BaseDaoImpl<InstructorInfoHist
 		}
     	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.RANK)))
     	{
-    		instructorInfoHistoryModel.setRank((String) keyMap.get(keyHolderColumnName));
+    		instructorInfoHistoryModel.setRank((Integer) keyMap.get(keyHolderColumnName));
     	}
     	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.COURSE_LOAD)))
     	{
     		instructorInfoHistoryModel.setCourseLoad((Integer) keyMap.get(keyHolderColumnName));
-    	}
+    	}/*
     	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.PHONE_NUMBER)))
     	{
     		instructorInfoHistoryModel.setPhoneNumber((String) keyMap.get(keyHolderColumnName));
-    	}
+    	}*/
     	else if(keyHolderColumnName.equals(InstructorInfoHistory.getColumnName(InstructorInfoHistory.Columns.OFFICE)))
     	{
     		instructorInfoHistoryModel.setOffice((String) keyMap.get(keyHolderColumnName));

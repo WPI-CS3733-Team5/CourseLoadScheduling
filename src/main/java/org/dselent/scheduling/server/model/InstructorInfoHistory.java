@@ -15,7 +15,7 @@ public class InstructorInfoHistory extends Model{
         INSTRUCTOR_INFO_ID,
         RANK,
         COURSE_LOAD,
-        PHONE_NUMBER,
+        //PHONE_NUMBER,
         OFFICE,
         USER_INFO_ID,
         DEPARTMENT
@@ -36,9 +36,9 @@ public class InstructorInfoHistory extends Model{
 
         COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.ID, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.RANK, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.RANK, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.COURSE_LOAD, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.PHONE_NUMBER, JDBCType.VARCHAR);
+        //COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.PHONE_NUMBER, JDBCType.VARCHAR);
         COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.OFFICE, JDBCType.VARCHAR);
         COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.USER_INFO_ID, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(InstructorInfoHistory.Columns.DEPARTMENT, JDBCType.VARCHAR);
@@ -47,9 +47,9 @@ public class InstructorInfoHistory extends Model{
     // attributes
     private Integer id;
     private Integer instructorInfoId;
-    private String rank;
+    private Integer rank;
     private Integer courseLoad;
-    private String phoneNumber;
+    //private String phoneNumber;
     private String office;
     private Integer userInfoId;
     private String department;
@@ -105,11 +105,11 @@ public class InstructorInfoHistory extends Model{
         this.instructorInfoId = instructorInfoId;
     }
 
-    public String getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(String rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 
@@ -120,7 +120,7 @@ public class InstructorInfoHistory extends Model{
     public void setCourseLoad(Integer courseLoad) {
         this.courseLoad = courseLoad;
     }
-
+/*
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -128,7 +128,7 @@ public class InstructorInfoHistory extends Model{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
+*/
     public String getOffice() {
         return office;
     }
@@ -162,7 +162,7 @@ public class InstructorInfoHistory extends Model{
                 Objects.equals(instructorInfoId, that.instructorInfoId) &&
                 Objects.equals(rank, that.rank) &&
                 Objects.equals(courseLoad, that.courseLoad) &&
-                Objects.equals(phoneNumber, that.phoneNumber) &&
+                //Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(office, that.office) &&
                 Objects.equals(userInfoId, that.userInfoId) &&
                 Objects.equals(department, that.department);
@@ -170,8 +170,8 @@ public class InstructorInfoHistory extends Model{
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, instructorInfoId, rank, courseLoad, phoneNumber, office, userInfoId, department);
+    	return Objects.hash(id, instructorInfoId, rank, courseLoad, office, userInfoId, department);
+        //return Objects.hash(id, instructorInfoId, rank, courseLoad, phoneNumber, office, userInfoId, department);
     }
 
     @Override
@@ -181,7 +181,7 @@ public class InstructorInfoHistory extends Model{
         sb.append(", instructorInfoId=").append(instructorInfoId);
         sb.append(", rank='").append(rank).append('\'');
         sb.append(", courseLoad=").append(courseLoad);
-        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+        //sb.append(", phoneNumber='").append(phoneNumber).append('\'');
         sb.append(", office='").append(office).append('\'');
         sb.append(", userInfoId=").append(userInfoId);
         sb.append(", department='").append(department).append('\'');
