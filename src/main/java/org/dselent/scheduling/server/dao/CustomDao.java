@@ -26,4 +26,5 @@ public interface CustomDao
     List<SectionInfo> getAllSectionsGivenDepartment(String department);
     //List<SectionInfo> getAllSectionsGivenTerm(int term);
     //List<UserInfo> getUsersWithDept(String department);
+    List<Object> selectAllTables();
 }

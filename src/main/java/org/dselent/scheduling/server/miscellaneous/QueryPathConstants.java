@@ -26,8 +26,16 @@ public class QueryPathConstants
 	private static String COURSES_GIVEN_USERNAME_AND_DEPARTMENT_PATH = BASE_QUERY_PATH + "selectCoursesGivenUserAndDepartment" + SQL_EXTENSION;
 	private static String SECTIONS_WITH_WISHLIST_QUERY_PATH = BASE_QUERY_PATH + "selectSectionInfoGivenUsernameAndTerm" + SQL_EXTENSION;
 	private static String WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY_PATH = BASE_QUERY_PATH + "selectWishlistSectionsGivenUsernameAndCourseNAme" + SQL_EXTENSION;
-	private static String WISHLIST_FROM_USER_PATH = BASE_QUERY_PATH + "SelectWishlistGivenUser.sql" + SQL_EXTENSION;
+	private static String WISHLIST_FROM_USER_PATH = BASE_QUERY_PATH + "SelectWishlistGivenUser" + SQL_EXTENSION;
 	private static String SECTIONS_WITH_DEPARTMENT_PATH = BASE_QUERY_PATH + "SectionsWithDepartment" + SQL_EXTENSION;
+	private static String ALL_USERS_PATH = BASE_QUERY_PATH + "SelectAllUsers" + SQL_EXTENSION;
+	private static String ALL_COURSES_PATH = BASE_QUERY_PATH + "SelectAllCourses" + SQL_EXTENSION;
+	private static String ALL_INSTRUCTORS_PATH = BASE_QUERY_PATH + "SelectAllInstructors" + SQL_EXTENSION;
+	private static String ALL_LABS_PATH = BASE_QUERY_PATH + "SelectAllLabs" + SQL_EXTENSION;
+	private static String ALL_SCHEDULES_PATH = BASE_QUERY_PATH + "SelectAllScheduleLinks" + SQL_EXTENSION;
+	private static String ALL_SECTIONS_PATH = BASE_QUERY_PATH + "SelectAllSections" + SQL_EXTENSION;
+	private static String ALL_CALENDARS_PATH = BASE_QUERY_PATH + "SelectAllCalendar" + SQL_EXTENSION;
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
@@ -40,6 +48,14 @@ public class QueryPathConstants
 	public static String WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY = readFile(WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY_PATH);
 	public static String WISHLIST_FROM_USERNAME_QUERY = readFile(WISHLIST_FROM_USER_PATH);
 	public static String SECTIONS_WITH_DEPARTMENT_QUERY = readFile(SECTIONS_WITH_DEPARTMENT_PATH);
+	public static String ALL_USERS_QUERY = readFile(ALL_USERS_PATH);
+    public static String ALL_COURSES_QUERY = readFile(ALL_COURSES_PATH);
+    public static String ALL_INSTRUCTORS_QUERY = readFile(ALL_INSTRUCTORS_PATH);
+    public static String ALL_LABS_QUERY = readFile(ALL_LABS_PATH);
+    public static String ALL_SCHEDULES_QUERY = readFile(ALL_SCHEDULES_PATH);
+    public static String ALL_SECTIONS_QUERY = readFile(ALL_SECTIONS_PATH);
+    public static String ALL_CALENDARS_QUERY = readFile(ALL_CALENDARS_PATH);
+
 	private QueryPathConstants()
 	{
 		

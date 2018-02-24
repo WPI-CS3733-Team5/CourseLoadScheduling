@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class NotificationServiceImpl implements NotificationService{
+public class NotificationServiceImpl implements NotificationService {
 
     @Autowired
     private NotificationDao notificationDao;
