@@ -46,15 +46,9 @@ public class WishlistLinksControllerImpl implements WishlistLinksController
 		List<Object> success = new ArrayList<Object>();
 		
 		Integer InstructorInfoId = Integer.parseInt(request.get(GetWishlistLinks.getBodyName(GetWishlistLinks.BodyKey.INSTRUCTOR_INFO_ID)));
-		Integer sectionInfoId = Integer.parseInt(request.get(GetWishlistLinks.getBodyName(GetWishlistLinks.BodyKey.SECTION_INFO_ID)));
-
-		WishlistLinksDto.Builder builder = WishlistLinksDto.builder();
-		WishlistLinksDto wishlistLinksDto = builder.withInstructorInfoId(InstructorInfoId)
-		.withSectionInfoId(sectionInfoId)
-
-		.build();
 		
-		wishlistLinks.wishlistLinks(wishlistLinksDto);
+		
+		success.addAll(wishlistLinks.wishlistLinks(InstructorInfoId));
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
