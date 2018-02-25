@@ -26,16 +26,16 @@ public class ScheduleLinksExtractor extends Extractor<List<ScheduleLinks>>
             }
 
             //int
-            result.setInstructorInfoId(rs.getInt(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTORINFOID)));
+            result.setInstructorInfoId(rs.getInt(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTOR_INFO_ID)));
 
             if(rs.wasNull())
             {
-                result.setInstructorInfoId(rs.getInt(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTORINFOID)));
+                result.setInstructorInfoId(rs.getInt(ScheduleLinks.getColumnName(ScheduleLinks.Columns.INSTRUCTOR_INFO_ID)));
             }
 
 
             //int
-            result.setSectionInfoId(rs.getInt(ScheduleLinks.getColumnName(ScheduleLinks.Columns.SECTIONINFOID)));
+            result.setSectionInfoId(rs.getInt(ScheduleLinks.getColumnName(ScheduleLinks.Columns.SECTION_INFO_ID)));
 
             if(rs.wasNull())
             {

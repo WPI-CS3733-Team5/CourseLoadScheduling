@@ -13,13 +13,13 @@ public class SectionInfo extends Model
     {
 
         ID,
-        SECTIONNUMBER,
-        SECTIONTYPE,
-        INSTRUCTORINFOID,
+        SECTION_NUMBER,
+        SECTION_TYPE,
+        INSTRUCTOR_INFO_ID,
         LOCATION,
         DELETED,
-        COURSEINFOID,
-        CALENDARINFOID
+        COURSE_INFO_ID,
+        CALENDAR_INFO_ID
 
     }
 
@@ -38,13 +38,13 @@ public class SectionInfo extends Model
         }
 
         COLUMN_TYPE_MAP.put(SectionInfo.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(SectionInfo.Columns.SECTIONNUMBER, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(SectionInfo.Columns.SECTIONTYPE, JDBCType.VARCHAR);
-        COLUMN_TYPE_MAP.put(SectionInfo.Columns.INSTRUCTORINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionInfo.Columns.SECTION_NUMBER, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionInfo.Columns.SECTION_TYPE, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(SectionInfo.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(SectionInfo.Columns.LOCATION, JDBCType.VARCHAR);
         COLUMN_TYPE_MAP.put(SectionInfo.Columns.DELETED, JDBCType.BOOLEAN);
-        COLUMN_TYPE_MAP.put(SectionInfo.Columns.COURSEINFOID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(SectionInfo.Columns.CALENDARINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionInfo.Columns.COURSE_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(SectionInfo.Columns.CALENDAR_INFO_ID, JDBCType.INTEGER);
 
     }
 

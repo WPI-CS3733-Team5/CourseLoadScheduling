@@ -35,14 +35,13 @@ public class ScheduleLinksControllerImpl implements ScheduleLinksController {
         List<Object> success = new ArrayList<Object>();
 
         Integer instructor_info_id = Integer.parseInt(request.get(GetOneSchedule.getBodyName(GetOneSchedule.BodyKey.INSTRUCTOR_INFO_ID)));
-        Integer section_info_id = Integer.parseInt(request.get(GetOneSchedule.getBodyName(GetOneSchedule.BodyKey.SECTION_INFO_ID)));
 
-        GetOneScheduleDto.Builder builder = GetOneScheduleDto.builder();
-        GetOneScheduleDto getOneScheduleDto = builder.withInstructorInfoId(instructor_info_id)
-                .withSectionInfoId(section_info_id)
-                .build();
 
-        scheduleService.getOneSchedule(getOneScheduleDto);
+        //GetOneScheduleDto.Builder builder = GetOneScheduleDto.builder();
+        //GetOneScheduleDto getOneScheduleDto = builder.withInstructorInfoId(instructor_info_id)
+          //      .build();
+
+        success.addAll(scheduleService.getOneSchedule(instructor_info_id));
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);

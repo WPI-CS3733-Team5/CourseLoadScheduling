@@ -3,6 +3,7 @@ package org.dselent.scheduling.server.service;
 import org.dselent.scheduling.server.dto.GetOneScheduleDto;
 import org.dselent.scheduling.server.model.ScheduleLinks;
 
+import java.util.List;
 import java.sql.SQLException;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,6 @@ public interface ScheduleService
      * @throws SQLException
      */
 
-    public ScheduleLinks getOneSchedule(GetOneScheduleDto getOneScheduleDto) throws SQLException;
+    public List<ScheduleLinks> getOneSchedule(Integer instructorInfoId) throws SQLException;
 
 }

@@ -24,13 +24,18 @@ public class CalendarInfoExtractor extends Extractor<List<CalendarInfo>>{
             if (rs.wasNull()) result.setYear(null);
 
             //Set Semester
-            result.setSemester(rs.getInt(CalendarInfo.getColumnName(CalendarInfo.Columns.SEMESTER)));
+            result.setSemester(rs.getString(CalendarInfo.getColumnName(CalendarInfo.Columns.SEMESTER)));
             if (rs.wasNull()) result.setSemester(null);
 
+            //Set Term
+            result.setTerm(rs.getInt(CalendarInfo.getColumnName(CalendarInfo.Columns.TERM)));
+            if (rs.wasNull()) result.setTerm(null);
+            
             //Set Credit Amount
+            /*
             result.setCreditAmount(rs.getInt(CalendarInfo.getColumnName(CalendarInfo.Columns.CREDIT_AMOUNT)));
             if (rs.wasNull()) result.setCreditAmount(null);
-
+            */
             //Set Days
             result.setDays(rs.getString(CalendarInfo.getColumnName(CalendarInfo.Columns.DAYS)));
             if (rs.wasNull()) result.setDays(null);

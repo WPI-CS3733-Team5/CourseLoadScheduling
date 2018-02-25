@@ -12,8 +12,8 @@ public class CalendarInfo extends Model {
         ID,
         YEAR,
         SEMESTER,
-        TERM_ID,
-        CREDIT_AMOUNT,
+        TERM,
+        //CREDIT_AMOUNT,
         DAYS,
         START_TIME,
         END_TIME
@@ -31,8 +31,9 @@ public class CalendarInfo extends Model {
 
         COLUMN_TYPE_MAP.put(CalendarInfo.Columns.ID, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(CalendarInfo.Columns.YEAR, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.SEMESTER, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.CREDIT_AMOUNT, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.SEMESTER, JDBCType.VARCHAR);
+        COLUMN_TYPE_MAP.put(CalendarInfo.Columns.TERM, JDBCType.INTEGER);
+        //COLUMN_TYPE_MAP.put(CalendarInfo.Columns.CREDIT_AMOUNT, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(CalendarInfo.Columns.DAYS, JDBCType.VARCHAR);
         COLUMN_TYPE_MAP.put(CalendarInfo.Columns.START_TIME, JDBCType.INTEGER);
         COLUMN_TYPE_MAP.put(CalendarInfo.Columns.END_TIME, JDBCType.INTEGER);
@@ -44,8 +45,9 @@ public class CalendarInfo extends Model {
 
     private Integer id;
     private Integer year;
-    private Integer semester;
-    private Integer creditAmount;
+    private String semester;
+    private Integer term;
+    //private Integer creditAmount;
     private String days;
     private Integer startTime;
     private Integer endTime;
@@ -93,14 +95,20 @@ public class CalendarInfo extends Model {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
+    public void setSemester(String semester) {
         this.semester = semester;
     }
-
+    public Integer getTerm() {
+    	return this.term;
+    }
+    public void setTerm(Integer term) {
+    	this.term = term;
+    }
+    /*
     public Integer getCreditAmount() {
         return creditAmount;
     }
@@ -108,6 +116,7 @@ public class CalendarInfo extends Model {
     public void setCreditAmount(Integer creditAmount) {
         this.creditAmount = creditAmount;
     }
+    */
 
     public String getDays() {
         return days;
@@ -141,7 +150,7 @@ public class CalendarInfo extends Model {
         return Objects.equals(id, that.id) &&
                 Objects.equals(year, that.year) &&
                 Objects.equals(semester, that.semester) &&
-                Objects.equals(creditAmount, that.creditAmount) &&
+                //Objects.equals(creditAmount, that.creditAmount) &&
                 Objects.equals(days, that.days) &&
                 Objects.equals(startTime, that.startTime) &&
                 Objects.equals(endTime, that.endTime);
@@ -149,8 +158,9 @@ public class CalendarInfo extends Model {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, year, semester, creditAmount, days, startTime, endTime);
+    	
+    	return Objects.hash(id, year, semester, term, days, startTime, endTime);
+        //return Objects.hash(id, year, semester, term, creditAmount, days, startTime, endTime);
     }
 
     @Override
@@ -158,8 +168,9 @@ public class CalendarInfo extends Model {
         final StringBuilder sb = new StringBuilder("CalendarInfo{");
         sb.append("id=").append(id);
         sb.append(", year=").append(year);
-        sb.append(", semester=").append(semester);
-        sb.append(", creditAmount=").append(creditAmount);
+        sb.append(", semester=").append(semester).append('\'');
+        sb.append(", term=").append(term);
+        //sb.append(", creditAmount=").append(creditAmount);
         sb.append(", days='").append(days).append('\'');
         sb.append(", startTime=").append(startTime);
         sb.append(", endTime=").append(endTime);

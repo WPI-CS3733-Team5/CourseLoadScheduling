@@ -14,8 +14,8 @@ public class ScheduleLinks extends Model
     {
 
         ID,
-        INSTRUCTORINFOID,
-        SECTIONINFOID;
+        INSTRUCTOR_INFO_ID,
+        SECTION_INFO_ID;
 
     }
 
@@ -35,8 +35,8 @@ public class ScheduleLinks extends Model
         }
 
         COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.ID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.INSTRUCTORINFOID, JDBCType.INTEGER);
-        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.SECTIONINFOID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.INSTRUCTOR_INFO_ID, JDBCType.INTEGER);
+        COLUMN_TYPE_MAP.put(ScheduleLinks.Columns.SECTION_INFO_ID, JDBCType.INTEGER);
 
     }
 
