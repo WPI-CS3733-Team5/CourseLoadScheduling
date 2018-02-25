@@ -1,6 +1,7 @@
 package org.dselent.scheduling.server.service;
 
 import org.dselent.scheduling.server.dto.CreateCourseDto;
+import org.dselent.scheduling.server.dto.CreateSectionDto;
 import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.model.CourseInfo;
 
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CourseService
 {
-    public List<Integer> createCourse(CreateCourseDto createCourseDto) throws SQLException;
+    public List<Integer> createCourse(CreateCourseDto createCourseDto, CreateSectionDto createSectionDto) throws SQLException;
     public List<Object> getAllCourses() throws SQLException;
 
 }

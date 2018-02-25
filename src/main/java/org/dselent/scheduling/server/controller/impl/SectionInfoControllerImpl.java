@@ -24,30 +24,40 @@ public class SectionInfoControllerImpl implements SectionInfoController{
     private SectionService sectionService;
 
     public ResponseEntity<String> createSection(@RequestBody Map<String, String> request) throws Exception{
-// Print is for testing purposes
         System.out.println("controller reached");
 
         // add any objects that need to be returned to the success list
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
+        //SectionInfo
         Integer sectionNumber = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.SECTION_NUMBER)));
         String sectionType = request.get(CreateSection.getBodyName(CreateSection.BodyKey.SECTION_TYPE));
-        Integer instructorInfoId = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.INSTRUCTOR_INFO_ID)));
         String location = request.get(CreateSection.getBodyName(CreateSection.BodyKey.LOCATION));
-        Boolean deleted = Boolean.parseBoolean(request.get(CreateSection.getBodyName(CreateSection.BodyKey.DELETED)));
-        Integer course_info_id = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.COURSE_INFO_ID)));
-        Integer calendarInfoId = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.CALENDAR_INFO_ID)));
+        Integer courseInfoId = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.COURSE_INFO_ID)));
 
-
+        //CalendarInfo
+        Integer term = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.TERM)));
+        Integer startTime = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.START_TIME)));
+        Integer endTime = Integer.parseInt(request.get(CreateSection.getBodyName(CreateSection.BodyKey.END_TIME)));
+        String days = request.get(CreateSection.getBodyName(CreateSection.BodyKey.DAYS));
+        Integer year = 2018;
+        String semester;
+        if (term <= 2 || term == 5) semester = "FALL";
+        else semester = "SPRING";
+        
         CreateSectionDto.Builder builder = new CreateSectionDto.Builder();
-        CreateSectionDto createSectionDto = builder.withSection_number(sectionNumber)
-                .withSection_type(sectionType)
-                .withInstructor_info_id(instructorInfoId)
+        CreateSectionDto createSectionDto = builder.withSectionNumber(sectionNumber)
+                .withSectionType(sectionType)
                 .withLocation(location)
-                .withDeleted(deleted)
-                .withCourse_info_id(course_info_id)
-                .withCalendar_info_id(calendarInfoId)
+                .withDeleted(false)
+                .withCourseInfoId(courseInfoId)
+                .withTerm(term)
+                .withStartTime(startTime)
+                .withEndTime(endTime)
+                .withDays(days)
+                .withSemester(semester)
+                .withYear(year)
                 .build();
 
         sectionService.createSection(createSectionDto);

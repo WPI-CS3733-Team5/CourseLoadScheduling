@@ -12,22 +12,31 @@ import java.util.Objects;
  */
 public class CreateSectionDto
 {
-    private final Integer section_number;
-    private final String section_type;
-    private final Integer instructor_info_id;
+	//Section Information
+    private final Integer sectionNumber;
+    private final String sectionType;
+    private final Integer instructorInfoId;
     private final String location;
     private final Boolean deleted;
-    private final Integer course_info_id;
-    private final Integer calendar_info_id;
+    private final Integer courseInfoId;
+    private final Integer calendarInfoId;
+    
+    //Calendar Information
+    private final Integer year;
+	private final String semester;
+    private final String days;
+    private final Integer startTime;
+    private final Integer endTime;
+    private final Integer term;
 
     public Integer getSectionNumber() {
-    	return section_number;
+    	return sectionNumber;
     }
     public String getSectionType() {
-    	return section_type;
+    	return sectionType;
     }
     public Integer getInstructorInfoId() {
-    	return instructor_info_id;
+    	return instructorInfoId;
     }
     public String getLocation() {
     	return location;
@@ -36,31 +45,56 @@ public class CreateSectionDto
     	return deleted;
     }
     public Integer getCourseInfoId() {
-    	return course_info_id;
+    	return courseInfoId;
     }
     public Integer getCalendarInfoId() {
-    	return calendar_info_id;
+    	return calendarInfoId;
     }
+    public Integer getYear() {
+		return year;
+	}
+	public String getSemester() {
+		return semester;
+	}
+	public String getDays() {
+		return days;
+	}
+	public Integer getStartTime() {
+		return startTime;
+	}
+	public Integer getEndTime() {
+		return endTime;
+	}
+	public Integer getTerm() {
+		return term;
+	}
+    
     private CreateSectionDto(Builder builder){
-        this.section_number = builder.section_number;
-        this.section_type = builder.section_type;
-        this.instructor_info_id = builder.instructor_info_id;
+        this.sectionNumber = builder.sectionNumber;
+        this.sectionType = builder.sectionType;
+        this.instructorInfoId = builder.instructorInfoId;
         this.location = builder.location;
         this.deleted = builder.deleted;
-        this.course_info_id = builder.course_info_id;
-        this.calendar_info_id = builder.calendar_info_id;
+        this.courseInfoId = builder.courseInfoId;
+        this.calendarInfoId = builder.calendarInfoId;
+        this.year = builder.year;
+        this.semester = builder.semester;
+        this.days = builder.days;
+        this.startTime = builder.startTime;
+        this.endTime = builder.endTime;
+        this.term = builder.term;
     }
 
     @java.lang.Override
     public java.lang.String toString() {
         return "CreateSectionDto{" +
-                "section_number=" + section_number +
-                ", section_type='" + section_type + '\'' +
-                ", instructor_info_id=" + instructor_info_id +
+                "section_number=" + sectionNumber +
+                ", section_type='" + sectionType + '\'' +
+                ", instructor_info_id=" + instructorInfoId +
                 ", location='" + location + '\'' +
                 ", deleted=" + deleted +
-                ", course_info_id=" + course_info_id +
-                ", calendar_info_id=" + calendar_info_id +
+                ", course_info_id=" + courseInfoId +
+                ", calendar_info_id=" + calendarInfoId +
                 '}';
     }
 
@@ -69,44 +103,56 @@ public class CreateSectionDto
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         CreateSectionDto that = (CreateSectionDto) object;
-        return java.util.Objects.equals(section_number, that.section_number) &&
-                java.util.Objects.equals(section_type, that.section_type) &&
-                java.util.Objects.equals(instructor_info_id, that.instructor_info_id) &&
+        return java.util.Objects.equals(sectionNumber, that.sectionNumber) &&
+                java.util.Objects.equals(sectionType, that.sectionType) &&
+                java.util.Objects.equals(instructorInfoId, that.instructorInfoId) &&
                 java.util.Objects.equals(location, that.location) &&
                 java.util.Objects.equals(deleted, that.deleted) &&
-                java.util.Objects.equals(course_info_id, that.course_info_id) &&
-                java.util.Objects.equals(calendar_info_id, that.calendar_info_id);
+                java.util.Objects.equals(courseInfoId, that.courseInfoId) &&
+                java.util.Objects.equals(calendarInfoId, that.calendarInfoId);
     }
 
     public int hashCode() {
 
-        return Objects.hash(super.hashCode(), section_number, section_type, instructor_info_id, location, deleted, course_info_id, calendar_info_id);
+        return Objects.hash(super.hashCode(), sectionNumber, sectionType, instructorInfoId, location, deleted, courseInfoId, calendarInfoId);
     }
-
+    public static Builder builder() {
+    	return new Builder();
+    }
     public static final class Builder {
-        private Integer section_number;
-        private String section_type;
-        private Integer instructor_info_id;
+    	//Section Info
+        private Integer sectionNumber;
+        private String sectionType;
+        private Integer instructorInfoId;
         private String location;
         private Boolean deleted;
-        private Integer course_info_id;
-        private Integer calendar_info_id;
+        private Integer courseInfoId;
+        private Integer calendarInfoId;
+        
+        //Calendar Info
+        private Integer year;
+    	private String semester;
+        private String days;
+        private Integer startTime;
+        private Integer endTime;
+        private Integer term;
+        
 
         public Builder() {
         }
-
-        public Builder withSection_number(Integer section_number) {
-            this.section_number = section_number;
+                
+        public Builder withSectionNumber(Integer sectionNumber) {
+            this.sectionNumber = sectionNumber;
             return this;
         }
 
-        public Builder withSection_type(String section_type) {
-            this.section_type = section_type;
+        public Builder withSectionType(String sectionType) {
+            this.sectionType = sectionType;
             return this;
         }
 
-        public Builder withInstructor_info_id(Integer instructor_info_id) {
-            this.instructor_info_id = instructor_info_id;
+        public Builder withInstructorInfoId(Integer instructorInfoId) {
+            this.instructorInfoId = instructorInfoId;
             return this;
         }
 
@@ -120,18 +166,49 @@ public class CreateSectionDto
             return this;
         }
 
-        public Builder withCourse_info_id(Integer course_info_id) {
-            this.course_info_id = course_info_id;
+        public Builder withCourseInfoId(Integer courseInfoId) {
+            this.courseInfoId = courseInfoId;
             return this;
         }
 
-        public Builder withCalendar_info_id(Integer calendar_info_id) {
-            this.calendar_info_id = calendar_info_id;
+        public Builder withCalendarInfoId(Integer calendarInfoId) {
+            this.calendarInfoId = calendarInfoId;
             return this;
         }
 
         public CreateSectionDto build() {
             return new CreateSectionDto(this);
+        }
+        
+        
+        public Builder withYear(Integer year) {
+        	this.year = year;
+        	return this;
+        }
+        
+        public Builder withSemester(String semester) {
+        	this.semester = semester;
+        	return this;
+        }
+        
+        public Builder withDays(String days) {
+        	this.days = days;
+        	return this;
+        }
+        
+        public Builder withStartTime(Integer startTime) {
+        	this.startTime = startTime;
+        	return this;
+        }
+        
+        public Builder withEndTime(Integer endTime) {
+        	this.endTime = endTime;
+        	return this;
+        }
+        
+        public Builder withTerm(Integer term) {
+        	this.term = term;
+        	return this;
         }
     }
 }

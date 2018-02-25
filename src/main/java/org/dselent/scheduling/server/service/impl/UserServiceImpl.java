@@ -82,9 +82,7 @@ public class UserServiceImpl implements UserService
     	userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.UPDATED_AT));
 		userKeyHolderColumnNameList.add(UserInfo.getColumnName(UserInfo.Columns.LOGIN_TIME));
 
-
 		rowsAffectedList.add(userInfoDao.insert(userInfo, userInsertColumnNameList, userKeyHolderColumnNameList));
-
 		if(!dto.getRank().equals(null)){
 			InstructorInfo instructorInfo = new InstructorInfo();
 			//Rank is incorrectly given as a string in DTO: This is a bandaid

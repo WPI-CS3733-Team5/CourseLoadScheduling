@@ -35,11 +35,13 @@ public class CreateSection
     {
         SECTION_NUMBER,
         SECTION_TYPE,
-        INSTRUCTOR_INFO_ID,
         LOCATION,
         COURSE_INFO_ID,
-        CALENDAR_INFO_ID,
-        DELETED
+        //CalendarInfo
+        TERM,
+        DAYS,
+        START_TIME,
+        END_TIME;
     }
 
 

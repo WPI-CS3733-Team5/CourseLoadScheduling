@@ -10,6 +10,7 @@ import org.dselent.scheduling.server.dao.LabInfoDao;
 import org.dselent.scheduling.server.dao.SectionInfoDao;
 import org.dselent.scheduling.server.dao.SectionPopulationDao;
 import org.dselent.scheduling.server.dto.CreateCourseDto;
+import org.dselent.scheduling.server.dto.CreateSectionDto;
 import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.Pair;
 import org.dselent.scheduling.server.model.CalendarInfo;
@@ -44,9 +45,10 @@ public class CourseServiceImpl implements CourseService{
 
     @Transactional
     @Override
-    public List<Integer> createCourse(CreateCourseDto createCourseDto) throws SQLException{
+    public List<Integer> createCourse(CreateCourseDto createCourseDto, CreateSectionDto createSectionDto) throws SQLException{
         List<Integer> rowsAffectedList = new ArrayList<>();
 
+        //Adding to the CourseInfo Table
         CourseInfo courseInfo = new CourseInfo();
         courseInfo.setCourseName(createCourseDto.getCourseName());
         courseInfo.setRequiredFrequencyPerTerm(createCourseDto.getRequiredFrequencyPerTerm());
@@ -70,9 +72,51 @@ public class CourseServiceImpl implements CourseService{
         courseInsertColumnNameList.add(CourseInfo.getColumnName(CourseInfo.Columns.COURSE_NUMBER));
 
         courseKeyHolderColumnNameList.add(CourseInfo.getColumnName(CourseInfo.Columns.ID));
-
         rowsAffectedList.add(courseInfoDao.insert(courseInfo, courseInsertColumnNameList, courseKeyHolderColumnNameList));
 
+        //Add to CalendarInfo Table
+        CalendarInfo calendarInfo = new CalendarInfo();
+        calendarInfo.setYear(createSectionDto.getYear());
+        calendarInfo.setSemester(createSectionDto.getSemester());
+        calendarInfo.setDays(createSectionDto.getDays());
+        calendarInfo.setStartTime(createSectionDto.getStartTime());
+        calendarInfo.setEndTime(createSectionDto.getEndTime());
+        calendarInfo.setTerm(createSectionDto.getTerm());
+        
+        List<String> calendarInsertColumnNameList = new ArrayList<>();
+        List<String> calendarKeyHolderColumnNameList = new ArrayList<>();
+        calendarInsertColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.YEAR));
+        calendarInsertColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.SEMESTER));
+        calendarInsertColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.DAYS));
+        calendarInsertColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.START_TIME));
+        calendarInsertColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.END_TIME));
+        calendarInsertColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.TERM));
+        
+        calendarKeyHolderColumnNameList.add(CalendarInfo.getColumnName(CalendarInfo.Columns.ID));
+
+        rowsAffectedList.add(calendarInfoDao.insert(calendarInfo, calendarInsertColumnNameList, calendarKeyHolderColumnNameList));
+
+        //Add To SectionInfoTable
+        SectionInfo sectionInfo = new SectionInfo();
+        sectionInfo.setSectionNumber(createSectionDto.getSectionNumber());
+        sectionInfo.setSectionType(createSectionDto.getSectionType());
+        sectionInfo.setLocation(createSectionDto.getLocation());
+        sectionInfo.setDeleted(createSectionDto.getDeleted());
+        sectionInfo.setCourseInfoId(courseInfo.getId());
+        sectionInfo.setCalendarInfoId(calendarInfo.getId());
+        
+        List<String> sectionInsertColumnNameList = new ArrayList<>();
+        List<String> sectionKeyHolderColumnNameList = new ArrayList<>();
+        sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER));
+        sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_TYPE));
+        sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.LOCATION));
+        sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.DELETED));
+        sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.COURSE_INFO_ID));
+        sectionInsertColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.CALENDAR_INFO_ID));
+        
+        sectionKeyHolderColumnNameList.add(SectionInfo.getColumnName(SectionInfo.Columns.ID));
+        rowsAffectedList.add(sectionInfoDao.insert(sectionInfo, sectionInsertColumnNameList, sectionKeyHolderColumnNameList));
+        
         return rowsAffectedList;
     }
 

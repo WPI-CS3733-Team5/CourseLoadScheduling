@@ -157,9 +157,9 @@ public class SectionInfo extends Model
         return calendarInfoId;
     }
 
-    public void setCalendarInfoId(Integer calendar_Info_Id)
+    public void setCalendarInfoId(Integer calendarInfoId)
     {
-
+    	this.calendarInfoId = calendarInfoId;
     }
 
 

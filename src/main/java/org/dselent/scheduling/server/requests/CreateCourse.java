@@ -39,7 +39,18 @@ public class CreateCourse
 		REQUIRED_FREQUENCY_PER_YEAR,
 		CREDIT_AMOUNT,
 		DEPARTMENT,
-		COURSE_NUMBER;
+		COURSE_NUMBER,
+		//calendar info
+		TERM,
+		DAYS,
+		START_TIME,
+		END_TIME,
+		//section info
+		SECTION_NUMBER,
+		SECTION_TYPE,
+		LOCATION;
+		
+		
 	}
 	
 

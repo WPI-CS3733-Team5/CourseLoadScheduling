@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.dselent.scheduling.server.controller.CourseInfoController;
 import org.dselent.scheduling.server.dto.CreateCourseDto;
+import org.dselent.scheduling.server.dto.CreateSectionDto;
 import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateCourse;
@@ -52,7 +53,22 @@ public class CourseInfoControllerImpl implements CourseInfoController
 		Integer creditAmount = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.CREDIT_AMOUNT)));
 		String department = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DEPARTMENT));
 		Integer courseNumber = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.COURSE_NUMBER)));
-
+		
+		//CalendarInfo
+		Integer term = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.TERM)));
+		String days = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.DAYS));
+		Integer startTime = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.START_TIME)));
+		Integer endTime = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.END_TIME)));
+		String semester;
+		if (term <=2 || term == 5) semester = "FALL";
+		else semester = "SPRING";
+		
+		//SectionInfo
+		String sectionType = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.SECTION_TYPE));
+		Integer sectionNumber = Integer.parseInt(request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.SECTION_NUMBER)));
+		String location = request.get(CreateCourse.getBodyName(CreateCourse.BodyKey.LOCATION));
+		
+		
 		CreateCourseDto.Builder builder = CreateCourseDto.builder();
 		CreateCourseDto createCourseDto = builder.withCourseName(courseName)
 				.withRequiredFrequencyPerTerm(requiredFrequencyPerTerm)
@@ -64,7 +80,20 @@ public class CourseInfoControllerImpl implements CourseInfoController
 				.withDeleted(false)
 				.build();
 		
-		courseService.createCourse(createCourseDto);
+		CreateSectionDto.Builder sectionBuilder = CreateSectionDto.builder();
+		CreateSectionDto createSectionDto = sectionBuilder.withSectionType(sectionType)
+				.withSectionNumber(sectionNumber)
+				.withLocation(location)
+				.withTerm(term)
+				.withDays(days)
+				.withStartTime(startTime)
+				.withEndTime(endTime)
+				.withSemester(semester)
+				.withYear(2018)
+				.withDeleted(false)
+				.build();
+		
+		courseService.createCourse(createCourseDto, createSectionDto);
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
