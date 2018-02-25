@@ -32,4 +32,5 @@ public interface UserService
 	public List<Object> getAllUser() throws SQLException;
     public UserInfo loginUser(String userName, String password);
     public List<Integer> editUser(CreateUserDto dto, Integer userId) throws SQLException;
+    public List<Object> theBigOne() throws SQLException;
 }

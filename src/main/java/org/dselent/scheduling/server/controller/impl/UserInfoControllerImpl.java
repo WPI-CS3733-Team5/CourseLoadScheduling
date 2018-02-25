@@ -240,6 +240,19 @@ public class UserInfoControllerImpl implements UserInfoController
 
 		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
+
+	@Override
+	public ResponseEntity<String> theBigOne(@RequestBody Map<String, String> request) throws Exception {
+		System.out.println("Controller Reached");
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+		
+		success = userService.theBigOne();
+		
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
 }
 
 	

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dselent.scheduling.server.dao.CustomDao;
 import org.dselent.scheduling.server.dao.InstructorInfoDao;
 import org.dselent.scheduling.server.dao.UserInfoDao;
 import org.dselent.scheduling.server.dto.CreateUserDto;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService
 	
 	@Autowired
 	private InstructorInfoDao instructorInfoDao;
+	
+	@Autowired
+	private CustomDao customDao;
 	
     public UserServiceImpl()
     {
@@ -231,6 +235,13 @@ public class UserServiceImpl implements UserService
 		
 		
 		return rowsAffectedList;
+	}
+
+	@Override
+	public List<Object> theBigOne() throws SQLException {
+		List<Object> returnList = new ArrayList<>();
+		returnList = customDao.selectAllTables();
+		return returnList;
 	}   
 
 }

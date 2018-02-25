@@ -36,6 +36,7 @@ public class CustomDaoImpl implements CustomDao
 	@Override
 	public List<CourseInfo> selectCourseNameGivenUsernameAndTerm(String username, int term)
 	{
+		/*
 		CourseInfoExtractor extractor = new CourseInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.COURSES_GIVEN_USERNAME_AND_TERM);
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
@@ -43,11 +44,14 @@ public class CustomDaoImpl implements CustomDao
 		parameters.addValue("term", term);
 		List<CourseInfo> courseInfoList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return courseInfoList;
+		*/
+		return null;
 	}
 
 	@Override
 	public List<CalendarInfo> selectStartAndEndTimesGivenUsernameAndTerm(String username, int term)
 	{
+		/*
 		CalendarInfoExtractor extractor = new CalendarInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.TIMES_GIVEN_USERNAME_AND_TERM);
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
@@ -55,11 +59,14 @@ public class CustomDaoImpl implements CustomDao
 		parameters.addValue("term", term);
 		List<CalendarInfo> calendarInfoList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return calendarInfoList;
+		*/
+		return null;
 	}
 
 	@Override
 	public List<SectionInfo> getAllSectionsGivenUserAndDept(String username, String department)
 	{
+		/*
 		SectionInfoExtractor extractor = new SectionInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.COURSES_GIVEN_USERNAME_AND_DEPARTMENT);
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
@@ -67,10 +74,13 @@ public class CustomDaoImpl implements CustomDao
 		parameters.addValue("department", department);
 		List<SectionInfo> SectionInfo = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return SectionInfo;
+		*/
+		return null;
 	}
 
 	@Override
 	public List<SectionInfo>  getAllWishListSectionsGivenUserAndTerm(String username, int term){
+		/*
 		SectionInfoExtractor extractor = new SectionInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.SECTIONS_WITH_WISHLIST_QUERY);
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
@@ -78,10 +88,13 @@ public class CustomDaoImpl implements CustomDao
 		parameters.addValue("term", term);
 		List<SectionInfo> sectionsFromTermAndId = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return sectionsFromTermAndId;
+		*/
+		return null;
 	}
 
 	@Override
 	public List<SectionInfo> getAllWishListSectionsGivenUserAndCourseName(String username, String courseName){
+		/*
 		SectionInfoExtractor extractor = new SectionInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.WISHLIST_GIVEN_USER_AND_COURSENAME_QUERY);
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
@@ -89,28 +102,36 @@ public class CustomDaoImpl implements CustomDao
 		parameters.addValue("course_name", courseName);
 		List<SectionInfo> wishListSectionList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return wishListSectionList;
+		*/
+		return null;
 	}
 
 	@Override
 	public List<SectionInfo> getAllWishListSectionsGivenUser(String username)
 	{
+		/*
 		SectionInfoExtractor extractor = new SectionInfoExtractor();
 		String queryTemplate = new String(QueryPathConstants.WISHLIST_FROM_USERNAME_QUERY);
 		MapSqlParameterSource parameters = new MapSqlParameterSource();
 		parameters.addValue("roleId", username);
 		List<SectionInfo> usersWithRoleList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		return usersWithRoleList;
+		*/
+		return null;
 	}
 
 	@Override
 	public List<SectionInfo> getAllSectionsGivenDepartment(String department)
 	{
+		/*
 			SectionInfoExtractor extractor = new SectionInfoExtractor();
 			String queryTemplate = new String(QueryPathConstants.SECTIONS_WITH_DEPARTMENT_QUERY);
 		    MapSqlParameterSource parameters = new MapSqlParameterSource();
 		    parameters.addValue("department", department);
 		    List<SectionInfo> sectionsWithDepartmentList = namedParameterJdbcTemplate.query(queryTemplate, parameters, extractor);
 		    return sectionsWithDepartmentList;
+		    */
+		return null;
 	}
 
 	/**

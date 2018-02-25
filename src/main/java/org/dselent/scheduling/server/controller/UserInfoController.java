@@ -27,4 +27,7 @@ public interface UserInfoController
     
     @RequestMapping(method=RequestMethod.POST, value="editUser")
     public ResponseEntity<String> editUser(@RequestBody Map<String, String> request) throws Exception;
+    
+    @RequestMapping(method=RequestMethod.POST, value="theBigOne")
+    public ResponseEntity<String> theBigOne(@RequestBody Map<String, String> request) throws Exception;
 }
