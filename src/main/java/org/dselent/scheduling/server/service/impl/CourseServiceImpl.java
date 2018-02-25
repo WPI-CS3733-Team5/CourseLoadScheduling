@@ -18,8 +18,10 @@ import org.dselent.scheduling.server.model.CourseInfo;
 import org.dselent.scheduling.server.model.LabInfo;
 import org.dselent.scheduling.server.model.SectionInfo;
 import org.dselent.scheduling.server.model.SectionPopulation;
+import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.service.CourseService;
 import org.dselent.scheduling.server.sqlutils.ColumnOrder;
+import org.dselent.scheduling.server.sqlutils.ComparisonOperator;
 import org.dselent.scheduling.server.sqlutils.QueryTerm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -157,4 +159,73 @@ public class CourseServiceImpl implements CourseService{
         
         return returnList;
     }
+
+	@Override
+	public List<Integer> editCourse(CreateCourseDto createCourseDto, CreateSectionDto createSectionDto, Integer sectionInfoId) throws SQLException {
+		List<Integer> rowsAffectedList = new ArrayList<>();
+		
+		SectionInfo theSection = sectionInfoDao.findById(sectionInfoId);
+		
+		List<QueryTerm> queryTermList = new ArrayList<QueryTerm>();
+		QueryTerm updateCourse = new QueryTerm(CourseInfo.getColumnName(CourseInfo.Columns.ID), ComparisonOperator.EQUAL, createSectionDto.getCourseInfoId(), null);
+		queryTermList.add(updateCourse);
+		
+		//Edit Course Info
+		String courseName = createCourseDto.getCourseName();
+		Integer requiredFrequencyPerTerm = createCourseDto.getRequiredFrequencyPerTerm();
+		Integer requiredFrequencyPerSemester = createCourseDto.getRequiredFrequencyPerSemester();
+		Integer requiredFrequencyPerYear = createCourseDto.getRequiredFrequencyPerYear();
+		Integer creditAmount = createCourseDto.getCreditAmount();
+		Boolean deleted = createCourseDto.getDeleted();
+		String department = createCourseDto.getDepartment();
+		Integer courseNumber = createCourseDto.getCourseNumber();
+		
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.COURSE_NAME), courseName, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_TERM), requiredFrequencyPerTerm, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_SEMESTER), requiredFrequencyPerSemester, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.REQUIRED_FREQUENCY_PER_YEAR), requiredFrequencyPerYear, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.CREDIT_AMOUNT), creditAmount, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.DELETED), deleted, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.DEPARTMENT), department, queryTermList);
+		courseInfoDao.update(CourseInfo.getColumnName(CourseInfo.Columns.COURSE_NUMBER), courseNumber, queryTermList);
+		
+		//Edit Calendar Info
+		QueryTerm updateCalendar = new QueryTerm(CalendarInfo.getColumnName(CalendarInfo.Columns.ID), ComparisonOperator.EQUAL, theSection.getCalendarInfoId(), null);
+		queryTermList.remove(0);
+		queryTermList.add(updateCalendar);
+		
+		
+		String semester = createSectionDto.getSemester();
+		Integer year = createSectionDto.getYear();
+		String days = createSectionDto.getDays();
+		Integer startTime = createSectionDto.getStartTime();
+		Integer endTime = createSectionDto.getEndTime();
+		Integer term = createSectionDto.getTerm();
+		
+		calendarInfoDao.update(CalendarInfo.getColumnName(CalendarInfo.Columns.SEMESTER), semester, queryTermList);
+		calendarInfoDao.update(CalendarInfo.getColumnName(CalendarInfo.Columns.YEAR), year, queryTermList);
+		calendarInfoDao.update(CalendarInfo.getColumnName(CalendarInfo.Columns.DAYS), days, queryTermList);
+		calendarInfoDao.update(CalendarInfo.getColumnName(CalendarInfo.Columns.START_TIME), startTime, queryTermList);
+		calendarInfoDao.update(CalendarInfo.getColumnName(CalendarInfo.Columns.END_TIME), endTime, queryTermList);
+		calendarInfoDao.update(CalendarInfo.getColumnName(CalendarInfo.Columns.TERM), term, queryTermList);
+		
+		//Edit Section Info
+		QueryTerm updateSection = new QueryTerm(SectionInfo.getColumnName(SectionInfo.Columns.ID), ComparisonOperator.EQUAL, sectionInfoId, null);
+		queryTermList.remove(0);
+		queryTermList.add(updateSection);
+		
+		Integer sectionNumber = createSectionDto.getSectionNumber();
+		String sectionType = createSectionDto.getSectionType();
+		String location = createSectionDto.getLocation();
+		//Boolean deleted = createSectionDto.getDeleted();
+		Integer instructorInfoId = createSectionDto.getInstructorInfoId();
+		
+		sectionInfoDao.update(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_NUMBER), sectionNumber, queryTermList);
+		sectionInfoDao.update(SectionInfo.getColumnName(SectionInfo.Columns.SECTION_TYPE), sectionType, queryTermList);
+		sectionInfoDao.update(SectionInfo.getColumnName(SectionInfo.Columns.LOCATION), location, queryTermList);
+		sectionInfoDao.update(SectionInfo.getColumnName(SectionInfo.Columns.DELETED), deleted, queryTermList);
+		sectionInfoDao.update(SectionInfo.getColumnName(SectionInfo.Columns.INSTRUCTOR_INFO_ID), instructorInfoId, queryTermList);
+		
+		return rowsAffectedList;
+	}
 }

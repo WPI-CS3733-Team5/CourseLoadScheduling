@@ -10,6 +10,7 @@ import org.dselent.scheduling.server.dto.CreateSectionDto;
 import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateCourse;
+import org.dselent.scheduling.server.requests.EditCourse;
 import org.dselent.scheduling.server.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -113,5 +114,69 @@ public class CourseInfoControllerImpl implements CourseInfoController
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
+
+	@Override
+	public ResponseEntity<String> editCourse(@RequestBody Map<String, String> request) throws Exception {
+		System.out.println("Courses controller reached");
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+		
+		Integer courseInfoId = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.COURSE_INFO_ID)));
+		String courseName = request.get(EditCourse.getBodyName(EditCourse.BodyKey.COURSE_NAME));
+		Integer requiredFrequencyPerTerm = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.REQUIRED_FREQUENCY_PER_TERM)));
+		Integer requiredFrequencyPerSemester = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.REQUIRED_FREQUENCY_PER_SEMESTER)));
+		Integer requiredFrequencyPerYear = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.REQUIRED_FREQUENCY_PER_YEAR)));
+		Integer creditAmount = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.CREDIT_AMOUNT)));
+		String department = request.get(EditCourse.getBodyName(EditCourse.BodyKey.DEPARTMENT));
+		Integer courseNumber = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.COURSE_NUMBER)));
+		
+		//CalendarInfo
+		Integer term = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.TERM)));
+		String days = request.get(EditCourse.getBodyName(EditCourse.BodyKey.DAYS));
+		Integer startTime = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.START_TIME)));
+		Integer endTime = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.END_TIME)));
+		String semester;
+		if (term <=2 || term == 5) semester = "FALL";
+		else semester = "SPRING";
+		
+		//SectionInfo
+		Integer instructorInfoId = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.INSTRUCTOR_INFO_ID)));
+		Integer sectionInfoId = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.SECTION_INFO_ID)));
+		String sectionType = request.get(EditCourse.getBodyName(EditCourse.BodyKey.SECTION_TYPE));
+		Integer sectionNumber = Integer.parseInt(request.get(EditCourse.getBodyName(EditCourse.BodyKey.SECTION_NUMBER)));
+		String location = request.get(EditCourse.getBodyName(EditCourse.BodyKey.LOCATION));
+		
+		
+		CreateCourseDto.Builder builder = CreateCourseDto.builder();
+		CreateCourseDto createCourseDto = builder.withCourseName(courseName)
+				.withRequiredFrequencyPerTerm(requiredFrequencyPerTerm)
+				.withRequiredFrequencyPerSemester(requiredFrequencyPerSemester)
+				.withRequiredFrequencyPerYear(requiredFrequencyPerYear)
+				.withCreditAmount(creditAmount)
+				.withDepartment(department)
+				.withCourseNumber(courseNumber)
+				.withDeleted(false)
+				.build();
+		
+		CreateSectionDto.Builder sectionBuilder = CreateSectionDto.builder();
+		CreateSectionDto createSectionDto = sectionBuilder.withSectionType(sectionType)
+				.withSectionNumber(sectionNumber)
+				.withLocation(location)
+				.withTerm(term)
+				.withDays(days)
+				.withStartTime(startTime)
+				.withEndTime(endTime)
+				.withSemester(semester)
+				.withYear(2018)
+				.withDeleted(false)
+				.withCourseInfoId(courseInfoId)
+				.withInstructorInfoId(instructorInfoId)
+				.build();
+		
+		courseService.editCourse(createCourseDto, createSectionDto, sectionInfoId);
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
 }
 

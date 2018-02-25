@@ -17,5 +17,6 @@ public interface CourseService
 {
     public List<Integer> createCourse(CreateCourseDto createCourseDto, CreateSectionDto createSectionDto) throws SQLException;
     public List<Object> getAllCourses() throws SQLException;
+    public List<Integer> editCourse(CreateCourseDto createCourseDto, CreateSectionDto createSectionDto, Integer sectionInfoId) throws SQLException;
 
 }
