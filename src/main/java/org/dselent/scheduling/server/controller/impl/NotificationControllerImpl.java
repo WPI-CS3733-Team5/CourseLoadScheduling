@@ -59,10 +59,10 @@ public class NotificationControllerImpl implements NotificationController {
         Integer requestedNotificationId = Integer.parseInt(request.get(GetOneNotification.getBodyName(GetOneNotification.BodyKey.REQUESTED_NOTIFICATION_ID)));
 
         GetOneNotificationDto.Builder builder = GetOneNotificationDto.builder();
-        GetOneNotificationDto getOneNotificationDto = builder.withid(requestedNotificationId)
+        GetOneNotificationDto getOneNotificationDto = builder.withId(requestedNotificationId)
                 .build();
 
-        notificationService.getOneNotification(getOneNotificationDto);
+        success.add(notificationService.getOneNotification(getOneNotificationDto));
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -80,7 +80,7 @@ public class NotificationControllerImpl implements NotificationController {
         GetAllNotificationsDto getAllNotificationsDto = builder.withToUserInfoId(toUserInfoId)
                 .build();
 
-        notificationService.getAllNotifications(getAllNotificationsDto);
+        success.add(notificationService.getAllNotifications(getAllNotificationsDto));
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
