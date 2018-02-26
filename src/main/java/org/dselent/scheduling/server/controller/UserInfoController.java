@@ -14,10 +14,8 @@ public interface UserInfoController
     @RequestMapping(method=RequestMethod.POST, value="getAllUser")
 	public ResponseEntity<String> getAllUser(@RequestBody Map<String, String> request) throws Exception;
 
-
     @RequestMapping(method=RequestMethod.POST, value="getOneUser")
     public ResponseEntity<String> getOneUser(@RequestBody Map<String, String> request) throws Exception;
-
 
     @RequestMapping(method=RequestMethod.POST, value="createUser")
     public ResponseEntity<String> createUser(@RequestBody Map<String, String> request) throws Exception;

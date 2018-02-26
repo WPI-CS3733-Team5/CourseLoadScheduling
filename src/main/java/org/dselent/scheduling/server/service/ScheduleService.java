@@ -20,5 +20,6 @@ public interface ScheduleService
      */
 
     public List<ScheduleLinks> getOneSchedule(Integer instructorInfoId) throws SQLException;
+    public List<Integer> createSchedule(Integer instructorInfoId, List<Integer> sectionInfoIdList) throws SQLException;
 
 }

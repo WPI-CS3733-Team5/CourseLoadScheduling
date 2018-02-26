@@ -3,10 +3,12 @@ package org.dselent.scheduling.server.controller.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.dselent.scheduling.server.controller.ScheduleLinksController;
 import org.dselent.scheduling.server.dto.GetOneScheduleDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
+import org.dselent.scheduling.server.requests.CreateSchedule;
 import org.dselent.scheduling.server.requests.GetOneSchedule;
 import org.dselent.scheduling.server.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +36,36 @@ public class ScheduleLinksControllerImpl implements ScheduleLinksController {
         String response = "";
         List<Object> success = new ArrayList<Object>();
 
-        Integer instructor_info_id = Integer.parseInt(request.get(GetOneSchedule.getBodyName(GetOneSchedule.BodyKey.INSTRUCTOR_INFO_ID)));
+        Integer instructorInfoId = Integer.parseInt(request.get(GetOneSchedule.getBodyName(GetOneSchedule.BodyKey.INSTRUCTOR_INFO_ID)));
 
 
         //GetOneScheduleDto.Builder builder = GetOneScheduleDto.builder();
         //GetOneScheduleDto getOneScheduleDto = builder.withInstructorInfoId(instructor_info_id)
           //      .build();
 
-        success.addAll(scheduleService.getOneSchedule(instructor_info_id));
+        success.addAll(scheduleService.getOneSchedule(instructorInfoId));
         response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
         return new ResponseEntity<String>(response, HttpStatus.OK);
 
     }
+
+	@Override
+	public ResponseEntity<String> createSchedule(@RequestBody Map<String, String> request) throws Exception {
+		String response = "";
+		List<Object> success = new ArrayList<Object>();
+		Integer instructorInfoId = Integer.parseInt(request.get(CreateSchedule.getBodyName(CreateSchedule.BodyKey.INSTRUCTOR_INFO_ID)));
+		String unParsedIds = request.get(CreateSchedule.getBodyName(CreateSchedule.BodyKey.SECTION_INFO_ID_LIST));
+		List<Integer> sectionInfoIdList = new ArrayList<Integer>();
+		Scanner scan = new Scanner(unParsedIds);
+		while(scan.hasNextInt()) {
+			sectionInfoIdList.add(scan.nextInt());
+		}
+		scan.close();
+		scheduleService.createSchedule(instructorInfoId, sectionInfoIdList);
+        response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
 
 
 }
