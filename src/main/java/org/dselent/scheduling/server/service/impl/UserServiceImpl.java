@@ -169,10 +169,32 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public UserInfo loginUser(String userName, String password)
+	public UserInfo loginUser(String userName, String password) throws SQLException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		UserInfo theUser = new UserInfo();
+		
+		System.out.println("Given UserName: "+userName);
+		System.out.println("Given Password: "+password);
+		List<String> selectColumnNameList = new ArrayList<String>();
+		selectColumnNameList.addAll(UserInfo.getColumnNameList());
+		
+		
+		QueryTerm onlyTerm = new QueryTerm(UserInfo.getColumnName(UserInfo.Columns.USERNAME), ComparisonOperator.EQUAL, userName, null);
+		List<QueryTerm> queryTermList = new ArrayList<QueryTerm>();
+		queryTermList.add(onlyTerm);
+		
+		List<Pair<String, ColumnOrder>> orderByList = new ArrayList<>();
+		
+		List<UserInfo> searchUser = userInfoDao.select(selectColumnNameList, queryTermList, orderByList);
+		if (searchUser.isEmpty()) {
+			System.out.println("Didn't find user");
+			return theUser;
+		}
+		theUser = searchUser.get(0);
+		if(theUser.getEncryptedPassword().equals(password)) return theUser;
+		
+		System.out.println("Found user, bad password, should have been: "+ theUser.getEncryptedPassword());
+		return new UserInfo();
 	}
 
 	@Override

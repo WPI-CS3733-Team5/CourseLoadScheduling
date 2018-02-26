@@ -14,6 +14,7 @@ import org.dselent.scheduling.server.requests.CreateUser;
 import org.dselent.scheduling.server.requests.EditUser;
 import org.dselent.scheduling.server.requests.GetAllUser;
 import org.dselent.scheduling.server.requests.GetOneUser;
+import org.dselent.scheduling.server.requests.Login;
 import org.dselent.scheduling.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -190,9 +191,17 @@ public class UserInfoControllerImpl implements UserInfoController
 	}
 
 	@Override
-	public ResponseEntity<String> login(Map<String, String> request) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<String> login(@RequestBody Map<String, String> request) throws Exception {
+		System.out.println("Controller Reached");
+		
+		String response = "";
+		List<Object> success = new ArrayList<>();
+		
+		String userName = request.get(Login.getBodyName(Login.BodyKey.USER_NAME));
+		String password = request.get(Login.getBodyName(Login.BodyKey.PASSWORD));
+		success.add(userService.loginUser(userName, password));
+		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
+		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
 
 	@Override
