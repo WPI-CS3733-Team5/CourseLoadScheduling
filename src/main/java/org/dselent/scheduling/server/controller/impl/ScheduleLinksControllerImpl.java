@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.dselent.scheduling.server.controller.ScheduleLinksController;
-import org.dselent.scheduling.server.dto.GetOneScheduleDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateSchedule;
 import org.dselent.scheduling.server.requests.GetOneSchedule;

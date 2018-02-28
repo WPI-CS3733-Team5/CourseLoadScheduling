@@ -3,6 +3,8 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by dhmchorney on 2/1/2018.
  */
@@ -37,9 +39,17 @@ public class Notification extends Model {
     }
 
     // attributes
+    
+    @JsonProperty("notification_id")
     private Integer id;
+    
+    @JsonProperty("notification_message")
     private String message;
+    
+    @JsonProperty("notification_fromUserInfoId")
     private Integer fromUserInfoId;
+    
+    @JsonProperty("notification_toUserInfoId")
     private Integer toUserInfoId;
 
     // methods

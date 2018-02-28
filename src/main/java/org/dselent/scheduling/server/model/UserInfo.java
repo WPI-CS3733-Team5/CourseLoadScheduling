@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class UserInfo extends Model
 {
@@ -60,18 +62,43 @@ public class UserInfo extends Model
 	
 	// attributes
 	
+    @JsonProperty("userInfo_id")
 	private Integer id;
+    
+    @JsonProperty("userInfo_userRole")
 	private Integer userRole;
+    
+    @JsonProperty("userInfo_userName")
 	private String userName;
+    
+    @JsonProperty("userInfo_firstName")
 	private String firstName;
+    
+    @JsonProperty("userInfo_lastName")
 	private String lastName;
+    
+    @JsonProperty("userInfo_email")
 	private String email;
+    
+    @JsonProperty("userInfo_deleted")
 	private Boolean deleted;
+    
+    @JsonProperty("userInfo_encryptedPassword")
 	private String encryptedPassword;
+    
+    @JsonProperty("userInfo_salt")
 	private String salt;
+    
+    @JsonProperty("userInfo_accountState")
 	private Integer accountState;
+    
+    @JsonProperty("userInfo_createdAt")
 	private Instant createdAt;
+    
+    @JsonProperty("userInfo_updatedAt")
 	private Instant updatedAt;
+    
+    @JsonProperty("userInfo_loginTime")
 	private Instant loginTime;
 
 	// methods

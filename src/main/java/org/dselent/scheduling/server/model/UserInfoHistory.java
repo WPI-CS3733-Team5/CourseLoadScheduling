@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserInfoHistory extends Model
 {
 	// table name
@@ -61,18 +63,43 @@ public class UserInfoHistory extends Model
 	
 	// attributes
 	
+    @JsonProperty("userInfoHistory_id")
 	private Integer id;
+    
+    @JsonProperty("userInfoHistory_userInfoId")
 	private Integer userInfoId;
+    
+    @JsonProperty("userInfoHistory_userRole")
 	private Integer userRole;
+    
+    @JsonProperty("userInfoHistory_userName")
 	private String userName;
+    
+    @JsonProperty("userInfoHistory_firstName")
 	private String firstName;
+    
+    @JsonProperty("userInfoHistory_lastName")
 	private String lastName;
+    
+    @JsonProperty("userInfoHistory_email")
 	private String email;
+    
+    @JsonProperty("userInfoHistory_encryptedPassword")
 	private String encryptedPassword;
+    
+    @JsonProperty("userInfoHistory_salt")
 	private String salt;
+    
+    @JsonProperty("userInfoHistory_accountState")
 	private Integer accountState;
+    
+    @JsonProperty("userInfoHistory_createdAt")
 	private Instant createdAt;
+    
+    @JsonProperty("userInfoHistory_updatedAt")
 	private Instant updatedAt;
+    
+    @JsonProperty("userInfoHistory_loginTime")
 	private Instant loginTime;
 
 	// methods

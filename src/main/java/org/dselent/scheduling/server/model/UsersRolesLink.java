@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class UsersRolesLink extends Model
 {
@@ -46,10 +48,19 @@ public class UsersRolesLink extends Model
 	
 	// attributes
 	
+    @JsonProperty("userRolesLinks_id")
 	private Integer id;
+    
+    @JsonProperty("userRolesLinks_userId")
 	private Integer userId;
+    
+    @JsonProperty("userRolesLinks_roleId")
 	private Integer roleId;
+    
+    @JsonProperty("userRolesLinks_createdAt")
 	private Instant createdAt;
+    
+    @JsonProperty("userRolesLinks_deleted")
 	private Boolean deleted;
 
 	// methods

@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class UserState extends Model
 {
@@ -46,10 +48,19 @@ public class UserState extends Model
 	
 	// attributes
 	
+    @JsonProperty("userState_id")
 	private Integer id;
+    
+    @JsonProperty("userState_state")
 	private String state;
+    
+    @JsonProperty("userState_createdAt")
 	private Instant createdAt;
+    
+    @JsonProperty("userState_updatedAt")
 	private Instant updatedAt;
+    
+    @JsonProperty("userState_deleted")
 	private Boolean deleted;
 
 	// methods

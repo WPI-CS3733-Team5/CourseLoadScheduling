@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserRole extends Model
 {
 	// table name
@@ -45,10 +47,19 @@ public class UserRole extends Model
 	
 	// attributes
 	
+    @JsonProperty("userRole_id")
 	private Integer id;
+    
+    @JsonProperty("userRole_roleName")
 	private String roleName;
+    
+    @JsonProperty("userRole_createdAt")
 	private Instant createdAt;
+    
+    @JsonProperty("userRole_updatedAt")
 	private Instant updatedAt;
+    
+    @JsonProperty("userRole_deleted")
 	private Boolean deleted;
 
 	// methods

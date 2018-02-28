@@ -3,6 +3,8 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CalendarInfo extends Model {
     // table name
     public static final String TABLE_NAME = "calendar_info";
@@ -43,13 +45,28 @@ public class CalendarInfo extends Model {
 
     // attributes
 
+    @JsonProperty("calendarInfo_id")
     private Integer id;
+    
+    @JsonProperty("calendarInfo_year")
     private Integer year;
+    
+    @JsonProperty("calendarInfo_semester")
     private String semester;
+    
+    @JsonProperty("calendarInfo_term")
     private Integer term;
+    
+    //@JsonProperty("calendarInfo_creditAmount")
     //private Integer creditAmount;
+    
+    @JsonProperty("calendarInfo_days")
     private String days;
+    
+    @JsonProperty("calendarInfo_startTime")
     private Integer startTime;
+    
+    @JsonProperty("calendarInfo_endTime")
     private Integer endTime;
 
 

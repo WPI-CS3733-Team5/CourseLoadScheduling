@@ -7,7 +7,6 @@ import java.util.Map;
 import org.dselent.scheduling.server.controller.CourseInfoController;
 import org.dselent.scheduling.server.dto.CreateCourseDto;
 import org.dselent.scheduling.server.dto.CreateSectionDto;
-import org.dselent.scheduling.server.dto.GetAllCoursesDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
 import org.dselent.scheduling.server.requests.CreateCourse;
 import org.dselent.scheduling.server.requests.EditCourse;

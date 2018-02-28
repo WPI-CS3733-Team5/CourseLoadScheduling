@@ -3,6 +3,8 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class InstructorInfo extends Model {
 
     // table name
@@ -43,12 +45,26 @@ public class InstructorInfo extends Model {
     };
 
     // attributes
+    
+    @JsonProperty("instructorInfo_id")
     private Integer id;
+    
+    @JsonProperty("instructorInfo_rank")
     private Integer rank;
+    
+    @JsonProperty("instructorInfo_courseLoad")
     private Integer courseLoad;
+    
+    //@JsonProperty("instructorInfo_phoneNumber")
     //private String phoneNumber;
+    
+    @JsonProperty("instructorInfo_office")
     private String office;
+    
+    @JsonProperty("instructorInfo_userInfoId")
     private Integer userInfoId;
+    
+    @JsonProperty("instructorInfo_department")
     private String department;
 
     // methods

@@ -3,6 +3,8 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SectionPopulation extends  Model
 {
 
@@ -41,9 +43,16 @@ public class SectionPopulation extends  Model
 
     }
 
+    @JsonProperty("sectionPopulation_id")
     private Integer id;
+    
+    @JsonProperty("sectionPopulation_expectedPopulation")
     private Integer expectedPopulation;
+    
+    @JsonProperty("sectionPopulation_populationCap")
     private Integer populationCap;
+    
+    @JsonProperty("sectionPopulation_sectionInfoId")
     private Integer sectionInfoId;
 
     //methods

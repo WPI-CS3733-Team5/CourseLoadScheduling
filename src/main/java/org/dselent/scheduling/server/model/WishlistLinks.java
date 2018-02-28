@@ -3,6 +3,8 @@ package org.dselent.scheduling.server.model;
 import java.sql.JDBCType;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class WishlistLinks extends Model
 {
 
@@ -38,8 +40,13 @@ public class WishlistLinks extends Model
 
     }
 
+    @JsonProperty("wishlistLinks_id")
     private Integer id;
+    
+    @JsonProperty("wishlistLinks_instructorInfoId")
     private Integer instructorInfoId;
+    
+    @JsonProperty("wishlistLinks_sectionInfoId")
     private Integer sectionInfoId;
 
     public static JDBCType getColumnType(WishlistLinks.Columns column)

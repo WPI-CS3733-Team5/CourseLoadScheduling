@@ -6,13 +6,9 @@ import java.util.Map;
 
 import org.dselent.scheduling.server.controller.UserInfoController;
 import org.dselent.scheduling.server.dto.CreateUserDto;
-import org.dselent.scheduling.server.dto.GetAllUserDto;
-import org.dselent.scheduling.server.dto.GetOneUserDto;
 import org.dselent.scheduling.server.miscellaneous.JsonResponseCreator;
-import org.dselent.scheduling.server.model.UserInfo;
 import org.dselent.scheduling.server.requests.CreateUser;
 import org.dselent.scheduling.server.requests.EditUser;
-import org.dselent.scheduling.server.requests.GetAllUser;
 import org.dselent.scheduling.server.requests.GetOneUser;
 import org.dselent.scheduling.server.requests.Login;
 import org.dselent.scheduling.server.service.UserService;
@@ -191,7 +187,8 @@ public class UserInfoControllerImpl implements UserInfoController
 	}
 
 	@Override
-	public ResponseEntity<String> login(@RequestBody Map<String, String> request) throws Exception {
+	public ResponseEntity<String> login(@RequestBody Map<String, String> request) throws Exception
+	{
 		System.out.println("Controller Reached");
 		
 		String response = "";
@@ -199,13 +196,17 @@ public class UserInfoControllerImpl implements UserInfoController
 		
 		String userName = request.get(Login.getBodyName(Login.BodyKey.USER_NAME));
 		String password = request.get(Login.getBodyName(Login.BodyKey.PASSWORD));
+		
 		success.add(userService.loginUser(userName, password));
+		success.add(userService.theBigOne());
+		
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
 
 	@Override
-	public ResponseEntity<String> editUser(@RequestBody Map<String, String> request) throws Exception {
+	public ResponseEntity<String> editUser(@RequestBody Map<String, String> request) throws Exception
+	{
     	// Print is for testing purposes
 		System.out.println("controller reached");
     	
@@ -251,12 +252,13 @@ public class UserInfoControllerImpl implements UserInfoController
 	}
 
 	@Override
-	public ResponseEntity<String> theBigOne(@RequestBody Map<String, String> request) throws Exception {
+	public ResponseEntity<String> theBigOne(@RequestBody Map<String, String> request) throws Exception
+	{
 		System.out.println("Controller Reached");
 		String response = "";
 		List<Object> success = new ArrayList<Object>();
 		
-		success = userService.theBigOne();
+		success.add(userService.theBigOne());
 		
 		response = JsonResponseCreator.getJSONResponse(JsonResponseCreator.ResponseKey.SUCCESS, success);
 
